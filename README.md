@@ -1,0 +1,4 @@
+QbBlogBundle
+============
+
+Symfony QbBlogBundle
