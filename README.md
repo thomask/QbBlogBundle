@@ -227,8 +227,8 @@ $ php app/console doctrine:schema:update --force
 
 ### Step 7: Create your own views by overriding QbBlogbundle !
 
+``` php
 // src/Acme/BlogBundle/BlogBundle.php
-<?php
 
 namespace Acme\BlogBundle;
 
@@ -241,5 +241,6 @@ class AcmeBlogBundle extends Bundle
         return 'QbBlogBundle';
     }
 }
+```
 
 For more information about bundle inheritance, check [Symfony documentation](http://symfony.com/doc/current/cookbook/bundles/inheritance.html).
