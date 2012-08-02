@@ -1,0 +1,27 @@
+{
+    "name": "qb/blog-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony QbBlogBundle",
+    "keywords": ["blog", "blogger"],
+    "homepage": "https://github.com/quentinb/QbBlogBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Quentin Berlemont",
+            "email": "quentinberlemont@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/symfony": "2.1.*",
+        "stof/doctrine-extensions-bundle": "*"
+    },
+    "require-dev": {
+         "doctrine/doctrine-bundle": "*"
+    },
+    "autoload": {
+        "psr-0": { "Qb\\Bundle\\BlogBundle": "" }
+    },
+    "target-dir": "Qb/Bundle/BlogBundle"
+}
