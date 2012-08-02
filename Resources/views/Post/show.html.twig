@@ -1,0 +1,8 @@
+<h1>{{ post.title }}</h1>
+<p>{{ post.author }}</p>
+<div>{{ post.body }}</div>
+<p>{{ post.created|date('Y-m-d H:i') }}</p>
+<ul>
+    <li><a href="{{ path('qb_blog_post_edit', { 'slug': post.slug }) }}">edit</a></li>
+    <li><a href="{{ path('qb_blog_post_delete', { 'slug': post.slug, 'token': csrf_token( post ) }) }}">delete</a></li>
+</ul>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Qb\Bundle\BlogBundle\Model\Category">
+        <property name="name">
+            <constraint name="NotBlank" />
+        </property>
+    </class>
+
+    <class name="Qb\Bundle\BlogBundle\Model\Comment">
+        <property name="author">
+            <constraint name="NotBlank" />
+        </property>
+
+        <property name="email">
+            <constraint name="Email" />
+        </property>
+
+        <property name="url">
+            <constraint name="Url" />
+        </property>
+
+        <property name="comment">
+            <constraint name="NotBlank" />
+        </property>
+    </class>
+
+    <class name="Qb\Bundle\BlogBundle\Model\Post">
+        <property name="author">
+            <constraint name="NotBlank" />
+        </property>
+
+        <property name="title">
+            <constraint name="NotBlank" />
+        </property>
+
+        <property name="body">
+            <constraint name="NotBlank" />
+        </property>
+    </class>
+
+    <class name="Qb\Bundle\BlogBundle\Model\Tag">
+        <property name="name">
+            <constraint name="NotBlank" />
+        </property>
+    </class>
+</constraint-mapping>

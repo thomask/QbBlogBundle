@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="qb_blog_tag_list" pattern="/list">
+        <default key="_controller">QbBlogBundle:Tag:list</default>
+        <requirement key="_method">GET</requirement>
+    </route>
+
+    <route id="qb_blog_tag_new" pattern="/new">
+        <default key="_controller">QbBlogBundle:Tag:new</default>
+        <requirement key="_method">GET|POST</requirement>
+    </route>
+
+    <route id="qb_blog_tag_show" pattern="/{slug}">
+        <default key="_controller">QbBlogBundle:Tag:show</default>
+        <requirement key="_method">GET</requirement>
+    </route>
+
+    <route id="qb_blog_tag_edit" pattern="/{slug}/edit">
+        <default key="_controller">QbBlogBundle:Tag:edit</default>
+        <requirement key="_method">GET|POST</requirement>
+    </route>
+
+    <route id="qb_blog_tag_delete" pattern="/{slug}/delete">
+        <default key="_controller">QbBlogBundle:Tag:delete</default>
+        <requirement key="_method">GET</requirement>
+    </route>
+</routes>

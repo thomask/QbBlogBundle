@@ -1,0 +1,11 @@
+{% if comment.url %}
+    <p><a href="{{ comment.url }}">{{ comment.author }}</a></p>
+{% else %}
+    <p>{{ comment.author }}</p>
+{% endif %}
+<div>{{ comment }}</div>
+<p>{{ comment.created|date('Y-m-d H:i') }}</p>
+<ul>
+    <li><a href="{{ path('qb_blog_comment_edit', { 'id': comment.id }) }}">edit</a></li>
+    <li><a href="{{ path('qb_blog_comment_delete', { 'id': comment.id, 'token': csrf_token( comment ) }) }}">delete</a></li>
+</ul>

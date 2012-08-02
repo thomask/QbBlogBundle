@@ -1,0 +1,5 @@
+<ul>
+{% for comment in comments %}
+    <li><a href="{{ path('qb_blog_comment_show', { 'id': comment.id }) }}">{{ comment.author }} ({{ comment.created|date('Y-m-d H:i') }})</a></li>
+{% endfor %}
+</ul>

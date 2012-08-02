@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="qb_blog.category_manager.default" class="Qb\Bundle\BlogBundle\Doctrine\CategoryManager" public="false">
+            <argument type="service" id="qb_blog.model_manager" />
+            <argument>%qb_blog.category.model.class%</argument>
+        </service>
+    </services>
+</container>
