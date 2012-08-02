@@ -135,7 +135,7 @@ class Post extends BasePost
 
     /**
      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="posts")
-     * @ORM\JoinTable(name="qb_blog_posts_tags",
+     * @ORM\JoinTable(name="acme_posts_tags",
      *      joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
      * )
@@ -187,13 +187,13 @@ class Tag extends BaseTag
 qb_blog:
     db_driver: orm
     category:
-        category_class: Acme\BlogBundle\EntityCategory
+        category_class: Acme\BlogBundle\Entity\Category
     comment:
-        comment_class: Acme\BlogBundle\EntityComment
+        comment_class: Acme\BlogBundle\Entity\Comment
     post:
-        post_class: Acme\BlogBundle\EntityPost
+        post_class: Acme\BlogBundle\Entity\Post
     tag:
-        tag_class: Acme\BlogBundle\EntityTag
+        tag_class: Acme\BlogBundle\Entity\Tag
 ```
 
 ### Step 5: Import QbBlogBundle routing files
@@ -224,3 +224,22 @@ qb_blog_tag:
 ``` bash
 $ php app/console doctrine:schema:update --force
 ```
+
+### Step 7: Create your own views by overriding QbBlogbundle !
+
+// src/Acme/BlogBundle/BlogBundle.php
+<?php
+
+namespace Acme\BlogBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class AcmeBlogBundle extends Bundle
+{
+    public function getParent()
+    {
+        return 'QbBlogBundle';
+    }
+}
+
+For more information about bundle inheritance, check [Symfony documentation](http://symfony.com/doc/current/cookbook/bundles/inheritance.html).
