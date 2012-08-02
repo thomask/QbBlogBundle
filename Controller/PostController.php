@@ -67,8 +67,11 @@ class PostController extends ContainerAware
             throw new NotFoundHttpException('Unable to find post.');
         }
 
+        $form = $this->container->get('qb_blog.comment.form');
+
         return $this->container->get('templating')->renderResponse('QbBlogBundle:Post:show.html.twig', array(
             'post' => $post,
+            'form' => $form->createView(),
         ));
     }
 

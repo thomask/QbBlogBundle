@@ -9,7 +9,7 @@
         <requirement key="_method">GET</requirement>
     </route>
 
-    <route id="qb_blog_comment_new" pattern="{post_id}/new">
+    <route id="qb_blog_comment_new" pattern="/{slug}/new">
         <default key="_controller">QbBlogBundle:Comment:new</default>
         <requirement key="_method">GET|POST</requirement>
     </route>

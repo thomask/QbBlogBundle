@@ -43,7 +43,7 @@ class CommentController extends ContainerAware
     public function newAction(Request $request)
     {
         $post = $this->container->get('qb_blog.post_manager')->findPostBy(array(
-            'id' => $request->get('post_id')
+            'slug' => $request->get('slug')
         ));
 
         if (null === $post) {
@@ -54,7 +54,7 @@ class CommentController extends ContainerAware
         $handler = $this->container->get('qb_blog.comment.form.handler');
 
         if ($handler->process(null, $post)) {
-            return new RedirectResponse($this->container->get('router')->generate('qb_blog_comment_list'));
+            return new RedirectResponse($this->container->get('router')->generate('qb_blog_post_show', array('slug' => $post->getSlug())));
         }
 
         return $this->container->get('templating')->renderResponse('QbBlogBundle:Comment:new.html.twig', array(
