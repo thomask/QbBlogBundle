@@ -1,7 +1,7 @@
 {
     "name": "qb/blog-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony QbBlogBundle",
+    "description": "Symfony QbBlogBundle is a simple-but-powerful blog bundle for Symfony 2.1",
     "keywords": ["blog", "blogger"],
     "homepage": "https://github.com/quentinb/QbBlogBundle",
     "license": "MIT",
