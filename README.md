@@ -228,6 +228,7 @@ $ php app/console doctrine:schema:update --force
 ### Step 7: Create your own views by overriding QbBlogbundle !
 
 ``` php
+<?php
 // src/Acme/BlogBundle/BlogBundle.php
 
 namespace Acme\BlogBundle;
