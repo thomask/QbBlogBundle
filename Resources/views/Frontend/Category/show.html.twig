@@ -1,3 +1,7 @@
+{% extends 'QbBlogBundle::Frontend\\layout.html.twig' %}
+
 {% block title %}{{ category.name }} - {{ parent() }}{% endblock %}
 
-{% include 'QbBlogBundle:Frontend\\Post:list.html.twig' with { 'posts': category.posts } %}
+{% block qb_blog_body %}
+    {% include 'QbBlogBundle:Frontend\\Post:list.html.twig' with { 'posts': category.posts } %}
+{% endblock %}
