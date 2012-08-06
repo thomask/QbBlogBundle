@@ -39,7 +39,7 @@ class CommentController extends ContainerAware
      * Displays and handles a form to create a new comment.
      *
      * @param  Request               $request
-     * @throws NotFoundHttpException If the comment does not exist.
+     * @throws NotFoundHttpException If the post does not exist.
      */
     public function newAction(Request $request)
     {
@@ -48,7 +48,7 @@ class CommentController extends ContainerAware
         ));
 
         if (null === $post) {
-            throw new NotFoundHttpException('Comment does not exist.');
+            throw new NotFoundHttpException('Post does not exist.');
         }
 
         $form    = $this->container->get('qb_blog.comment.form');
