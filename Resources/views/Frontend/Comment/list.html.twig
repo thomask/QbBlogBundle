@@ -1,5 +1,17 @@
-{% for comment in post.comments %}
-    {% include 'QbBlogBundle:Frontend\\Comment:show.html.twig' with { 'comment': comment } %}
+{% for comment in comments %}
+    {% set author %}
+        {% if comment.url %}
+            <a href="{{ comment.url }}">{{ comment.author }}</a>
+        {% else %}
+            {{ comment.author }}
+        {% endif %}
+    {% endset %}
+    <article>
+        <footer>
+            <p>Posted by {{ author }} on <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('l, F j, Y') }}</time></p>
+        </footer>
+        {{ comment }}
+    </article>
 {% else %}
     <p>There are not commnents.</p>
 {% endfor %}

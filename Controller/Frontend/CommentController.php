@@ -69,28 +69,4 @@ class CommentController extends ContainerAware
             )
         );
     }
-
-    /**
-     * Finds and displays a comment.
-     *
-     * @param  Request               $request
-     * @throws NotFoundHttpException If the comment does not exist.
-     */
-    public function showAction(Request $request)
-    {
-        $comment = $this->container->get('qb_blog.comment_manager')->findCommentBy(array(
-            'id' => $request->get('id')
-        ));
-
-        if (null === $comment) {
-            throw new NotFoundHttpException('Comment does not exist.');
-        }
-
-        return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Comment:show.html.'.$this->container->getParameter('qb_blog.template_engine'),
-            array(
-                'comment' => $comment,
-            )
-        );
-    }
 }
