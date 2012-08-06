@@ -53,8 +53,8 @@ Step 2: Enable the bundle
         );
     }
 
-Step 3: Create your entities class
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Step 3: Create your own entities
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
