@@ -1,5 +1,0 @@
-<p>{{ tag.name }}</p>
-<ul>
-    <li><a href="{{ path('qb_blog_tag_edit', { 'slug': tag.slug }) }}">edit</a></li>
-    <li><a href="{{ path('qb_blog_tag_delete', { 'slug': tag.slug, 'token': csrf_token( tag ) }) }}">delete</a></li>
-</ul>

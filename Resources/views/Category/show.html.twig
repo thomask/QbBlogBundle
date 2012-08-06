@@ -1,5 +1,0 @@
-<p>{{ category.name }}</p>
-<ul>
-    <li><a href="{{ path('qb_blog_category_edit', { 'slug': category.slug }) }}">edit</a></li>
-    <li><a href="{{ path('qb_blog_category_delete', { 'slug': category.slug, 'token': csrf_token( category ) }) }}">delete</a></li>
-</ul>
