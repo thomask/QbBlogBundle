@@ -3,9 +3,11 @@
 {% block title %}Comment creation - {{ post }} - {{ parent() }}{% endblock %}
 
 {% block qb_blog_body %}
-    <hgroup>
-        <h1>Comment creation</h1>
-        <h2>{{ post }}</h2>
-    </hgroup>
-    {% include 'QbBlogBundle:Frontend\\Comment:new_form.html.twig' with { 'form': form } %}
+    <section>
+        <hgroup>
+            <h1>Comment creation</h1>
+            <h2>{{ post }}</h2>
+        </hgroup>
+        {% include 'QbBlogBundle:Frontend\\Comment:new_form.html.twig' with { 'form': form } %}
+    </section>
 {% endblock %}
