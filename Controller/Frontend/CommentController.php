@@ -31,7 +31,7 @@ class CommentController extends ContainerAware
         $comments = $this->container->get('qb_blog.comment_manager')->findComments();
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Comment:list.html.'.$this->container->get('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend\Comment:list.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'comments' => $comments,
             )
@@ -62,7 +62,7 @@ class CommentController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Comment:new.html.'.$this->container->get('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend\Comment:new.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'post' => $post,
                 'form' => $form->createView(),
@@ -87,7 +87,7 @@ class CommentController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Comment:show.html.'.$this->container->get('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend\Comment:show.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'comment' => $comment,
             )

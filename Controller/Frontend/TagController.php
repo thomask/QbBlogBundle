@@ -31,7 +31,7 @@ class TagController extends ContainerAware
         $tags = $this->container->get('qb_blog.tag_manager')->findTags();
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Tag:list.html.'.$this->container->get('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend\Tag:list.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'tags' => $tags,
             )
@@ -55,7 +55,7 @@ class TagController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Tag:show.html.'.$this->container->get('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend\Tag:show.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'tag' => $tag,
             )
