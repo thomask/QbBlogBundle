@@ -1,6 +1,6 @@
 {% set author %}
     {% if comment.url %}
-        <a href="{{ comment.url }}">{% comment.author %}</a>
+        <a href="{{ comment.url }}">{{ comment.author }}</a>
     {% else %}
         {{ comment.author }}
     {% endif %}
