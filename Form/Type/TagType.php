@@ -16,17 +16,30 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
+ * Tag form type.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class TagType extends AbstractType
 {
+    /**
+     * @var string $class
+     */
     private $class;
 
+    /**
+     * Constructor.
+     *
+     * @param string $class
+     */
     public function __construct($class)
     {
         $this->class = $class;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -34,6 +47,9 @@ class TagType extends AbstractType
         ;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -41,6 +57,9 @@ class TagType extends AbstractType
         ));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return 'qb_blog_tag';

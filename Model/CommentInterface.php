@@ -12,117 +12,119 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
+ * Comment model.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 interface CommentInterface
 {
     /**
-     * Get id
+     * Get id.
      *
      * @return integer
      */
     public function getId();
 
     /**
-     * Set post
+     * Set post.
      *
      * @param PostInterface $post
      */
     public function setPost(PostInterface $post);
 
     /**
-     * Get post
+     * Get post.
      *
      * @return PostInterface
      */
     public function getPost();
 
     /**
-     * Set author
+     * Set author.
      *
      * @param string $author
      */
     public function setAuthor($author);
 
     /**
-     * Get author
+     * Get author.
      *
      * @return string
      */
     public function getAuthor();
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
      */
     public function setEmail($email);
 
     /**
-     * Get email
+     * Get email.
      *
      * @return string
      */
     public function getEmail();
 
     /**
-     * Set url
+     * Set url.
      *
      * @param string $url
      */
     public function setUrl($url);
 
     /**
-     * Get url
+     * Get url.
      *
      * @return string
      */
     public function getUrl();
 
     /**
-     * Set comment
+     * Set comment.
      *
      * @param text $comment
      */
     public function setComment($comment);
 
     /**
-     * Get comment
+     * Get comment.
      *
      * @return text
      */
     public function getComment();
 
     /**
-     * Set created
+     * Set created.
      *
-     * @param datetime $created
+     * @param \Datetime $created
      */
-    public function setCreated($created);
+    public function setCreated(\DateTime $created);
 
     /**
-     * Get created
+     * Get created.
      *
-     * @return datetime
+     * @return \Datetime
      */
     public function getCreated();
 
     /**
-     * Set updated
+     * Set updated.
      *
-     * @param datetime $updated
+     * @param \Datetime $updated
      */
-    public function setUpdated($updated);
+    public function setUpdated(\DateTime $updated);
 
     /**
-     * Get updated
+     * Get updated.
      *
-     * @return datetime
+     * @return \Datetime
      */
     public function getUpdated();
 
     /**
-     * To string
+     * To string.
      *
      * @return string
      */

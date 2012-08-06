@@ -222,20 +222,36 @@ Step 5: Import QbBlogBundle routing files
     # app/config/routing.yml
     
     # QbBlog Routing
-    qb_blog_category:
-        resource: @QbBlogBundle/Resources/config/routing/category.xml
+    qb_blog_backend_category:
+        resource: @QbBlogBundle/Resources/config/routing/backend/category.xml
+        prefix:   /backend/category
+    
+    qb_blog_backend_comment:
+        resource: @QbBlogBundle/Resources/config/routing/backend/comment.xml
+        prefix:   /backend/comment
+    
+    qb_blog_backend_post:
+        resource: @QbBlogBundle/Resources/config/routing/backend/post.xml
+        prefix:   /backend/post
+    
+    qb_blog_backend_tag:
+        resource: @QbBlogBundle/Resources/config/routing/backend/tag.xml
+        prefix:   /backend/tag
+        
+    qb_blog_frontend_category:
+        resource: @QbBlogBundle/Resources/config/routing/frontend/category.xml
         prefix:   /category
     
-    qb_blog_comment:
-        resource: @QbBlogBundle/Resources/config/routing/comment.xml
+    qb_blog_frontend_comment:
+        resource: @QbBlogBundle/Resources/config/routing/frontend/comment.xml
         prefix:   /comment
     
-    qb_blog_post:
-        resource: @QbBlogBundle/Resources/config/routing/post.xml
+    qb_blog_frontend_post:
+        resource: @QbBlogBundle/Resources/config/routing/frontend/post.xml
         prefix:   /post
     
-    qb_blog_tag:
-        resource: @QbBlogBundle/Resources/config/routing/tag.xml
+    qb_blog_frontend_tag:
+        resource: @QbBlogBundle/Resources/config/routing/frontend/tag.xml
         prefix:   /tag
 
 

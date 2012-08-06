@@ -17,9 +17,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
- * This is the class that loads and manages your bundle configuration
- *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/e	xtension.html}
+ * Loads and manages the bundle configuration.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -32,7 +30,7 @@ class QbBlogExtension extends Extension
     {
         $config = $this->processConfiguration(new Configuration(), $configs);
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config/services'));
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load(sprintf('%s.xml', $config['db_driver']));
 
         $this->remapParametersNamespaces($config, $container, array(
@@ -48,6 +46,15 @@ class QbBlogExtension extends Extension
         $this->loadTag($config['tag'], $container, $loader, $config['db_driver']);
     }
 
+    /**
+     *
+     * Loads `Category` configuration.
+     *
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param XmlFileLoader    $loader
+     * @param string           $dbDriver
+     */
     private function loadCategory(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
     {
         $loader->load('category.xml');
@@ -65,6 +72,15 @@ class QbBlogExtension extends Extension
         ));
     }
 
+    /**
+     *
+     * Loads `Comment` configuration.
+     *
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param XmlFileLoader    $loader
+     * @param string           $dbDriver
+     */
     private function loadComment(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
     {
         $loader->load('comment.xml');
@@ -82,6 +98,15 @@ class QbBlogExtension extends Extension
         ));
     }
 
+    /**
+     *
+     * Loads `Post` configuration.
+     *
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param XmlFileLoader    $loader
+     * @param string           $dbDriver
+     */
     private function loadPost(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
     {
         $loader->load('post.xml');
@@ -99,6 +124,15 @@ class QbBlogExtension extends Extension
         ));
     }
 
+    /**
+     *
+     * Loads `Tag` configuration.
+     *
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param XmlFileLoader    $loader
+     * @param string           $dbDriver
+     */
     private function loadTag(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
     {
         $loader->load('tag.xml');
@@ -116,6 +150,13 @@ class QbBlogExtension extends Extension
         ));
     }
 
+    /**
+     * Remaps parameters.
+     *
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param array            $map
+     */
     protected function remapParameters(array $config, ContainerBuilder $container, array $map)
     {
         foreach ($map as $name => $paramName) {
@@ -125,6 +166,13 @@ class QbBlogExtension extends Extension
         }
     }
 
+    /**
+     * Remaps parameters namespaces.
+     *
+     * @param array            $config
+     * @param ContainerBuilder $container
+     * @param array            $namespaces
+     */
     protected function remapParametersNamespaces(array $config, ContainerBuilder $container, array $namespaces)
     {
         foreach ($namespaces as $ns => $map) {

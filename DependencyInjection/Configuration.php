@@ -17,9 +17,7 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * This is the class that validates and merges configuration from your app/config files
- *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
+ * Validates and merges configuration from the app/config files.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -37,8 +35,8 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('db_driver')
                     ->validate()
-                        ->ifNotInArray(QbBlogBundle::getSupportedDrivers())
-                        ->thenInvalid('The driver %s is not supported. Please choose one of '.json_encode(QbBlogBundle::getSupportedDrivers()))
+                        ->ifNotInArray(QbBlogBundle::getSupportedStorage())
+                        ->thenInvalid('The driver %s is not supported. Please choose one of '.json_encode(QbBlogBundle::getSupportedStorage()))
                     ->end()
                     ->cannotBeOverwritten()
                     ->isRequired()
@@ -55,6 +53,11 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
+    /**
+     * Adds `Category` section.
+     *
+     * @param ArrayNodeDefinition $node
+     */
     private function addCategorySection(ArrayNodeDefinition $node)
     {
         $node
@@ -76,6 +79,11 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
+    /**
+     * Adds `Comment` section.
+     *
+     * @param ArrayNodeDefinition $node
+     */
     private function addCommentSection(ArrayNodeDefinition $node)
     {
         $node
@@ -97,6 +105,11 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
+    /**
+     * Adds `Post` section.
+     *
+     * @param ArrayNodeDefinition $node
+     */
     private function addPostSection(ArrayNodeDefinition $node)
     {
         $node
@@ -118,6 +131,11 @@ class Configuration implements ConfigurationInterface
             ->end();
     }
 
+    /**
+     * Adds `Tag` section.
+     *
+     * @param ArrayNodeDefinition $node
+     */
     private function addTagSection(ArrayNodeDefinition $node)
     {
         $node

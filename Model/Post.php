@@ -12,8 +12,11 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
+ * Abstract Post model implementation.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 abstract class Post implements PostInterface
@@ -49,22 +52,22 @@ abstract class Post implements PostInterface
     protected $body;
 
     /**
-     * @var datetime $created
+     * @var \Datetime $created
      */
     protected $created;
 
     /**
-     * @var datetime $updated
+     * @var \Datetime $updated
      */
     protected $updated;
 
     /**
-     * @var ArrayCollection $tags
+     * @var Collection $tags
      */
     protected $tags;
 
     /**
-     * @var ArrayCollection $comments
+     * @var Collection $comments
      */
     protected $comments;
 
@@ -168,7 +171,7 @@ abstract class Post implements PostInterface
     /**
      * {@inheritdoc}
      */
-    public function setCreated($created)
+    public function setCreated(\DateTime $created)
     {
         $this->created = $created;
     }
@@ -184,7 +187,7 @@ abstract class Post implements PostInterface
     /**
      * {@inheritdoc}
      */
-    public function setUpdated($updated)
+    public function setUpdated(\DateTime $updated)
     {
         $this->updated = $updated;
     }

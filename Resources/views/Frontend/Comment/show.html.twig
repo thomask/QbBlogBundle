@@ -1,0 +1,7 @@
+{% if comment.url %}
+    <p><a href="{{ comment.url }}">{{ comment.author }}</a></p>
+{% else %}
+    <p>{{ comment.author }}</p>
+{% endif %}
+<div>{{ comment }}</div>
+<p>{{ comment.created|date('Y-m-d H:i') }}</p>

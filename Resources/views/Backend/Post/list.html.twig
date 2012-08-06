@@ -1,0 +1,5 @@
+<ul>
+{% for post in posts %}
+    <li><a href="{{ path('qb_blog_frontend_post_show', { 'slug': post.slug }) }}">{{ post }}</a></li>
+{% endfor %}
+</ul>

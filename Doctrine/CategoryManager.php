@@ -12,24 +12,44 @@
 namespace Qb\Bundle\BlogBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Qb\Bundle\BlogBundle\Model\CategoryInterface;
 use Qb\Bundle\BlogBundle\Model\CategoryManager as BaseCategoryManager;
 
 /**
+ * Category manager.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class CategoryManager extends BaseCategoryManager
 {
+    /**
+     * @var ObjectManager $objectManager
+     */
     protected $objectManager;
-    protected $class;
-    protected $repository;
 
+    /**
+     * @var ObjectRepository $repository
+     */
+    protected $objectRepository;
+
+    /**
+     * @var string $class
+     */
+    protected $class;
+
+    /**
+     * Constructor.
+     *
+     * @param ObjectManager $objectManager
+     * @param string        $class
+     */
     public function __construct(ObjectManager $objectManager, $class)
     {
-        $this->objectManager = $objectManager;
-        $this->repository    = $objectManager->getRepository($class);
+        $this->objectManager    = $objectManager;
+        $this->objectRepository = $objectManager->getRepository($class);
 
-        $metadata = $objectManager->getClassMetadata($class);
+        $metadata    = $objectManager->getClassMetadata($class);
         $this->class = $metadata->getName();
     }
 
@@ -38,7 +58,7 @@ class CategoryManager extends BaseCategoryManager
      */
     public function findCategories()
     {
-        return $this->repository->findAll();
+        return $this->objectRepository->findAll();
     }
 
     /**
@@ -46,7 +66,7 @@ class CategoryManager extends BaseCategoryManager
      */
     public function findCategoryBy(array $criteria)
     {
-        return $this->repository->findOneBy($criteria);
+        return $this->objectRepository->findOneBy($criteria);
     }
 
     /**

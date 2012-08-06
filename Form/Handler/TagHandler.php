@@ -17,14 +17,34 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
+ * Tag form handler.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class TagHandler
 {
+    /**
+     * @var FormInterface $form
+     */
     private $form;
+
+    /**
+     * @var Request $request
+     */
     private $request;
+
+    /**
+     * @var TagManagerInterface $tagManager
+     */
     private $tagManager;
 
+    /**
+     * Constructor.
+     *
+     * @param FormInterface       $form
+     * @param Request             $request
+     * @param TagManagerInterface $tagManager
+     */
     public function __construct(FormInterface $form, Request $request, TagManagerInterface $tagManager)
     {
         $this->form       = $form;
@@ -32,6 +52,11 @@ class TagHandler
         $this->tagManager = $tagManager;
     }
 
+    /**
+     * Handles the form submission.
+     *
+     * @param TagInterface $tag
+     */
     public function process(TagInterface $tag = null)
     {
         if (null === $tag) {
@@ -53,6 +78,11 @@ class TagHandler
         return false;
     }
 
+    /**
+     * Manipulates data from validated form submission.
+     *
+     * @param TagInterface $tag
+     */
     public function onSuccess(TagInterface $tag)
     {
         $this->tagManager->saveTag($tag);

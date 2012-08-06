@@ -16,17 +16,30 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
+ * Post form type.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class PostType extends AbstractType
 {
+    /**
+     * @var string $class
+     */
     private $class;
 
+    /**
+     * Constructor.
+     *
+     * @param string $class
+     */
     public function __construct($class)
     {
         $this->class = $class;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -43,6 +56,9 @@ class PostType extends AbstractType
         ;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -50,6 +66,9 @@ class PostType extends AbstractType
         ));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getName()
     {
         return 'qb_blog_post';

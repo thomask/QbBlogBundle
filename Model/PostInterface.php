@@ -12,84 +12,87 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
+ * Post model.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 interface PostInterface
 {
     /**
-     * Get id
+     * Get id.
      *
      * @return integer
      */
     public function getId();
 
     /**
-     * Set category
+     * Set category.
      *
      * @param CategoryInterface $category
      */
     public function setCategory(CategoryInterface $category = null);
 
     /**
-     * Get category
+     * Get category.
      *
      * @return CategoryInterface
      */
     public function getCategory();
 
     /**
-     * Set author
+     * Set author.
      *
      * @param string $author
      */
     public function setAuthor($author);
 
     /**
-     * Get author
+     * Get author.
      *
      * @return string
      */
     public function getAuthor();
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      */
     public function setTitle($title);
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
     public function getTitle();
 
     /**
-     * Set slug
+     * Set slug.
      *
      * @param string $slug
      */
     public function setSlug($slug);
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string
      */
     public function getSlug();
 
     /**
-     * Set body
+     * Set body.
      *
      * @param text $body
      */
     public function setBody($body);
 
     /**
-     * Get body
+     * Get body.
      *
      * @return text
      */
@@ -98,75 +101,75 @@ interface PostInterface
     /**
      * Set created
      *
-     * @param datetime $created
+     * @param \Datetime $created
      */
-    public function setCreated($created);
+    public function setCreated(\DateTime $created);
 
     /**
-     * Get created
+     * Get created.
      *
-     * @return datetime
+     * @return \Datetime
      */
     public function getCreated();
 
     /**
-     * Set updated
+     * Set updated.
      *
-     * @param datetime $updated
+     * @param \Datetime $updated
      */
-    public function setUpdated($updated);
+    public function setUpdated(\DateTime $updated);
 
     /**
-     * Get updated
+     * Get updated.
      *
-     * @return datetime
+     * @return \Datetime
      */
     public function getUpdated();
 
     /**
-     * Add tag
+     * Add tag.
      *
      * @param TagInterface $tag
      */
     public function addTag(TagInterface $tag);
 
     /**
-     * Remove tag
+     * Remove tag.
      *
      * @param TagInterface $tag
      */
     public function removeTag(TagInterface $tag);
 
     /**
-     * Get tags
+     * Get tags.
      *
-     * @return ArrayCollection
+     * @return Collection
      */
     public function getTags();
 
     /**
-     * Add comment
+     * Add comment.
      *
      * @param CommentInterface $comment
      */
     public function addComment(CommentInterface $comment);
 
     /**
-     * Remove comment
+     * Remove comment.
      *
      * @param CommentInterface $comment
      */
     public function removeComment(CommentInterface $comment);
 
     /**
-     * Get comments
+     * Get comments.
      *
-     * @return ArrayCollection
+     * @return Collection
      */
     public function getComments();
 
     /**
-     * To string
+     * To string.
      *
      * @return string
      */

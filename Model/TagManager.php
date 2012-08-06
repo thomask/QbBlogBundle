@@ -12,6 +12,8 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
+ * Abstract Tag Manager implementation.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 abstract class TagManager implements TagManagerInterface
@@ -22,8 +24,7 @@ abstract class TagManager implements TagManagerInterface
     public function createTag()
     {
         $class = $this->getClass();
-        $tag = new $class;
 
-        return $tag;
+        return new $class;
     }
 }

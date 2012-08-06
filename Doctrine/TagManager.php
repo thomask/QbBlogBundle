@@ -12,24 +12,44 @@
 namespace Qb\Bundle\BlogBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Persistence\ObjectRepository;
 use Qb\Bundle\BlogBundle\Model\TagInterface;
 use Qb\Bundle\BlogBundle\Model\TagManager as BaseTagManager;
 
 /**
+ * Tag manager.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class TagManager extends BaseTagManager
 {
+    /**
+     * @var ObjectManager $objectManager
+     */
     protected $objectManager;
-    protected $class;
-    protected $repository;
 
+    /**
+     * @var ObjectRepository $repository
+     */
+    protected $objectRepository;
+
+    /**
+     * @var string $class
+     */
+    protected $class;
+
+    /**
+     * Constructor.
+     *
+     * @param ObjectManager $objectManager
+     * @param string        $class
+     */
     public function __construct(ObjectManager $objectManager, $class)
     {
-        $this->objectManager = $objectManager;
-        $this->repository    = $objectManager->getRepository($class);
+        $this->objectManager    = $objectManager;
+        $this->objectRepository = $objectManager->getRepository($class);
 
-        $metadata = $objectManager->getClassMetadata($class);
+        $metadata    = $objectManager->getClassMetadata($class);
         $this->class = $metadata->getName();
     }
 
@@ -38,7 +58,7 @@ class TagManager extends BaseTagManager
      */
     public function findTags()
     {
-        return $this->repository->findAll();
+        return $this->objectRepository->findAll();
     }
 
     /**
@@ -46,7 +66,7 @@ class TagManager extends BaseTagManager
      */
     public function findTagBy(array $criteria)
     {
-        return $this->repository->findOneBy($criteria);
+        return $this->objectRepository->findOneBy($criteria);
     }
 
     /**

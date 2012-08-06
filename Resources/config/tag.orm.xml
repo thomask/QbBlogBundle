@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="qb_blog.tag_manager.default.class">Qb\Bundle\BlogBundle\Doctrine\TagManager</parameter>
+    </parameters>
+
+    <services>
+        <service id="qb_blog.tag_manager.default" class="%qb_blog.tag_manager.default.class%" public="false">
+            <argument type="service" id="qb_blog.model_manager" />
+            <argument>%qb_blog.tag.model.class%</argument>
+        </service>
+    </services>
+</container>

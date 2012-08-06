@@ -12,70 +12,73 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
+ * Tag model.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 interface TagInterface
 {
     /**
-     * Get id
+     * Get id.
      *
      * @return integer
      */
     public function getId();
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      */
     public function setName($name);
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
     public function getName();
 
     /**
-     * Set slug
+     * Set slug.
      *
      * @param string $slug
      */
     public function setSlug($slug);
 
     /**
-     * Get slug
+     * Get slug.
      *
      * @return string
      */
     public function getSlug();
 
     /**
-     * Add post
+     * Add post.
      *
      * @param PostInterface $post
      */
     public function addPost(PostInterface $post);
 
     /**
-     * Remove post
+     * Remove post.
      *
      * @param PostInterface $post
      */
     public function removePost(PostInterface $post);
 
     /**
-     * Get posts
+     * Get posts.
      *
-     * @return ArrayCollection
+     * @return Collection
      */
     public function getPosts();
 
     /**
-     * To string
+     * To string.
      *
      * @return string
      */

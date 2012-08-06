@@ -12,6 +12,8 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
+ * Abstract Comment Manager implementation.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 abstract class CommentManager implements CommentManagerInterface
@@ -22,8 +24,7 @@ abstract class CommentManager implements CommentManagerInterface
     public function createComment()
     {
         $class = $this->getClass();
-        $comment = new $class;
 
-        return $comment;
+        return new $class;
     }
 }

@@ -13,6 +13,11 @@ namespace Qb\Bundle\BlogBundle\Entity;
 
 use Qb\Bundle\BlogBundle\Model\Category as BaseCategory;
 
+/**
+ * Category entity.
+ *
+ * @author Quentin Berlemont <quentinberlemont@gmail.com>
+ */
 class Category extends BaseCategory
 {
 }

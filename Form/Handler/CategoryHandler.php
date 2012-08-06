@@ -17,14 +17,34 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
+ * Category form handler.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class CategoryHandler
 {
+    /**
+     * @var FormInterface $form
+     */
     private $form;
+
+    /**
+     * @var Request $request
+     */
     private $request;
+
+    /**
+     * @var CategoryManagerInterface $categoryManager
+     */
     private $categoryManager;
 
+    /**
+     * Constructor.
+     *
+     * @param FormInterface            $form
+     * @param Request                  $request
+     * @param CategoryManagerInterface $categoryManager
+     */
     public function __construct(FormInterface $form, Request $request, CategoryManagerInterface $categoryManager)
     {
         $this->form            = $form;
@@ -32,6 +52,11 @@ class CategoryHandler
         $this->categoryManager = $categoryManager;
     }
 
+    /**
+     * Handles the form submission.
+     *
+     * @param CategoryManagerInterface $categoryManager
+     */
     public function process(CategoryInterface $category = null)
     {
         if (null === $category) {
@@ -53,6 +78,11 @@ class CategoryHandler
         return false;
     }
 
+    /**
+     * Manipulates data from validated form submission.
+     *
+     * @param CategoryManagerInterface $categoryManager
+     */
     public function onSuccess(CategoryInterface $category)
     {
         $this->categoryManager->saveCategory($category);

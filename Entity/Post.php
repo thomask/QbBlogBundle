@@ -13,6 +13,11 @@ namespace Qb\Bundle\BlogBundle\Entity;
 
 use Qb\Bundle\BlogBundle\Model\Post as BasePost;
 
+/**
+ * Post entity.
+ *
+ * @author Quentin Berlemont <quentinberlemont@gmail.com>
+ */
 class Post extends BasePost
 {
 }

@@ -18,14 +18,34 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
+ * Comment form handler.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class CommentHandler
 {
+    /**
+     * @var FormInterface $form
+     */
     private $form;
+
+    /**
+     * @var Request $request
+     */
     private $request;
+
+    /**
+     * @var CommentManagerInterface $categoryManager
+     */
     private $commentManager;
 
+    /**
+     * Constructor.
+     *
+     * @param FormInterface           $form
+     * @param Request                 $request
+     * @param CommentManagerInterface $commentManager
+     */
     public function __construct(FormInterface $form, Request $request, CommentManagerInterface $commentManager)
     {
         $this->form           = $form;
@@ -33,6 +53,12 @@ class CommentHandler
         $this->commentManager = $commentManager;
     }
 
+    /**
+     * Handles the form submission.
+     *
+     * @param CommentInterface $comment
+     * @param PostInterface    $post
+     */
     public function process(CommentInterface $comment = null, PostInterface $post = null)
     {
         if (null === $comment) {
@@ -58,6 +84,11 @@ class CommentHandler
         return false;
     }
 
+    /**
+     * Manipulates data from validated form submission.
+     *
+     * @param CommentInterface $comment
+     */
     public function onSuccess(CommentInterface $comment)
     {
         $this->commentManager->saveComment($comment);

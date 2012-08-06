@@ -12,6 +12,8 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
+ * Abstract Comment model implementation.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 abstract class Comment implements CommentInterface
@@ -47,12 +49,12 @@ abstract class Comment implements CommentInterface
     protected $comment;
 
     /**
-     * @var datetime $created
+     * @var \Datetime $created
      */
     protected $created;
 
     /**
-     * @var datetime $updated
+     * @var \Datetime $updated
      */
     protected $updated;
 
@@ -147,7 +149,7 @@ abstract class Comment implements CommentInterface
     /**
      * {@inheritdoc}
      */
-    public function setCreated($created)
+    public function setCreated(\DateTime $created)
     {
         $this->created = $created;
     }
@@ -163,7 +165,7 @@ abstract class Comment implements CommentInterface
     /**
      * {@inheritdoc}
      */
-    public function setUpdated($updated)
+    public function setUpdated(\DateTime $updated)
     {
         $this->updated = $updated;
     }

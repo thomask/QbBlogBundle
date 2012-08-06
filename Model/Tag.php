@@ -12,8 +12,11 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
+ * Abstract Tag model implementation.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 abstract class Tag implements TagInterface
@@ -34,7 +37,7 @@ abstract class Tag implements TagInterface
     protected $slug;
 
     /**
-     * @var ArrayCollection $posts
+     * @var Collection $posts
      */
     protected $posts;
 

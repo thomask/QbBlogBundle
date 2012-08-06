@@ -17,14 +17,34 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
+ * Post form handler.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class PostHandler
 {
+    /**
+     * @var FormInterface $form
+     */
     private $form;
+
+    /**
+     * @var Request $request
+     */
     private $request;
+
+    /**
+     * @var PostManagerInterface $postManager
+     */
     private $postManager;
 
+    /**
+     * Constructor.
+     *
+     * @param FormInterface        $form
+     * @param Request              $request
+     * @param PostManagerInterface $postManager
+     */
     public function __construct(FormInterface $form, Request $request, PostManagerInterface $postManager)
     {
         $this->form        = $form;
@@ -32,6 +52,11 @@ class PostHandler
         $this->postManager = $postManager;
     }
 
+    /**
+     * Handles the form submission.
+     *
+     * @param PostInterface $post
+     */
     public function process(PostInterface $post = null)
     {
         if (null === $post) {
@@ -53,6 +78,11 @@ class PostHandler
         return false;
     }
 
+    /**
+     * Manipulates data from validated form submission.
+     *
+     * @param PostInterface $post
+     */
     public function onSuccess(PostInterface $post)
     {
         $this->postManager->savePost($post);

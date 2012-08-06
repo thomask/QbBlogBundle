@@ -12,6 +12,8 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
+ * Abstract Post Manager implementation.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 abstract class PostManager implements PostManagerInterface
@@ -22,8 +24,7 @@ abstract class PostManager implements PostManagerInterface
     public function createPost()
     {
         $class = $this->getClass();
-        $post = new $class;
 
-        return $post;
+        return new $class;
     }
 }

@@ -20,8 +20,14 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class QbBlogBundle extends Bundle
 {
+    /**
+     * @const DRIVER_DOCTRINE_ORM
+     */
     const DRIVER_DOCTRINE_ORM = 'orm';
 
+    /**
+     * {@inheritDoc}
+     */
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
@@ -29,7 +35,12 @@ class QbBlogBundle extends Bundle
         $container->addCompilerPass(new ValidationPass());
     }
 
-    public static function getSupportedDrivers()
+    /**
+     * Get supported storage.
+     *
+     * @return array
+     */
+    public static function getSupportedStorage()
     {
         return array(
             self::DRIVER_DOCTRINE_ORM

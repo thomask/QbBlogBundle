@@ -12,6 +12,8 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
+ * Abstract Category Manager implementation.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 abstract class CategoryManager implements CategoryManagerInterface
@@ -22,8 +24,7 @@ abstract class CategoryManager implements CategoryManagerInterface
     public function createCategory()
     {
         $class = $this->getClass();
-        $category = new $class;
 
-        return $category;
+        return new $class;
     }
 }

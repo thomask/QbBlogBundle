@@ -13,6 +13,11 @@ namespace Qb\Bundle\BlogBundle\Entity;
 
 use Qb\Bundle\BlogBundle\Model\Tag as BaseTag;
 
+/**
+ * Tag entity.
+ *
+ * @author Quentin Berlemont <quentinberlemont@gmail.com>
+ */
 class Tag extends BaseTag
 {
 }

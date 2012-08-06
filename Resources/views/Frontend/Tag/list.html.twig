@@ -1,0 +1,5 @@
+<ul>
+{% for tag in tags %}
+    <li><a href="{{ path('qb_blog_frontend_tag_show', { 'slug': tag.slug }) }}">{{ tag }}</a></li>
+{% endfor %}
+</ul>
