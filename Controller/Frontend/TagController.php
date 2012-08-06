@@ -30,9 +30,12 @@ class TagController extends ContainerAware
     {
         $tags = $this->container->get('qb_blog.tag_manager')->findTags();
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Frontend\Tag:list.html.twig', array(
-            'tags' => $tags,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Frontend\Tag:list.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'tags' => $tags,
+            )
+        );
     }
 
     /**
@@ -51,8 +54,11 @@ class TagController extends ContainerAware
             throw new NotFoundHttpException('Tag does not exist.');
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Frontend\Tag:show.html.twig', array(
-            'tag' => $tag,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Frontend\Tag:show.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'tag' => $tag,
+            )
+        );
     }
 }

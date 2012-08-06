@@ -30,9 +30,12 @@ class CommentController extends ContainerAware
     {
         $comments = $this->container->get('qb_blog.comment_manager')->findComments();
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Frontend\Comment:list.html.twig', array(
-            'comments' => $comments,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Frontend\Comment:list.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'comments' => $comments,
+            )
+        );
     }
 
     /**
@@ -58,10 +61,13 @@ class CommentController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('qb_blog_frontend_post_show', array('slug' => $post->getSlug())));
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Frontend\Comment:new.html.twig', array(
-            'post' => $post,
-            'form' => $form->createView(),
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Frontend\Comment:new.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'post' => $post,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -80,8 +86,11 @@ class CommentController extends ContainerAware
             throw new NotFoundHttpException('Comment does not exist.');
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Frontend\Comment:show.html.twig', array(
-            'comment' => $comment,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Frontend\Comment:show.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'comment' => $comment,
+            )
+        );
     }
 }

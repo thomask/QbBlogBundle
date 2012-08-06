@@ -30,9 +30,12 @@ class CommentController extends ContainerAware
     {
         $comments = $this->container->get('qb_blog.comment_manager')->findComments();
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Comment:list.html.twig', array(
-            'comments' => $comments,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Comment:list.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'comments' => $comments,
+            )
+        );
     }
 
     /**
@@ -58,10 +61,13 @@ class CommentController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_comment_list'));
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Comment:edit.html.twig', array(
-            'comment' => $comment,
-            'form'    => $form->createView(),
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Comment:edit.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'comment' => $comment,
+                'form'    => $form->createView(),
+            )
+        );
     }
 
     /**

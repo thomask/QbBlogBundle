@@ -31,19 +31,20 @@ class QbBlogExtension extends Extension
         $config = $this->processConfiguration(new Configuration(), $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load(sprintf('%s.xml', $config['db_driver']));
+        $loader->load(sprintf('%s.xml', $config['storage']));
 
         $this->remapParametersNamespaces($config, $container, array(
             '' => array(
-                'db_driver'          => 'qb_blog.db_driver',
-                'model_manager_name' => 'qb_blog.model_manager_name'
+                'storage'            => 'qb_blog.storage',
+                'model_manager_name' => 'qb_blog.model_manager_name',
+                'template_engine'    => 'qb_blog.template_engine',
             )
         ));
 
-        $this->loadCategory($config['category'], $container, $loader, $config['db_driver']);
-        $this->loadComment($config['comment'], $container, $loader, $config['db_driver']);
-        $this->loadPost($config['post'], $container, $loader, $config['db_driver']);
-        $this->loadTag($config['tag'], $container, $loader, $config['db_driver']);
+        $this->loadCategory($config['category'], $container, $loader, $config['storage']);
+        $this->loadComment($config['comment'], $container, $loader, $config['storage']);
+        $this->loadPost($config['post'], $container, $loader, $config['storage']);
+        $this->loadTag($config['tag'], $container, $loader, $config['storage']);
     }
 
     /**
@@ -53,12 +54,12 @@ class QbBlogExtension extends Extension
      * @param array            $config
      * @param ContainerBuilder $container
      * @param XmlFileLoader    $loader
-     * @param string           $dbDriver
+     * @param string           $storage
      */
-    private function loadCategory(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
+    private function loadCategory(array $config, ContainerBuilder $container, XmlFileLoader $loader, $storage)
     {
         $loader->load('category.xml');
-        $loader->load(sprintf('category.%s.xml', $dbDriver));
+        $loader->load(sprintf('category.%s.xml', $storage));
 
         $container->setAlias('qb_blog.category_manager', $config['category_manager']);
         $container->setAlias('qb_blog.category.form.handler', $config['form']['handler']);
@@ -79,12 +80,12 @@ class QbBlogExtension extends Extension
      * @param array            $config
      * @param ContainerBuilder $container
      * @param XmlFileLoader    $loader
-     * @param string           $dbDriver
+     * @param string           $storage
      */
-    private function loadComment(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
+    private function loadComment(array $config, ContainerBuilder $container, XmlFileLoader $loader, $storage)
     {
         $loader->load('comment.xml');
-        $loader->load(sprintf('comment.%s.xml', $dbDriver));
+        $loader->load(sprintf('comment.%s.xml', $storage));
 
         $container->setAlias('qb_blog.comment_manager', $config['comment_manager']);
         $container->setAlias('qb_blog.comment.form.handler', $config['form']['handler']);
@@ -105,12 +106,12 @@ class QbBlogExtension extends Extension
      * @param array            $config
      * @param ContainerBuilder $container
      * @param XmlFileLoader    $loader
-     * @param string           $dbDriver
+     * @param string           $storage
      */
-    private function loadPost(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
+    private function loadPost(array $config, ContainerBuilder $container, XmlFileLoader $loader, $storage)
     {
         $loader->load('post.xml');
-        $loader->load(sprintf('post.%s.xml', $dbDriver));
+        $loader->load(sprintf('post.%s.xml', $storage));
 
         $container->setAlias('qb_blog.post_manager', $config['post_manager']);
         $container->setAlias('qb_blog.post.form.handler', $config['form']['handler']);
@@ -131,12 +132,12 @@ class QbBlogExtension extends Extension
      * @param array            $config
      * @param ContainerBuilder $container
      * @param XmlFileLoader    $loader
-     * @param string           $dbDriver
+     * @param string           $storage
      */
-    private function loadTag(array $config, ContainerBuilder $container, XmlFileLoader $loader, $dbDriver)
+    private function loadTag(array $config, ContainerBuilder $container, XmlFileLoader $loader, $storage)
     {
         $loader->load('tag.xml');
-        $loader->load(sprintf('tag.%s.xml', $dbDriver));
+        $loader->load(sprintf('tag.%s.xml', $storage));
 
         $container->setAlias('qb_blog.tag_manager', $config['tag_manager']);
         $container->setAlias('qb_blog.tag.form.handler', $config['form']['handler']);

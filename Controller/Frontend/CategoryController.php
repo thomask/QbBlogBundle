@@ -30,9 +30,12 @@ class CategoryController extends ContainerAware
     {
         $categories = $this->container->get('qb_blog.category_manager')->findCategories();
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Frontend\Category:list.html.twig', array(
-            'categories' => $categories,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Frontend\Category:list.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'categories' => $categories,
+            )
+        );
     }
 
     /**
@@ -51,8 +54,11 @@ class CategoryController extends ContainerAware
             throw new NotFoundHttpException('Category does not exist.');
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Frontend\Category:show.html.twig', array(
-            'category' => $category,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Frontend\Category:show.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'category' => $category,
+            )
+        );
     }
 }

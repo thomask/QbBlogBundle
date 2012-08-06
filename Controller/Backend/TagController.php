@@ -30,9 +30,12 @@ class TagController extends ContainerAware
     {
         $tags = $this->container->get('qb_blog.tag_manager')->findTags();
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Tag:list.html.twig', array(
-            'tags' => $tags,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Tag:list.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'tags' => $tags,
+            )
+        );
     }
 
     /**
@@ -47,9 +50,12 @@ class TagController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_tag_list'));
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Tag:new.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Tag:new.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -75,10 +81,13 @@ class TagController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_tag_list'));
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Tag:edit.html.twig', array(
-            'tag'  => $tag,
-            'form' => $form->createView(),
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Tag:edit.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'tag'  => $tag,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**

@@ -30,9 +30,12 @@ class PostController extends ContainerAware
     {
         $posts = $this->container->get('qb_blog.post_manager')->findPosts();
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Post:list.html.twig', array(
-            'posts' => $posts,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Post:list.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'posts' => $posts,
+            )
+        );
     }
 
     /**
@@ -47,9 +50,12 @@ class PostController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_post_list'));
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Post:new.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Post:new.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -75,10 +81,13 @@ class PostController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_post_list'));
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Post:edit.html.twig', array(
-            'post' => $post,
-            'form' => $form->createView(),
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Post:edit.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'post' => $post,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**

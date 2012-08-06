@@ -6,14 +6,14 @@ Symfony QbBlogBundle is a simple-but-powerful blog bundle for Symfony 2.1
 **This bundle is compatible only with 2.1.x branch of Symfony2.**
 
 Dependencies
--------------
+------------
 
 The bundle uses `StofDoctrineExtensionsBundle`_.
 
 .. _StofDoctrineExtensionsBundle: https://github.com/stof/StofDoctrineExtensionsBundle
 
 Installation
------------
+------------
 
 Step 1: Download QbBlogBundle using composer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,7 +43,7 @@ Step 2: Enable the bundle
 
     <?php
     // app/AppKernel.php
-    
+
     public function registerBundles()
     {
         $bundles = array(
@@ -60,9 +60,9 @@ Step 3: Create your own entities
 
     <?php
     // src/Acme/BlogBundle/Entity/Category.php
-    
+
     namespace Acme\BlogBundle\Entity;
-    
+
     use Qb\Bundle\BlogBundle\Entity\Category as BaseCategory;
     use Doctrine\ORM\Mapping as ORM;
 
@@ -78,7 +78,7 @@ Step 3: Create your own entities
          * @ORM\GeneratedValue(strategy="AUTO")
          */
         protected $id;
-    
+
         /**
          * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
          */
@@ -86,15 +86,15 @@ Step 3: Create your own entities
     }
 
 ::
-    
+
     <?php
     // src/Acme/BlogBundle/Entity/Comment.php
-    
+
     namespace Acme\BlogBundle\Entity;
-    
+
     use Qb\Bundle\BlogBundle\Entity\Comment as BaseComment;
     use Doctrine\ORM\Mapping as ORM;
-    
+
     /**
      * @ORM\Entity()
      * @ORM\Table(name="acme_blog_comments")
@@ -107,7 +107,7 @@ Step 3: Create your own entities
          * @ORM\GeneratedValue(strategy="AUTO")
          */
         protected $id;
-    
+
         /**
          * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
          * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
@@ -116,15 +116,15 @@ Step 3: Create your own entities
     }
 
 ::
-    
+
     <?php
     // src/Acme/BlogBundle/Entity/Post.php
-    
+
     namespace Acme\BlogBundle\Entity;
-    
+
     use Qb\Bundle\BlogBundle\Entity\Post as BasePost;
     use Doctrine\ORM\Mapping as ORM;
-    
+
     /**
      * @ORM\Entity()
      * @ORM\Table(name="acme_blog_posts")
@@ -137,13 +137,13 @@ Step 3: Create your own entities
          * @ORM\GeneratedValue(strategy="AUTO")
          */
         protected $id;
-    
+
         /**
          * @ORM\ManyToOne(targetEntity="Category", inversedBy="posts")
          * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="SET NULL")
          */
         protected $category;
-    
+
         /**
          * @ORM\ManyToMany(targetEntity="Tag", inversedBy="posts")
          * @ORM\JoinTable(name="acme_posts_tags",
@@ -152,7 +152,7 @@ Step 3: Create your own entities
          * )
          */
         protected $tags;
-    
+
         /**
          * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"remove"}))
          */
@@ -160,15 +160,15 @@ Step 3: Create your own entities
     }
 
 ::
-    
+
     <?php
     // src/Acme/BlogBundle/Entity/Tag.php
-    
+
     namespace Acme\BlogBundle\Entity;
-    
+
     use Qb\Bundle\BlogBundle\Entity\Tag as BaseTag;
     use Doctrine\ORM\Mapping as ORM;
-    
+
     /**
      * @ORM\Entity()
      * @ORM\Table(name="acme_blog_tags")
@@ -181,7 +181,7 @@ Step 3: Create your own entities
          * @ORM\GeneratedValue(strategy="AUTO")
          */
         protected $id;
-    
+
         /**
          * @ORM\ManyToMany(targetEntity="Post", mappedBy="tags")
          */
@@ -194,17 +194,17 @@ Step 4: Configure the QbBlogBundle
 ::
 
     # app/config/config.yml
-    
+
     # Doctrine Extensions Configuration
     stof_doctrine_extensions:
         orm:
             default:
                 sluggable:     true
                 timestampable: true
-    
+
     # QbBlog Configuration
     qb_blog:
-        db_driver: orm
+        storage: orm
         category:
             category_class: Acme\BlogBundle\Entity\Category
         comment:
@@ -220,36 +220,36 @@ Step 5: Import QbBlogBundle routing files
 ::
 
     # app/config/routing.yml
-    
+
     # QbBlog Routing
     qb_blog_backend_category:
         resource: @QbBlogBundle/Resources/config/routing/backend/category.xml
         prefix:   /backend/category
-    
+
     qb_blog_backend_comment:
         resource: @QbBlogBundle/Resources/config/routing/backend/comment.xml
         prefix:   /backend/comment
-    
+
     qb_blog_backend_post:
         resource: @QbBlogBundle/Resources/config/routing/backend/post.xml
         prefix:   /backend/post
-    
+
     qb_blog_backend_tag:
         resource: @QbBlogBundle/Resources/config/routing/backend/tag.xml
         prefix:   /backend/tag
-        
+
     qb_blog_frontend_category:
         resource: @QbBlogBundle/Resources/config/routing/frontend/category.xml
         prefix:   /category
-    
+
     qb_blog_frontend_comment:
         resource: @QbBlogBundle/Resources/config/routing/frontend/comment.xml
         prefix:   /comment
-    
+
     qb_blog_frontend_post:
         resource: @QbBlogBundle/Resources/config/routing/frontend/post.xml
         prefix:   /post
-    
+
     qb_blog_frontend_tag:
         resource: @QbBlogBundle/Resources/config/routing/frontend/tag.xml
         prefix:   /tag
@@ -269,11 +269,11 @@ Step 7: Personalize your blog by overriding QbBlogbundle
 
     <?php
     // src/Acme/BlogBundle/BlogBundle.php
-    
+
     namespace Acme\BlogBundle;
-    
+
     use Symfony\Component\HttpKernel\Bundle\Bundle;
-    
+
     class AcmeBlogBundle extends Bundle
     {
         public function getParent()
@@ -282,6 +282,15 @@ Step 7: Personalize your blog by overriding QbBlogbundle
         }
     }
 
-For more information about bundle inheritance, check Symfony `documentation`_.
+For more information about bundle inheritance, check `Symfony documentation`_.
 
-.. _documentation: http://symfony.com/doc/current/cookbook/bundles/inheritance.html
+.. _Symfony documentation: http://symfony.com/doc/current/cookbook/bundles/inheritance.html
+
+Next Steps
+----------
+
+The following documents are available:
+
+- `Configuration Reference`_
+
+.. _Configuration Reference: configuration_reference.rst

@@ -10,7 +10,7 @@
 
     <services>
         <service id="qb_blog.post_manager.default" class="%qb_blog.post_manager.default.class%" public="false">
-            <argument type="service" id="qb_blog.model_manager" />
+            <argument type="service" id="qb_blog.entity_manager" />
             <argument>%qb_blog.post.model.class%</argument>
         </service>
     </services>

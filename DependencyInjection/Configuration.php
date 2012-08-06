@@ -33,16 +33,17 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('db_driver')
+                ->scalarNode('storage')
                     ->validate()
                         ->ifNotInArray(QbBlogBundle::getSupportedStorage())
-                        ->thenInvalid('The driver %s is not supported. Please choose one of '.json_encode(QbBlogBundle::getSupportedStorage()))
+                        ->thenInvalid('The storage %s is not supported. Please choose one of '.json_encode(QbBlogBundle::getSupportedStorage()))
                     ->end()
                     ->cannotBeOverwritten()
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
                 ->scalarNode('model_manager_name')->defaultNull()->end()
+                ->scalarNode('template_engine')->defaultValue('twig')->end()
             ->end();
 
         $this->addCategorySection($rootNode);

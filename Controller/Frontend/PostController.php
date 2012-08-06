@@ -30,9 +30,12 @@ class PostController extends ContainerAware
     {
         $posts = $this->container->get('qb_blog.post_manager')->findPosts();
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Frontend\Post:list.html.twig', array(
-            'posts' => $posts,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Frontend\Post:list.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'posts' => $posts,
+            )
+        );
     }
 
     /**
@@ -53,9 +56,12 @@ class PostController extends ContainerAware
 
         $form = $this->container->get('qb_blog.comment.form');
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Frontend\Post:show.html.twig', array(
-            'post' => $post,
-            'form' => $form->createView(),
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Frontend\Post:show.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'post' => $post,
+                'form' => $form->createView(),
+            )
+        );
     }
 }

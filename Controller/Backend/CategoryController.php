@@ -30,9 +30,12 @@ class CategoryController extends ContainerAware
     {
         $categories = $this->container->get('qb_blog.category_manager')->findCategories();
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Category:list.html.twig', array(
-            'categories' => $categories,
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Category:list.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'categories' => $categories,
+            )
+        );
     }
 
     /**
@@ -47,9 +50,12 @@ class CategoryController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_category_list'));
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Category:new.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Category:new.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -75,10 +81,13 @@ class CategoryController extends ContainerAware
             return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_category_list'));
         }
 
-        return $this->container->get('templating')->renderResponse('QbBlogBundle:Backend\Category:edit.html.twig', array(
-            'category' => $category,
-            'form'     => $form->createView(),
-        ));
+        return $this->container->get('templating')->renderResponse(
+            'QbBlogBundle:Backend\Category:edit.html.'.$this->container->get('qb_blog.template_engine'),
+            array(
+                'category' => $category,
+                'form'     => $form->createView(),
+            )
+        );
     }
 
     /**
