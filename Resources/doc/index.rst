@@ -1,9 +1,5 @@
-QbBlogBundle
-============
-
-Symfony QbBlogBundle is a simple-but-powerful blog bundle for Symfony 2.1
-
-**This bundle is compatible only with 2.1.x branch of Symfony2.**
+Getting Started With QbBlogBundle
+=================================
 
 Dependencies
 ------------
