@@ -1,4 +1,4 @@
-<form action="{{ path('qb_blog_backend_category_edit', { 'slug': category.slug }) }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('qb_blog_backend_category_edit', { 'id': category.id }) }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
     <input type="submit" />
 </form>

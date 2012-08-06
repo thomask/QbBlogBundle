@@ -1,5 +1,31 @@
-<ul>
-{% for category in categories %}
-    <li><a href="{{ path('qb_blog_frontend_category_show', { 'slug': category.slug }) }}">{{ category }}</a></li>
-{% endfor %}
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+        <tr>
+            <td>{{ category.name }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('qb_blog_backend_category_edit', { 'id': category.id }) }}">edit</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('qb_blog_backend_category_delete', { 'id': category.id, 'token': csrf_token( category ) }) }}">delete</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="2">There are no categories.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p><a href="{{ path('qb_blog_backend_category_new') }}">create a new category</a></p>

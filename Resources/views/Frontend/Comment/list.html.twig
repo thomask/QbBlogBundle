@@ -1,5 +1,6 @@
-<ul>
-{% for comment in comments %}
-    <li><a href="{{ path('qb_blog_frontend_comment_show', { 'id': comment.id }) }}">{{ comment.author }} ({{ comment.created|date('Y-m-d H:i') }})</a></li>
+{% for comment in post.comments %}
+    {% include 'QbBlogBundle:Frontend\Comment:show.html.twig' with { 'comment': comment } %}
+    <hr />
+{% else %}
+    <p>There are not commnents.</p>
 {% endfor %}
-</ul>

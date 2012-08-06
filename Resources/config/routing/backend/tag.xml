@@ -14,12 +14,12 @@
         <requirement key="_method">GET|POST</requirement>
     </route>
 
-    <route id="qb_blog_backend_tag_edit" pattern="/{slug}/edit">
+    <route id="qb_blog_backend_tag_edit" pattern="/{id}/edit">
         <default key="_controller">QbBlogBundle:Backend\Tag:edit</default>
         <requirement key="_method">GET|POST</requirement>
     </route>
 
-    <route id="qb_blog_backend_tag_delete" pattern="/{slug}/delete">
+    <route id="qb_blog_backend_tag_delete" pattern="/{id}/delete">
         <default key="_controller">QbBlogBundle:Backend\Tag:delete</default>
         <requirement key="_method">GET</requirement>
     </route>

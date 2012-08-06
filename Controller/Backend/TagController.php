@@ -67,7 +67,7 @@ class TagController extends ContainerAware
     public function editAction(Request $request)
     {
         $tag = $this->container->get('qb_blog.tag_manager')->findTagBy(array(
-            'slug' => $request->get('slug')
+            'id' => $request->get('id')
         ));
 
         if (null === $tag) {
@@ -99,7 +99,7 @@ class TagController extends ContainerAware
     public function deleteAction(Request $request)
     {
         $tag = $this->container->get('qb_blog.tag_manager')->findTagBy(array(
-            'slug' => $request->get('slug')
+            'id' => $request->get('id')
         ));
 
         if (null === $tag) {

@@ -67,7 +67,7 @@ class PostController extends ContainerAware
     public function editAction(Request $request)
     {
         $post = $this->container->get('qb_blog.post_manager')->findPostBy(array(
-            'slug' => $request->get('slug')
+            'id' => $request->get('id')
         ));
 
         if (null === $post) {
@@ -99,7 +99,7 @@ class PostController extends ContainerAware
     public function deleteAction(Request $request)
     {
         $post = $this->container->get('qb_blog.post_manager')->findPostBy(array(
-            'slug' => $request->get('slug')
+            'id' => $request->get('id')
         ));
 
         if (null === $post) {

@@ -67,7 +67,7 @@ class CategoryController extends ContainerAware
     public function editAction(Request $request)
     {
         $category = $this->container->get('qb_blog.category_manager')->findCategoryBy(array(
-            'slug' => $request->get('slug')
+            'id' => $request->get('id')
         ));
 
         if (null === $category) {
@@ -99,7 +99,7 @@ class CategoryController extends ContainerAware
     public function deleteAction(Request $request)
     {
         $category = $this->container->get('qb_blog.category_manager')->findCategoryBy(array(
-            'slug' => $request->get('slug')
+            'id' => $request->get('id')
         ));
 
         if (null === $category) {

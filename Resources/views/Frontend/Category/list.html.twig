@@ -1,5 +1,7 @@
 <ul>
 {% for category in categories %}
     <li><a href="{{ path('qb_blog_frontend_category_show', { 'slug': category.slug }) }}">{{ category }}</a></li>
+{% else %}
+    <li>There are no categories.</li>
 {% endfor %}
 </ul>
