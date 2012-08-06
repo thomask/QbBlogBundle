@@ -11,8 +11,6 @@ Requirements
 
 QbBlogBundle is only supported on Symfony2 2.1 and up.
 
-is only supported on
-
 Installation
 ------------
 
