@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Qb Blog{% endblock %}
+
+{% block body %}
+    <h1>Backend</h1>
+    <div id="wrapper">
+        <nav>
+            <ul>
+                <li><a href="{{ path('qb_blog_backend_category_list') }}">Category</a></li>
+                <li><a href="{{ path('qb_blog_backend_post_list') }}">Post</a></li>
+                <li><a href="{{ path('qb_blog_backend_tag_list') }}">Tag</a></li>
+                <li><a href="{{ path('qb_blog_backend_comment_list') }}">Comment</a></li>
+            </ul>
+        </nav>
+        {% block qb_blog_body %}{% endblock %}
+    </div>
+    <footer>
+        <p>&copy; Qb Blog {{ "now"|date('Y') }}</p>
+    </footer>
+{% endblock %}

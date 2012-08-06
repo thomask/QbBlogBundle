@@ -3,5 +3,22 @@
 {% block title %}Qb Blog{% endblock %}
 
 {% block body %}
-    {% block qb_blog_body %}{% endblock %}
+    <h1>Qb Blog</h1>
+    <div id="wrapper">
+        <nav>
+            <ul>
+                <li><a href="{{ path('qb_blog_frontend_post_list') }}">Post</a></li>
+            </ul>
+        </nav>
+        {% block qb_blog_body %}{% endblock %}
+        <aside>
+            <h1>Category</h1>
+            {% render 'QbBlogBundle:Frontend\\Category:list' %}
+            <h1>Tag</h1>
+            {% render 'QbBlogBundle:Frontend\\Tag:list' %}
+        </aside>
+    </div>
+    <footer>
+        <p>&copy; Qb Blog {{ "now"|date('Y') }}</p>
+    </footer>
 {% endblock %}

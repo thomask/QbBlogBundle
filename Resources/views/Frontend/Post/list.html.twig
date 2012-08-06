@@ -2,10 +2,15 @@
 
 {% block qb_blog_body %}
     {% for post in posts %}
+        {% set category %}
+            {% if post.category %}
+                in <a href="{{ path('qb_blog_frontend_category_show', { 'slug': post.category.slug }) }}">{{ post.category }}</a>
+            {% endif %}
+        {% endset %}
         <article>
             <header>
                 <h1><a href="{{ path('qb_blog_frontend_post_show', { 'slug': post.slug }) }}">{{ post.title }}</a></h1>
-                <p>Posted by {{ post.author }} on <time datetime="{{ post.created|date('c') }}">{{ post.created|date('l, F j, Y') }}</time> in <a href="{{ path('qb_blog_frontend_category_show', { 'slug': post.category.slug }) }}">{{ post.category }}</a></p>
+                <p>Posted by {{ post.author }} on <time datetime="{{ post.created|date('c') }}">{{ post.created|date('l, F j, Y') }}</time>{{ category }}</p>
             </header>
             {{ post.body|raw }}
             <footer>
@@ -19,7 +24,6 @@
                 <p>{{ post.comments|length }} comments</p>
             </footer>
         </article>
-        <hr />
     {% else %}
         <p>There are no posts.</p>
     {% endfor %}

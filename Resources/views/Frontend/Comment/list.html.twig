@@ -1,6 +1,5 @@
 {% for comment in post.comments %}
     {% include 'QbBlogBundle:Frontend\\Comment:show.html.twig' with { 'comment': comment } %}
-    <hr />
 {% else %}
     <p>There are not commnents.</p>
 {% endfor %}

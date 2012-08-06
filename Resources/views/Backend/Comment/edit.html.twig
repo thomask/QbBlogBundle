@@ -1,4 +1,11 @@
-<form action="{{ path('qb_blog_backend_comment_edit', { 'id': comment.id }) }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <input type="submit" />
-</form>
+{% extends 'QbBlogBundle::Backend\\layout.html.twig' %}
+
+{% block title %}Comment edit - {{ parent() }}{% endblock %}
+
+{% block qb_blog_body %}
+    <h1>Comment edit</h1>
+    <form action="{{ path('qb_blog_backend_comment_edit', { 'id': comment.id }) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
+{% endblock %}

@@ -1,33 +1,41 @@
-<table>
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Title</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for post in posts %}
-        <tr>
-            <td>{{ post.category }}</td>
-            <td>{{ post.title }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('qb_blog_backend_post_edit', { 'id': post.id }) }}">edit</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('qb_blog_backend_post_delete', { 'id': post.id, 'token': csrf_token( post ) }) }}">delete</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="3">There are no posts.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% extends 'QbBlogBundle::Backend\\layout.html.twig' %}
 
-<p><a href="{{ path('qb_blog_backend_post_new') }}">create a new post</a></p>
+{% block title %}Post list - {{ parent() }}{% endblock %}
+
+{% block qb_blog_body %}
+    <section>
+        <h1>Post list</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Title</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td>{{ post.category }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('qb_blog_backend_post_edit', { 'id': post.id }) }}">edit</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('qb_blog_backend_post_delete', { 'id': post.id, 'token': csrf_token( post ) }) }}">delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3">There are no posts.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><a href="{{ path('qb_blog_backend_post_new') }}">create a new post</a></p>
+    </section>
+{% endblock %}

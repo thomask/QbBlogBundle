@@ -1,4 +1,9 @@
-<form action="{{ path('qb_blog_comment_new', { 'slug': post.slug }) }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <input type="submit" />
-</form>
+{% extends 'QbBlogBundle::Frontend\\layout.html.twig' %}
+
+{% block qb_blog_body %}
+    <hgroup>
+        <h1>Comment creation</h1>
+        <h2>{{ post }}</h2>
+    </hgroup>
+    {% include 'QbBlogBundle:Frontend\\Comment:new_form.html.twig' with { 'form': form } %}
+{% endblock %}

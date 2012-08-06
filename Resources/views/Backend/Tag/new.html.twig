@@ -1,4 +1,11 @@
-<form action="{{ path('qb_blog_backend_tag_new') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-    <input type="submit" />
-</form>
+{% extends 'QbBlogBundle::Backend\\layout.html.twig' %}
+
+{% block title %}Tag creation - {{ parent() }}{% endblock %}
+
+{% block qb_blog_body %}
+    <h1>Tag creation</h1>
+    <form action="{{ path('qb_blog_backend_tag_new') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
+{% endblock %}

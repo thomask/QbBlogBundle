@@ -1,6 +1,6 @@
 <ul>
 {% for tag in tags %}
-    <li><a href="{{ path('qb_blog_frontend_tag_show', { 'slug': tag.slug }) }}">{{ tag }}</a></li>
+    <li><a href="{{ path('qb_blog_frontend_tag_show', { 'slug': tag.slug }) }}">{{ tag }} ({{ tag.posts|length }})</a></li>
 {% else %}
     <li>There are no tags.</li>
 {% endfor %}

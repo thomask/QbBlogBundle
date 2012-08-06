@@ -1,31 +1,39 @@
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for tag in tags %}
-        <tr>
-            <td>{{ tag.name }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('qb_blog_backend_tag_edit', { 'id': tag.id }) }}">edit</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('qb_blog_backend_tag_delete', { 'id': tag.id, 'token': csrf_token( tag ) }) }}">delete</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="2">There are no tags.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% extends 'QbBlogBundle::Backend\\layout.html.twig' %}
 
-<p><a href="{{ path('qb_blog_backend_tag_new') }}">create a new tag</a></p>
+{% block title %}Tag list - {{ parent() }}{% endblock %}
+
+{% block qb_blog_body %}
+    <section>
+        <h1>Tag list</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tag in tags %}
+                <tr>
+                    <td>{{ tag.name }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('qb_blog_backend_tag_edit', { 'id': tag.id }) }}">edit</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('qb_blog_backend_tag_delete', { 'id': tag.id, 'token': csrf_token( tag ) }) }}">delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="2">There are no tags.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><a href="{{ path('qb_blog_backend_tag_new') }}">create a new tag</a></p>
+    </section>
+{% endblock %}
