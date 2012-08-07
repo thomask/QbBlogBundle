@@ -22,7 +22,7 @@ All the installation instructions are located in documentation:
 Code examples
 -------------
 
-If you want to see working implementation, try out the [Qb sandbox application(https://github.com/quentinb/QbSandbox).
+If you want to see working implementation, try out the [Qb sandbox application](https://github.com/quentinb/QbSandbox).
 
 License
 -------
