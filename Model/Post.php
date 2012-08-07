@@ -205,8 +205,8 @@ abstract class Post implements PostInterface
      */
     public function addTag(TagInterface $tag)
     {
-        if (!$this->tag->contains($tag)) {
-            $this->tag->add($tag);
+        if (!$this->tags->contains($tag)) {
+            $this->tags->add($tag);
         }
     }
 
@@ -215,8 +215,8 @@ abstract class Post implements PostInterface
      */
     public function removeTag(TagInterface $tag)
     {
-        if ($this->tag->contains($tag)) {
-            $this->tag->removeElement($tag);
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
         }
     }
 
