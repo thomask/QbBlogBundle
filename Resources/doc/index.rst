@@ -142,7 +142,7 @@ Step 3: Create your own entities
 
         /**
          * @ORM\ManyToMany(targetEntity="Tag", inversedBy="posts")
-         * @ORM\JoinTable(name="acme_posts_tags",
+         * @ORM\JoinTable(name="acme_blog_posts_tags",
          *      joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
          *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
          * )
