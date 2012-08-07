@@ -19,6 +19,11 @@ All the installation instructions are located in documentation:
 
 [`Resources/doc/index.rst`](https://github.com/quentinb/QbBlogBundle/blob/master/Resources/doc/index.rst)
 
+Code examples
+-------------
+
+If you want to see working implementation, try out the [Qb sandbox application(https://github.com/quentinb/QbSandbox).
+
 License
 -------
 
