@@ -58,7 +58,7 @@ class TagManager extends BaseTagManager
     /**
      * {@inheritDoc}
      */
-    public function find($id)
+    public function findTag($id)
     {
         return $this->objectRepository->find($id);
     }
