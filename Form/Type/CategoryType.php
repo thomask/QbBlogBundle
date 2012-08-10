@@ -44,6 +44,10 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('parent', null, array(
+                'empty_value' => 'Select a parent category',
+                'required'    => false
+            ))
         ;
     }
 

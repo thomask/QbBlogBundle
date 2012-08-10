@@ -85,6 +85,18 @@ interface CategoryInterface
     public function getUpdated();
 
     /**
+     * Set parent category.
+     *
+     * @param CategoryInterface $parent
+     */
+    public function setParent(CategoryInterface $parent);
+
+    /**
+     * Get parent category.
+     */
+    public function getParent();
+
+    /**
      * Add post.
      *
      * @param PostInterface $post

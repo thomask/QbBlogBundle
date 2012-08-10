@@ -47,6 +47,11 @@ abstract class Category implements CategoryInterface
     protected $updated;
 
     /**
+     * @var CategoryInterface $parent
+     */
+    protected $parent;
+
+    /**
      * @var Collection $posts
      */
     protected $posts;
@@ -129,6 +134,22 @@ abstract class Category implements CategoryInterface
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setParent(CategoryInterface $parent)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 
     /**
