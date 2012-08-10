@@ -33,7 +33,7 @@ interface CategoryInterface
      *
      * @param CategoryInterface $parent
      */
-    public function setParent(CategoryInterface $parent);
+    public function setParent(CategoryInterface $parent = null);
 
     /**
      * Get parent category.
@@ -111,7 +111,7 @@ interface CategoryInterface
     public function getName();
 
     /**
-     * Get Indented name.
+     * Get indented name.
      *
      * @return string
      */

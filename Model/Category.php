@@ -101,7 +101,7 @@ abstract class Category implements CategoryInterface
     /**
      * {@inheritdoc}
      */
-    public function setParent(CategoryInterface $parent)
+    public function setParent(CategoryInterface $parent = null)
     {
         $this->parent = $parent;
     }
