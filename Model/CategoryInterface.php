@@ -111,6 +111,13 @@ interface CategoryInterface
     public function getName();
 
     /**
+     * Get Indented name.
+     *
+     * @return string
+     */
+    public function getIndentedName();
+
+    /**
      * Set slug.
      *
      * @param string $slug

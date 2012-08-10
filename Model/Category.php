@@ -197,6 +197,14 @@ abstract class Category implements CategoryInterface
     /**
      * {@inheritdoc}
      */
+    public function getIndentedName()
+    {
+        return str_repeat('--', $this->lvl).' '.$this->name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setSlug($slug)
     {
         $this->slug = $slug;
