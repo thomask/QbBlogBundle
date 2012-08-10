@@ -13,7 +13,6 @@ namespace Qb\Bundle\BlogBundle\Controller\Frontend;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -24,30 +23,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class CommentController extends ContainerAware
 {
     /**
-     * Lists all comments.
-     */
-    public function listAction()
-    {
-        $comments = $this->container->get('qb_blog.comment_manager')->findComments();
-
-        return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Comment:list.html.'.$this->container->getParameter('qb_blog.template_engine'),
-            array(
-                'comments' => $comments,
-            )
-        );
-    }
-
-    /**
      * Displays and handles a form to create a new comment.
      *
-     * @param  Request               $request
+     * @param  string                $slug
      * @throws NotFoundHttpException If the post does not exist.
      */
-    public function newAction(Request $request)
+    public function newAction($slug)
     {
         $post = $this->container->get('qb_blog.post_manager')->findPostBy(array(
-            'slug' => $request->get('slug')
+            'slug' => $slug
         ));
 
         if (null === $post) {

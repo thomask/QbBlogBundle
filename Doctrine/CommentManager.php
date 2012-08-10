@@ -34,11 +34,6 @@ class CommentManager extends BaseCommentManager
     protected $objectRepository;
 
     /**
-     * @var string $class
-     */
-    protected $class;
-
-    /**
      * Constructor.
      *
      * @param ObjectManager $objectManager
@@ -46,11 +41,10 @@ class CommentManager extends BaseCommentManager
      */
     public function __construct(ObjectManager $objectManager, $class)
     {
+        parent::__construct($class);
+
         $this->objectManager    = $objectManager;
         $this->objectRepository = $objectManager->getRepository($class);
-
-        $metadata    = $objectManager->getClassMetadata($class);
-        $this->class = $metadata->getName();
     }
 
     /**
@@ -59,6 +53,14 @@ class CommentManager extends BaseCommentManager
     public function findComments()
     {
         return $this->objectRepository->findAll();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function findComment($id)
+    {
+        return $this->objectRepository->find($id);
     }
 
     /**
@@ -88,13 +90,5 @@ class CommentManager extends BaseCommentManager
     {
         $this->objectManager->remove($comment);
         $this->objectManager->flush();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getClass()
-    {
-        return $this->class;
     }
 }

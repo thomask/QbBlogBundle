@@ -12,8 +12,6 @@
 namespace Qb\Bundle\BlogBundle\Controller\Frontend;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -24,30 +22,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PostController extends ContainerAware
 {
     /**
-     * Lists all posts.
-     */
-    public function listAction()
-    {
-        $posts = $this->container->get('qb_blog.post_manager')->findPosts();
-
-        return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Post:list.html.'.$this->container->getParameter('qb_blog.template_engine'),
-            array(
-                'posts' => $posts,
-            )
-        );
-    }
-
-    /**
      * Finds and displays a post.
      *
-     * @param  Request               $request
+     * @param  string                $slug
      * @throws NotFoundHttpException If the post does not exist.
      */
-    public function showAction(Request $request)
+    public function showAction($slug)
     {
         $post = $this->container->get('qb_blog.post_manager')->findPostBy(array(
-            'slug' => $request->get('slug')
+            'slug' => $slug
         ));
 
         if (null === $post) {

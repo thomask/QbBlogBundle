@@ -19,45 +19,45 @@ namespace Qb\Bundle\BlogBundle\Model;
 interface TagManagerInterface
 {
     /**
-     * Finds all tags instances.
+     * Finds all tags.
      *
      * @return \Traversable
      */
     public function findTags();
 
     /**
-     * Finds a tag by the given criteria.
+     * Find tag by id.
      *
-     * @param  array             $criteria
+     * @param integer $id
+     */
+    public function findTag($id);
+
+    /**
+     * Finds tag criteria.
+     *
+     * @param  array        $criteria
      * @return TagInterface
      */
     public function findTagBy(array $criteria);
 
     /**
-     * Returns an empty instance of the tag.
+     * Creates new tag object.
      *
      * @return TagInterface
      */
     public function createTag();
 
     /**
-     * Saves a tag.
+     * Saves tag.
      *
      * @param TagInterface $tag
      */
     public function saveTag(TagInterface $tag);
 
     /**
-     * Deletes a tag.
+     * Deletes tag.
      *
      * @param TagInterface $tag
      */
     public function deleteTag(TagInterface $tag);
-
-    /**
-     * Get fully-qualified class name of the tag.
-     *
-     * @return string
-     */
-    public function getClass();
 }

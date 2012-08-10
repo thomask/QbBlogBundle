@@ -19,11 +19,28 @@ namespace Qb\Bundle\BlogBundle\Model;
 abstract class PostManager implements PostManagerInterface
 {
     /**
+     * Post class.
+     *
+     * @var string $class
+     */
+    protected $class;
+
+    /**
+     * Constructor
+     *
+     * @param string $class
+     */
+    public function __construct($class)
+    {
+        $this->class = $class;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function createPost()
     {
-        $class = $this->getClass();
+        $class = $this->class;
 
         return new $class;
     }

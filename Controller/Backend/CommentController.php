@@ -26,12 +26,12 @@ class CommentController extends ContainerAware
     /**
      * Lists all comments.
      */
-    public function listAction()
+    public function indexAction()
     {
         $comments = $this->container->get('qb_blog.comment_manager')->findComments();
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend\Comment:list.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend\Comment:index.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'comments' => $comments,
             )
@@ -41,14 +41,12 @@ class CommentController extends ContainerAware
     /**
      * Displays and handles a form to edit an existing comment.
      *
-     * @param  Request               $request
+     * @param  integer               $id
      * @throws NotFoundHttpException If the comment does not exist.
      */
-    public function editAction(Request $request)
+    public function editAction($id)
     {
-        $comment = $this->container->get('qb_blog.comment_manager')->findCommentBy(array(
-            'id' => $request->get('id')
-        ));
+        $comment = $this->container->get('qb_blog.comment_manager')->findComment($id);
 
         if (null === $comment) {
             throw new NotFoundHttpException('Comment does not exist.');
@@ -58,7 +56,7 @@ class CommentController extends ContainerAware
         $handler = $this->container->get('qb_blog.comment.form.handler');
 
         if ($handler->process($comment)) {
-            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_comment_list'));
+            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_comment'));
         }
 
         return $this->container->get('templating')->renderResponse(
@@ -73,14 +71,13 @@ class CommentController extends ContainerAware
     /**
      * Deletes a comment.
      *
-     * @param  Request               $request
+     * @param  integer               $id
+     * @param  string                $token
      * @throws NotFoundHttpException If the comment does not exist.
      */
-    public function deleteAction(Request $request)
+    public function deleteAction($id, $token)
     {
-        $comment = $this->container->get('qb_blog.comment_manager')->findCommentBy(array(
-            'id' => $request->get('id')
-        ));
+        $comment = $this->container->get('qb_blog.comment_manager')->findComment($id);
 
         if (null === $comment) {
             throw new NotFoundHttpException('Comment does not exist.');
@@ -88,10 +85,10 @@ class CommentController extends ContainerAware
 
         $csrf = $this->container->get('form.csrf_provider');
 
-        if ($csrf->isCsrfTokenValid($comment, $request->get('token'))) {
+        if ($csrf->isCsrfTokenValid($comment, $token)) {
             $this->container->get('qb_blog.comment_manager')->deleteComment($comment);
         }
 
-        return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_comment_list'));
+        return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_comment'));
     }
 }

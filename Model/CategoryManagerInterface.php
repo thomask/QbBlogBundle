@@ -19,14 +19,21 @@ namespace Qb\Bundle\BlogBundle\Model;
 interface CategoryManagerInterface
 {
     /**
-     * Finds all categories instances.
+     * Finds all categories.
      *
      * @return \Traversable
      */
     public function findCategories();
 
     /**
-     * Finds a category by the given criteria.
+     * Finds category by id.
+     *
+     * @param integer $id
+     */
+    public function findCategory($id);
+
+    /**
+     * Finds category by criteria.
      *
      * @param  array             $criteria
      * @return CategoryInterface
@@ -34,30 +41,23 @@ interface CategoryManagerInterface
     public function findCategoryBy(array $criteria);
 
     /**
-     * Returns an empty instance of the category.
+     * Creates new category object.
      *
      * @return CategoryInterface
      */
     public function createCategory();
 
     /**
-     * Saves a category.
+     * Saves category.
      *
      * @param CategoryInterface $category
      */
     public function saveCategory(CategoryInterface $category);
 
     /**
-     * Deletes a category.
+     * Deletes category.
      *
      * @param CategoryInterface $category
      */
     public function deleteCategory(CategoryInterface $category);
-
-    /**
-     * Get fully-qualified class name of the category.
-     *
-     * @return string
-     */
-    public function getClass();
 }

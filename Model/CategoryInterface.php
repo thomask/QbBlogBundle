@@ -57,6 +57,34 @@ interface CategoryInterface
     public function getSlug();
 
     /**
+     * Set created.
+     *
+     * @param \Datetime $created
+     */
+    public function setCreated(\DateTime $created);
+
+    /**
+     * Get created.
+     *
+     * @return \Datetime
+     */
+    public function getCreated();
+
+    /**
+     * Set updated.
+     *
+     * @param \Datetime $updated
+     */
+    public function setUpdated(\DateTime $updated);
+
+    /**
+     * Get updated.
+     *
+     * @return \Datetime
+     */
+    public function getUpdated();
+
+    /**
      * Add post.
      *
      * @param PostInterface $post

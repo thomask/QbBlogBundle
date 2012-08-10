@@ -4,11 +4,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="qb_blog_frontend_category_list" pattern="/list">
-        <default key="_controller">QbBlogBundle:Frontend\Category:list</default>
-        <requirement key="_method">GET</requirement>
-    </route>
-
     <route id="qb_blog_frontend_category_show" pattern="/{slug}">
         <default key="_controller">QbBlogBundle:Frontend\Category:show</default>
         <requirement key="_method">GET</requirement>

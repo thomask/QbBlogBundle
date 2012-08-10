@@ -37,6 +37,16 @@ abstract class Category implements CategoryInterface
     protected $slug;
 
     /**
+     * @var \Datetime $created
+     */
+    protected $created;
+
+    /**
+     * @var \Datetime $updated
+     */
+    protected $updated;
+
+    /**
      * @var Collection $posts
      */
     protected $posts;
@@ -87,6 +97,38 @@ abstract class Category implements CategoryInterface
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUpdated(\DateTime $updated)
+    {
+        $this->updated = $updated;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 
     /**

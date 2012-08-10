@@ -26,12 +26,12 @@ class TagController extends ContainerAware
     /**
      * Lists all tags.
      */
-    public function listAction()
+    public function indexAction()
     {
         $tags = $this->container->get('qb_blog.tag_manager')->findTags();
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend\Tag:list.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend\Tag:index.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'tags' => $tags,
             )
@@ -47,7 +47,7 @@ class TagController extends ContainerAware
         $handler = $this->container->get('qb_blog.tag.form.handler');
 
         if ($handler->process()) {
-            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_tag_list'));
+            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_tag'));
         }
 
         return $this->container->get('templating')->renderResponse(
@@ -61,14 +61,12 @@ class TagController extends ContainerAware
     /**
      * Displays and handles a form to edit an existing tag.
      *
-     * @param  Request               $request
+     * @param  integer               $id
      * @throws NotFoundHttpException If the tag does not exist.
      */
-    public function editAction(Request $request)
+    public function editAction($id)
     {
-        $tag = $this->container->get('qb_blog.tag_manager')->findTagBy(array(
-            'id' => $request->get('id')
-        ));
+        $tag = $this->container->get('qb_blog.tag_manager')->findTag($id);
 
         if (null === $tag) {
             throw new NotFoundHttpException('Tag does not exist.');
@@ -78,7 +76,7 @@ class TagController extends ContainerAware
         $handler = $this->container->get('qb_blog.tag.form.handler');
 
         if ($handler->process($tag)) {
-            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_tag_list'));
+            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_tag'));
         }
 
         return $this->container->get('templating')->renderResponse(
@@ -93,14 +91,13 @@ class TagController extends ContainerAware
     /**
      * Deletes a tag.
      *
-     * @param  Request               $request
+     * @param  integer               $id
+     * @param  string                $token
      * @throws NotFoundHttpException If the tag does not exist.
      */
-    public function deleteAction(Request $request)
+    public function deleteAction($id, $token)
     {
-        $tag = $this->container->get('qb_blog.tag_manager')->findTagBy(array(
-            'id' => $request->get('id')
-        ));
+        $tag = $this->container->get('qb_blog.tag_manager')->findTag($id);
 
         if (null === $tag) {
             throw new NotFoundHttpException('Tag does not exist.');
@@ -108,10 +105,10 @@ class TagController extends ContainerAware
 
         $csrf = $this->container->get('form.csrf_provider');
 
-        if ($csrf->isCsrfTokenValid($tag, $request->get('token'))) {
+        if ($csrf->isCsrfTokenValid($tag, $token)) {
             $this->container->get('qb_blog.tag_manager')->deleteTag($tag);
         }
 
-        return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_tag_list'));
+        return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_tag'));
     }
 }

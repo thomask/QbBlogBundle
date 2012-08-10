@@ -12,8 +12,6 @@
 namespace Qb\Bundle\BlogBundle\Controller\Frontend;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -24,30 +22,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class CategoryController extends ContainerAware
 {
     /**
-     * Lists all categories.
-     */
-    public function listAction()
-    {
-        $categories = $this->container->get('qb_blog.category_manager')->findCategories();
-
-        return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Category:list.html.'.$this->container->getParameter('qb_blog.template_engine'),
-            array(
-                'categories' => $categories,
-            )
-        );
-    }
-
-    /**
      * Finds and displays a category.
      *
-     * @param  Request               $request
+     * @param  string                $slug
      * @throws NotFoundHttpException If the category does not exist.
      */
-    public function showAction(Request $request)
+    public function showAction($slug)
     {
         $category = $this->container->get('qb_blog.category_manager')->findCategoryBy(array(
-            'slug' => $request->get('slug')
+            'slug' => $slug
         ));
 
         if (null === $category) {

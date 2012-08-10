@@ -26,12 +26,12 @@ class PostController extends ContainerAware
     /**
      * Lists all posts.
      */
-    public function listAction()
+    public function indexAction()
     {
         $posts = $this->container->get('qb_blog.post_manager')->findPosts();
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend\Post:list.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend\Post:index.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'posts' => $posts,
             )
@@ -47,7 +47,7 @@ class PostController extends ContainerAware
         $handler = $this->container->get('qb_blog.post.form.handler');
 
         if ($handler->process()) {
-            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_post_list'));
+            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_post'));
         }
 
         return $this->container->get('templating')->renderResponse(
@@ -61,14 +61,12 @@ class PostController extends ContainerAware
     /**
      * Displays and handles a form to edit an existing post.
      *
-     * @param  Request               $request
+     * @param  integer               $id
      * @throws NotFoundHttpException If the post does not exist.
      */
-    public function editAction(Request $request)
+    public function editAction($id)
     {
-        $post = $this->container->get('qb_blog.post_manager')->findPostBy(array(
-            'id' => $request->get('id')
-        ));
+        $post = $this->container->get('qb_blog.post_manager')->findPost($id);
 
         if (null === $post) {
             throw new NotFoundHttpException('Post does not exist.');
@@ -78,7 +76,7 @@ class PostController extends ContainerAware
         $handler = $this->container->get('qb_blog.post.form.handler');
 
         if ($handler->process($post)) {
-            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_post_list'));
+            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_post'));
         }
 
         return $this->container->get('templating')->renderResponse(
@@ -93,14 +91,13 @@ class PostController extends ContainerAware
     /**
      * Deletes a post.
      *
-     * @param  Request               $request
+     * @param  integer               $id
+     * @param  string                $token
      * @throws NotFoundHttpException If the post does not exist.
      */
-    public function deleteAction(Request $request)
+    public function deleteAction($id, $token)
     {
-        $post = $this->container->get('qb_blog.post_manager')->findPostBy(array(
-            'id' => $request->get('id')
-        ));
+        $post = $this->container->get('qb_blog.post_manager')->findPost($id);
 
         if (null === $post) {
             throw new NotFoundHttpException('Post does not exist.');
@@ -108,10 +105,10 @@ class PostController extends ContainerAware
 
         $csrf = $this->container->get('form.csrf_provider');
 
-        if ($csrf->isCsrfTokenValid($post, $request->get('token'))) {
+        if ($csrf->isCsrfTokenValid($post, $token)) {
             $this->container->get('qb_blog.post_manager')->deletePost($post);
         }
 
-        return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_post_list'));
+        return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_post'));
     }
 }

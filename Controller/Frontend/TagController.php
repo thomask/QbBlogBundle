@@ -12,8 +12,6 @@
 namespace Qb\Bundle\BlogBundle\Controller\Frontend;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -24,30 +22,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class TagController extends ContainerAware
 {
     /**
-     * Lists all tags.
-     */
-    public function listAction()
-    {
-        $tags = $this->container->get('qb_blog.tag_manager')->findTags();
-
-        return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Tag:list.html.'.$this->container->getParameter('qb_blog.template_engine'),
-            array(
-                'tags' => $tags,
-            )
-        );
-    }
-
-    /**
      * Finds and displays a tag.
      *
-     * @param  Request               $request
+     * @param  string                $slug
      * @throws NotFoundHttpException If the tag does not exist.
      */
-    public function showAction(Request $request)
+    public function showAction($slug)
     {
         $tag = $this->container->get('qb_blog.tag_manager')->findTagBy(array(
-            'slug' => $request->get('slug')
+            'slug' => $slug
         ));
 
         if (null === $tag) {

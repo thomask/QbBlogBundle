@@ -19,45 +19,45 @@ namespace Qb\Bundle\BlogBundle\Model;
 interface CommentManagerInterface
 {
     /**
-     * Finds all comments instances.
+     * Finds all comments.
      *
      * @return \Traversable
      */
     public function findComments();
 
     /**
-     * Finds a comment by the given criteria.
+     * Finds comment by id.
      *
-     * @param  array             $criteria
+     * @param integer $id
+     */
+    public function findComment($id);
+
+    /**
+     * Finds comment by criteria.
+     *
+     * @param  array            $criteria
      * @return CommentInterface
      */
     public function findCommentBy(array $criteria);
 
     /**
-     * Returns an empty instance of the comment.
+     * Creates new comment object.
      *
      * @return CommentInterface
      */
     public function createComment();
 
     /**
-     * Saves a comment.
+     * Saves comment.
      *
      * @param CommentInterface $comment
      */
     public function saveComment(CommentInterface $comment);
 
     /**
-     * Deletes a comment.
+     * Deletes comment.
      *
      * @param CommentInterface $comment
      */
     public function deleteComment(CommentInterface $comment);
-
-    /**
-     * Get fully-qualified class name of the comment.
-     *
-     * @return string
-     */
-    public function getClass();
 }

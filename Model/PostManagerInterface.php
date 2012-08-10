@@ -19,45 +19,45 @@ namespace Qb\Bundle\BlogBundle\Model;
 interface PostManagerInterface
 {
     /**
-     * Finds all posts instances.
+     * Finds all posts.
      *
      * @return \Traversable
      */
     public function findPosts();
 
     /**
-     * Finds a post by the given criteria.
+     * Finds post by id.
      *
-     * @param  array             $criteria
+     * @param integer $id
+     */
+    public function findPost($id);
+
+    /**
+     * Finds post by criteria.
+     *
+     * @param  array         $criteria
      * @return PostInterface
      */
     public function findPostBy(array $criteria);
 
     /**
-     * Returns an empty instance of the post.
+     * Creates new post object.
      *
      * @return PostInterface
      */
     public function createPost();
 
     /**
-     * Saves a post.
+     * Saves post.
      *
      * @param PostInterface $post
      */
     public function savePost(PostInterface $post);
 
     /**
-     * Deletes a post.
+     * Deletes post.
      *
      * @param PostInterface $post
      */
     public function deletePost(PostInterface $post);
-
-    /**
-     * Get fully-qualified class name of the post.
-     *
-     * @return string
-     */
-    public function getClass();
 }

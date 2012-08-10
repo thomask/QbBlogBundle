@@ -34,11 +34,6 @@ class CategoryManager extends BaseCategoryManager
     protected $objectRepository;
 
     /**
-     * @var string $class
-     */
-    protected $class;
-
-    /**
      * Constructor.
      *
      * @param ObjectManager $objectManager
@@ -46,11 +41,10 @@ class CategoryManager extends BaseCategoryManager
      */
     public function __construct(ObjectManager $objectManager, $class)
     {
+        parent::__construct($class);
+
         $this->objectManager    = $objectManager;
         $this->objectRepository = $objectManager->getRepository($class);
-
-        $metadata    = $objectManager->getClassMetadata($class);
-        $this->class = $metadata->getName();
     }
 
     /**
@@ -59,6 +53,14 @@ class CategoryManager extends BaseCategoryManager
     public function findCategories()
     {
         return $this->objectRepository->findAll();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function findCategory($id)
+    {
+        return $this->objectRepository->find($id);
     }
 
     /**
@@ -88,13 +90,5 @@ class CategoryManager extends BaseCategoryManager
     {
         $this->objectManager->remove($category);
         $this->objectManager->flush();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getClass()
-    {
-        return $this->class;
     }
 }

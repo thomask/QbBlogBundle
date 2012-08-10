@@ -26,12 +26,12 @@ class CategoryController extends ContainerAware
     /**
      * Lists all categories.
      */
-    public function listAction()
+    public function indexAction()
     {
         $categories = $this->container->get('qb_blog.category_manager')->findCategories();
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend\Category:list.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend\Category:index.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'categories' => $categories,
             )
@@ -47,7 +47,7 @@ class CategoryController extends ContainerAware
         $handler = $this->container->get('qb_blog.category.form.handler');
 
         if ($handler->process()) {
-            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_category_list'));
+            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_category'));
         }
 
         return $this->container->get('templating')->renderResponse(
@@ -61,14 +61,12 @@ class CategoryController extends ContainerAware
     /**
      * Displays and handles a form to edit an existing category.
      *
-     * @param  Request               $request
+     * @param  integer               $id
      * @throws NotFoundHttpException If the category does not exist.
      */
-    public function editAction(Request $request)
+    public function editAction($id)
     {
-        $category = $this->container->get('qb_blog.category_manager')->findCategoryBy(array(
-            'id' => $request->get('id')
-        ));
+        $category = $this->container->get('qb_blog.category_manager')->findCategory($id);
 
         if (null === $category) {
             throw new NotFoundHttpException('Category does not exist.');
@@ -78,7 +76,7 @@ class CategoryController extends ContainerAware
         $handler = $this->container->get('qb_blog.category.form.handler');
 
         if ($handler->process($category)) {
-            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_category_list'));
+            return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_category'));
         }
 
         return $this->container->get('templating')->renderResponse(
@@ -93,14 +91,13 @@ class CategoryController extends ContainerAware
     /**
      * Deletes a category.
      *
-     * @param  Request               $request
+     * @param  integer               $id
+     * @param  string                $token
      * @throws NotFoundHttpException If the category does not exist.
      */
-    public function deleteAction(Request $request)
+    public function deleteAction($id, $token)
     {
-        $category = $this->container->get('qb_blog.category_manager')->findCategoryBy(array(
-            'id' => $request->get('id')
-        ));
+        $category = $this->container->get('qb_blog.category_manager')->findCategory($id);
 
         if (null === $category) {
             throw new NotFoundHttpException('Category does not exist.');
@@ -108,10 +105,10 @@ class CategoryController extends ContainerAware
 
         $csrf = $this->container->get('form.csrf_provider');
 
-        if ($csrf->isCsrfTokenValid($category, $request->get('token'))) {
+        if ($csrf->isCsrfTokenValid($category, $token)) {
             $this->container->get('qb_blog.category_manager')->deleteCategory($category);
         }
 
-        return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_category_list'));
+        return new RedirectResponse($this->container->get('router')->generate('qb_blog_backend_category'));
     }
 }
