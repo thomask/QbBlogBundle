@@ -29,6 +29,74 @@ interface CategoryInterface
     public function getId();
 
     /**
+     * Set parent category.
+     *
+     * @param CategoryInterface $parent
+     */
+    public function setParent(CategoryInterface $parent);
+
+    /**
+     * Get parent category.
+     */
+    public function getParent();
+
+    /**
+     * Set lft.
+     *
+     * @param integer $lft
+     */
+    public function setLft($lft);
+
+    /**
+     * Get lft.
+     *
+     * @return integer
+     */
+    public function getLft();
+
+    /**
+     * Set rgt.
+     *
+     * @param integer $rgt
+     */
+    public function setRgt($rgt);
+
+    /**
+     * Get rgt.
+     *
+     * @return integer
+     */
+    public function getRgt();
+
+    /**
+     * Set lvl.
+     *
+     * @param integer $lvl
+     */
+    public function setLvl($lvl);
+
+    /**
+     * Get lvl.
+     *
+     * @return integer
+     */
+    public function getLvl();
+
+    /**
+     * Set root.
+     *
+     * @param integer $root
+     */
+    public function setRoot($root);
+
+    /**
+     * Get root.
+     *
+     * @var integer
+     */
+    public function getRoot();
+
+    /**
      * Set name.
      *
      * @param string $name
@@ -85,16 +153,25 @@ interface CategoryInterface
     public function getUpdated();
 
     /**
-     * Set parent category.
+     * Add child category.
      *
-     * @param CategoryInterface $parent
+     * @param CategoryInterface $child
      */
-    public function setParent(CategoryInterface $parent);
+    public function addChild(CategoryInterface $child);
 
     /**
-     * Get parent category.
+     * Remove child category.
+     *
+     * @param CategoryInterface $child
      */
-    public function getParent();
+    public function removeChild(CategoryInterface $child);
+
+    /**
+     * Get children categories.
+     *
+     * @return Collection
+     */
+    public function getChildren();
 
     /**
      * Add post.

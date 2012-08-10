@@ -20,16 +20,20 @@
             <gedmo:timestampable on="update"/>
         </field>
         
-        <field name="left" type="integer">
+        <field name="lft" type="integer">
             <gedmo:tree-left />
         </field>
         
-        <field name="right" type="integer">
+        <field name="rgt" type="integer">
             <gedmo:tree-right />
         </field>
         
-        <field name="level" type="integer">
+        <field name="lvl" type="integer">
             <gedmo:tree-level />
+        </field>
+        
+        <field name="root" type="integer">
+            <gedmo:tree-root/>
         </field>
         
         <gedmo:tree type="nested" />

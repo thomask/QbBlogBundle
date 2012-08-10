@@ -27,6 +27,31 @@ abstract class Category implements CategoryInterface
     protected $id;
 
     /**
+     * @var CategoryInterface $parent
+     */
+    protected $parent;
+
+    /**
+     * @var integer $lft
+     */
+    protected $lft;
+
+    /**
+     * @var integer $rgt
+     */
+    protected $rgt;
+
+    /**
+     * @var integer $lvl
+     */
+    protected $lvl;
+
+    /**
+     * @var integer $root
+     */
+    protected $root;
+
+    /**
      * @var string $name
      */
     protected $name;
@@ -47,9 +72,9 @@ abstract class Category implements CategoryInterface
     protected $updated;
 
     /**
-     * @var CategoryInterface $parent
+     * @var Collection $children
      */
-    protected $parent;
+    protected $children;
 
     /**
      * @var Collection $posts
@@ -61,7 +86,8 @@ abstract class Category implements CategoryInterface
      */
     public function __construct()
     {
-        $this->posts = new ArrayCollection();
+        $this->children = new ArrayCollection();
+        $this->posts    = new ArrayCollection();
     }
 
     /**
@@ -70,6 +96,86 @@ abstract class Category implements CategoryInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setParent(CategoryInterface $parent)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLft()
+    {
+        return $this->lft;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLvl($lvl)
+    {
+        $this->lvl = $lvl;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLvl()
+    {
+        return $this->lvl;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setRoot($root)
+    {
+        $this->root = $root;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRoot()
+    {
+        return $this->root;
     }
 
     /**
@@ -139,17 +245,29 @@ abstract class Category implements CategoryInterface
     /**
      * {@inheritdoc}
      */
-    public function setParent(CategoryInterface $parent)
+    public function addChild(CategoryInterface $child)
     {
-        $this->parent = $parent;
+        if (!$this->children->contains($child)) {
+            $this->children->add($child);
+        }
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getParent()
+    public function removeChild(CategoryInterface $child)
     {
-        return $this->parent;
+        if ($this->children->contains($child)) {
+            $this->children->removeElement($child);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getChildren()
+    {
+        return $this->children;
     }
 
     /**
