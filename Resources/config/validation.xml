@@ -27,7 +27,7 @@
             <constraint name="Url" />
         </property>
 
-        <property name="comment">
+        <property name="body">
             <constraint name="NotBlank" />
         </property>
     </class>
