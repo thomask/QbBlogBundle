@@ -105,7 +105,7 @@ class CategoryController extends ContainerAware
 
         $csrf = $this->container->get('form.csrf_provider');
 
-        if ($csrf->isCsrfTokenValid($category, $token)) {
+        if ($csrf->isCsrfTokenValid($id, $token)) {
             $this->container->get('qb_blog.category_manager')->deleteCategory($category);
         }
 

@@ -85,7 +85,7 @@ class CommentController extends ContainerAware
 
         $csrf = $this->container->get('form.csrf_provider');
 
-        if ($csrf->isCsrfTokenValid($comment, $token)) {
+        if ($csrf->isCsrfTokenValid($id, $token)) {
             $this->container->get('qb_blog.comment_manager')->deleteComment($comment);
         }
 

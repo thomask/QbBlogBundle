@@ -105,7 +105,7 @@ class PostController extends ContainerAware
 
         $csrf = $this->container->get('form.csrf_provider');
 
-        if ($csrf->isCsrfTokenValid($post, $token)) {
+        if ($csrf->isCsrfTokenValid($id, $token)) {
             $this->container->get('qb_blog.post_manager')->deletePost($post);
         }
 

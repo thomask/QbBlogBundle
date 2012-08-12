@@ -105,7 +105,7 @@ class TagController extends ContainerAware
 
         $csrf = $this->container->get('form.csrf_provider');
 
-        if ($csrf->isCsrfTokenValid($tag, $token)) {
+        if ($csrf->isCsrfTokenValid($id, $token)) {
             $this->container->get('qb_blog.tag_manager')->deleteTag($tag);
         }
 
