@@ -6,7 +6,7 @@
 
     <!-- Category -->
 
-    <class name="Qb\Bundle\BlogBundle\Model\Category">
+    <class name="Qb\Bundle\BlogBundle\Model\AbstractCategory">
         <property name="name">
             <constraint name="NotBlank" />
         </property>
@@ -14,7 +14,7 @@
 
     <!-- Comment -->
 
-    <class name="Qb\Bundle\BlogBundle\Model\Comment">
+    <class name="Qb\Bundle\BlogBundle\Model\AbstractComment">
         <property name="author">
             <constraint name="NotBlank" />
         </property>
@@ -34,7 +34,7 @@
 
     <!-- Post -->
 
-    <class name="Qb\Bundle\BlogBundle\Model\Post">
+    <class name="Qb\Bundle\BlogBundle\Model\AbstractPost">
         <property name="author">
             <constraint name="NotBlank" />
         </property>
@@ -50,7 +50,7 @@
 
     <!-- Tag -->
 
-    <class name="Qb\Bundle\BlogBundle\Model\Tag">
+    <class name="Qb\Bundle\BlogBundle\Model\AbstractTag">
         <property name="name">
             <constraint name="NotBlank" />
         </property>
