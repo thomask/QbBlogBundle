@@ -6,7 +6,7 @@
 
     <!-- Category -->
 
-    <class name="Qb\Bundle\BlogBundle\Model\Category">
+    <class name="Qb\Bundle\BlogBundle\Model\AbstractCategory">
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">name</option>
         </constraint>
@@ -14,7 +14,7 @@
 
     <!-- Post -->
 
-    <class name="Qb\Bundle\BlogBundle\Model\Post">
+    <class name="Qb\Bundle\BlogBundle\Model\AbstractPost">
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">title</option>
         </constraint>
@@ -22,7 +22,7 @@
 
     <!-- Tag -->
 
-    <class name="Qb\Bundle\BlogBundle\Model\Tag">
+    <class name="Qb\Bundle\BlogBundle\Model\AbstractTag">
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">name</option>
         </constraint>
