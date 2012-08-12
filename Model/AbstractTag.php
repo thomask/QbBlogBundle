@@ -11,9 +11,6 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-
 /**
  * Abstract Tag.
  *
@@ -45,19 +42,6 @@ abstract class AbstractTag implements TagInterface
      * @var \Datetime
      */
     protected $updatedAt;
-
-    /**
-     * @var Collection
-     */
-    protected $posts;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->posts = new ArrayCollection();
-    }
 
     /**
      * {@inheritdoc}
@@ -129,34 +113,6 @@ abstract class AbstractTag implements TagInterface
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addPost(PostInterface $post)
-    {
-        if (!$this->posts->contains($post)) {
-            $this->posts->add($post);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removePost(PostInterface $post)
-    {
-        if ($this->posts->contains($post)) {
-            $this->posts->removeElement($post);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPosts()
-    {
-        return $this->posts;
     }
 
     /**

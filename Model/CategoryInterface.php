@@ -11,8 +11,6 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
-use Doctrine\Common\Collections\Collection;
-
 /**
  * Category interface.
  *
@@ -110,13 +108,6 @@ interface CategoryInterface
     public function getName();
 
     /**
-     * Get indented name.
-     *
-     * @return string
-     */
-    public function getIndentedName();
-
-    /**
      * Set slug.
      *
      * @param string $slug
@@ -157,48 +148,6 @@ interface CategoryInterface
      * @return \Datetime
      */
     public function getUpdatedAt();
-
-    /**
-     * Add child category.
-     *
-     * @param CategoryInterface $child
-     */
-    public function addChild(CategoryInterface $child);
-
-    /**
-     * Remove child category.
-     *
-     * @param CategoryInterface $child
-     */
-    public function removeChild(CategoryInterface $child);
-
-    /**
-     * Get children categories.
-     *
-     * @return Collection
-     */
-    public function getChildren();
-
-    /**
-     * Add post.
-     *
-     * @param PostInterface $post
-     */
-    public function addPost(PostInterface $post);
-
-    /**
-     * Remove post.
-     *
-     * @param PostInterface $post
-     */
-    public function removePost(PostInterface $post);
-
-    /**
-     * Get posts.
-     *
-     * @return Collection
-     */
-    public function getPosts();
 
     /**
      * To string.

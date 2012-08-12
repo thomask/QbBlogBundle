@@ -44,9 +44,7 @@ class PostType extends AbstractType
     {
         $builder
             ->add('category', null, array(
-                'empty_value' => 'Select a category',
-                'property'    => 'indentedName',
-                'required'    => false
+                'required' => false
             ))
             ->add('author')
             ->add('title')

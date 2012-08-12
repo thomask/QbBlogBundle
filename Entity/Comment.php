@@ -12,6 +12,7 @@
 namespace Qb\Bundle\BlogBundle\Entity;
 
 use Qb\Bundle\BlogBundle\Model\AbstractComment;
+use Qb\Bundle\BlogBundle\Model\PostInterface;
 
 /**
  * Comment entity.
@@ -20,4 +21,28 @@ use Qb\Bundle\BlogBundle\Model\AbstractComment;
  */
 class Comment extends AbstractComment
 {
+    /**
+     * @var PostInterface
+     */
+    protected $post;
+
+    /**
+     * Set post.
+     *
+     * @param PostInterface $post
+     */
+    public function setPost(PostInterface $post)
+    {
+        $this->post = $post;
+    }
+
+    /**
+     * Get post.
+     *
+     * @return PostInterface
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
 }

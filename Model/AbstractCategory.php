@@ -11,9 +11,6 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-
 /**
  * Abstract Category.
  *
@@ -70,25 +67,6 @@ abstract class AbstractCategory implements CategoryInterface
      * @var \Datetime
      */
     protected $updatedAt;
-
-    /**
-     * @var Collection
-     */
-    protected $children;
-
-    /**
-     * @var Collection
-     */
-    protected $posts;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->children = new ArrayCollection();
-        $this->posts    = new ArrayCollection();
-    }
 
     /**
      * {@inheritdoc}
@@ -197,14 +175,6 @@ abstract class AbstractCategory implements CategoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getIndentedName()
-    {
-        return str_repeat('--', $this->level).' '.$this->name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setSlug($slug)
     {
         $this->slug = $slug;
@@ -248,62 +218,6 @@ abstract class AbstractCategory implements CategoryInterface
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addChild(CategoryInterface $child)
-    {
-        if (!$this->children->contains($child)) {
-            $this->children->add($child);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeChild(CategoryInterface $child)
-    {
-        if ($this->children->contains($child)) {
-            $this->children->removeElement($child);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getChildren()
-    {
-        return $this->children;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addPost(PostInterface $post)
-    {
-        if (!$this->posts->contains($post)) {
-            $this->posts->add($post);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removePost(PostInterface $post)
-    {
-        if ($this->posts->contains($post)) {
-            $this->posts->removeElement($post);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPosts()
-    {
-        return $this->posts;
     }
 
     /**

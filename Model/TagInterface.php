@@ -11,8 +11,6 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
-use Doctrine\Common\Collections\Collection;
-
 /**
  * Tag interface.
  *
@@ -82,27 +80,6 @@ interface TagInterface
      * @return \Datetime
      */
     public function getUpdatedAt();
-
-    /**
-     * Add post.
-     *
-     * @param PostInterface $post
-     */
-    public function addPost(PostInterface $post);
-
-    /**
-     * Remove post.
-     *
-     * @param PostInterface $post
-     */
-    public function removePost(PostInterface $post);
-
-    /**
-     * Get posts.
-     *
-     * @return Collection
-     */
-    public function getPosts();
 
     /**
      * To string.

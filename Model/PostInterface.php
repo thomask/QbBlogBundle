@@ -11,8 +11,6 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
-use Doctrine\Common\Collections\Collection;
-
 /**
  * Post interface.
  *
@@ -26,20 +24,6 @@ interface PostInterface
      * @return integer
      */
     public function getId();
-
-    /**
-     * Set category.
-     *
-     * @param CategoryInterface $category
-     */
-    public function setCategory(CategoryInterface $category = null);
-
-    /**
-     * Get category.
-     *
-     * @return CategoryInterface
-     */
-    public function getCategory();
 
     /**
      * Set author.
@@ -124,48 +108,6 @@ interface PostInterface
      * @return \Datetime
      */
     public function getUpdatedAt();
-
-    /**
-     * Add tag.
-     *
-     * @param TagInterface $tag
-     */
-    public function addTag(TagInterface $tag);
-
-    /**
-     * Remove tag.
-     *
-     * @param TagInterface $tag
-     */
-    public function removeTag(TagInterface $tag);
-
-    /**
-     * Get tags.
-     *
-     * @return Collection
-     */
-    public function getTags();
-
-    /**
-     * Add comment.
-     *
-     * @param CommentInterface $comment
-     */
-    public function addComment(CommentInterface $comment);
-
-    /**
-     * Remove comment.
-     *
-     * @param CommentInterface $comment
-     */
-    public function removeComment(CommentInterface $comment);
-
-    /**
-     * Get comments.
-     *
-     * @return Collection
-     */
-    public function getComments();
 
     /**
      * To string.

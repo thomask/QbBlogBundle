@@ -11,9 +11,6 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-
 /**
  * Abstract Post.
  *
@@ -25,11 +22,6 @@ abstract class AbstractPost implements PostInterface
      * @var integer
      */
     protected $id;
-
-    /**
-     * @var CategoryInterface
-     */
-    protected $category;
 
     /**
      * @var string
@@ -62,46 +54,11 @@ abstract class AbstractPost implements PostInterface
     protected $updatedAt;
 
     /**
-     * @var Collection
-     */
-    protected $tags;
-
-    /**
-     * @var Collection
-     */
-    protected $comments;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->tags     = new ArrayCollection();
-        $this->comments = new ArrayCollection();
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setCategory(CategoryInterface $category = null)
-    {
-        $this->category = $category;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCategory()
-    {
-        return $this->category;
     }
 
     /**
@@ -198,62 +155,6 @@ abstract class AbstractPost implements PostInterface
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addTag(TagInterface $tag)
-    {
-        if (!$this->tags->contains($tag)) {
-            $this->tags->add($tag);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeTag(TagInterface $tag)
-    {
-        if ($this->tags->contains($tag)) {
-            $this->tags->removeElement($tag);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addComment(CommentInterface $comment)
-    {
-        if (!$this->comments->contains($comment)) {
-            $this->comments->add($comment);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function removeComment(CommentInterface $comment)
-    {
-        if ($this->comments->contains($comment)) {
-            $this->comments->removeElement($comment);
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getComments()
-    {
-        return $this->comments;
     }
 
     /**

@@ -19,6 +19,13 @@ namespace Qb\Bundle\BlogBundle\Model;
 interface TagManagerInterface
 {
     /**
+     * Creates a new tag.
+     *
+     * @return TagInterface
+     */
+    public function createTag();
+
+    /**
      * Finds all tags.
      *
      * @return \Traversable
@@ -33,19 +40,12 @@ interface TagManagerInterface
     public function findTag($id);
 
     /**
-     * Finds a tag criteria.
+     * Finds a tag by criteria.
      *
      * @param  array        $criteria
      * @return TagInterface
      */
     public function findTagBy(array $criteria);
-
-    /**
-     * Creates a new tag.
-     *
-     * @return TagInterface
-     */
-    public function createTag();
 
     /**
      * Saves a tag.

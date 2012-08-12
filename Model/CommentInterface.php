@@ -26,20 +26,6 @@ interface CommentInterface
     public function getId();
 
     /**
-     * Set post.
-     *
-     * @param PostInterface $post
-     */
-    public function setPost(PostInterface $post);
-
-    /**
-     * Get post.
-     *
-     * @return PostInterface
-     */
-    public function getPost();
-
-    /**
      * Set author.
      *
      * @param string $author
@@ -82,18 +68,18 @@ interface CommentInterface
     public function getUrl();
 
     /**
-     * Set comment.
+     * Set body.
      *
-     * @param text $comment
+     * @param text $body
      */
-    public function setComment($comment);
+    public function setBody($body);
 
     /**
-     * Get comment.
+     * Get body.
      *
      * @return text
      */
-    public function getComment();
+    public function getBody();
 
     /**
      * Set createdAt.
