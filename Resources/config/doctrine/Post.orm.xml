@@ -11,7 +11,7 @@
         <field name="title" column="title" type="string" length="255" unique="true" />
 
         <field name="slug" column="slug" type="string" length="255">
-            <gedmo:slug fields="name" />
+            <gedmo:slug fields="title" />
         </field>
 
         <field name="body" column="body" type="text" />
