@@ -44,12 +44,14 @@ class PostType extends AbstractType
     {
         $builder
             ->add('category', null, array(
+                'property' => 'name',
                 'required' => false
             ))
             ->add('author')
             ->add('title')
             ->add('body')
             ->add('tags', null, array(
+                'property' => 'name',
                 'required' => false
             ))
         ;
