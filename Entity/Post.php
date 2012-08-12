@@ -12,9 +12,7 @@
 namespace Qb\Bundle\BlogBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Qb\Bundle\BlogBundle\Model\AbstractPost;
-use Qb\Bundle\BlogBundle\Model\CategoryInterface;
 use Qb\Bundle\BlogBundle\Model\CommentInterface;
 use Qb\Bundle\BlogBundle\Model\TagInterface;
 
@@ -25,21 +23,6 @@ use Qb\Bundle\BlogBundle\Model\TagInterface;
  */
 class Post extends AbstractPost
 {
-    /**
-     * @var CategoryInterface
-     */
-    protected $category;
-
-    /**
-     * @var Collection
-     */
-    protected $comments;
-
-    /**
-     * @var Collection
-     */
-    protected $tags;
-
     /**
      * Constructor.
      */
@@ -52,24 +35,6 @@ class Post extends AbstractPost
     /**
      * {@inheritdoc}
      */
-    public function setCategory(CategoryInterface $category = null)
-    {
-        $this->category = $category;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Add comment.
-     *
-     * @param CommentInterface $comment
-     */
     public function addComment(CommentInterface $comment)
     {
         if (!$this->comments->contains($comment)) {
@@ -78,9 +43,7 @@ class Post extends AbstractPost
     }
 
     /**
-     * Remove comment.
-     *
-     * @param CommentInterface $comment
+     * {@inheritdoc}
      */
     public function removeComment(CommentInterface $comment)
     {
@@ -90,19 +53,7 @@ class Post extends AbstractPost
     }
 
     /**
-     * Get comments.
-     *
-     * @return Collection
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    /**
-     * Add tag.
-     *
-     * @param TagInterface $tag
+     * {@inheritdoc}
      */
     public function addTag(TagInterface $tag)
     {
@@ -112,24 +63,12 @@ class Post extends AbstractPost
     }
 
     /**
-     * Remove tag.
-     *
-     * @param TagInterface $tag
+     * {@inheritdoc}
      */
     public function removeTag(TagInterface $tag)
     {
         if ($this->tags->contains($tag)) {
             $this->tags->removeElement($tag);
         }
-    }
-
-    /**
-     * Get tags.
-     *
-     * @return Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
     }
 }

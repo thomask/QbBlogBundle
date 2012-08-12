@@ -12,7 +12,6 @@
 namespace Qb\Bundle\BlogBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Qb\Bundle\BlogBundle\Model\AbstractTag;
 use Qb\Bundle\BlogBundle\Model\PostInterface;
 
@@ -24,11 +23,6 @@ use Qb\Bundle\BlogBundle\Model\PostInterface;
 class Tag extends AbstractTag
 {
     /**
-     * @var Collection
-     */
-    protected $posts;
-
-    /**
      * Constructor.
      */
     public function __construct()
@@ -37,9 +31,7 @@ class Tag extends AbstractTag
     }
 
     /**
-     * Add post.
-     *
-     * @param PostInterface $post
+     * {@inheritdoc}
      */
     public function addPost(PostInterface $post)
     {
@@ -49,24 +41,12 @@ class Tag extends AbstractTag
     }
 
     /**
-     * Remove post.
-     *
-     * @param PostInterface $post
+     * {@inheritdoc}
      */
     public function removePost(PostInterface $post)
     {
         if ($this->posts->contains($post)) {
             $this->posts->removeElement($post);
         }
-    }
-
-    /**
-     * Get posts.
-     *
-     * @return Collection
-     */
-    public function getPosts()
-    {
-        return $this->posts;
     }
 }

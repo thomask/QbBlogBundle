@@ -26,6 +26,20 @@ interface CommentInterface
     public function getId();
 
     /**
+     * Set post.
+     *
+     * @param PostInterface $post
+     */
+    public function setPost(PostInterface $post);
+
+    /**
+     * Get post.
+     *
+     * @return PostInterface
+     */
+    public function getPost();
+
+    /**
      * Set author.
      *
      * @param string $author
@@ -108,11 +122,4 @@ interface CommentInterface
      * @return \Datetime
      */
     public function getUpdatedAt();
-
-    /**
-     * To string.
-     *
-     * @return string
-     */
-    public function __toString();
 }

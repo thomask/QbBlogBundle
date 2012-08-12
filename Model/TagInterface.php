@@ -82,9 +82,23 @@ interface TagInterface
     public function getUpdatedAt();
 
     /**
-     * To string.
+     * Add post.
      *
-     * @return string
+     * @param PostInterface $post
      */
-    public function __toString();
+    public function addPost(PostInterface $post);
+
+    /**
+     * Remove post.
+     *
+     * @param PostInterface $post
+     */
+    public function removePost(PostInterface $post);
+
+    /**
+     * Get posts.
+     *
+     * @return \Traversable
+     */
+    public function getPosts();
 }

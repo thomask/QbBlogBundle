@@ -26,74 +26,6 @@ interface CategoryInterface
     public function getId();
 
     /**
-     * Set parent category.
-     *
-     * @param CategoryInterface $parent
-     */
-    public function setParent(CategoryInterface $parent = null);
-
-    /**
-     * Get parent category.
-     */
-    public function getParent();
-
-    /**
-     * Set left.
-     *
-     * @param integer $left
-     */
-    public function setLeft($left);
-
-    /**
-     * Get left.
-     *
-     * @return integer
-     */
-    public function getLeft();
-
-    /**
-     * Set right.
-     *
-     * @param integer $right
-     */
-    public function setRight($right);
-
-    /**
-     * Get right.
-     *
-     * @return integer
-     */
-    public function getRight();
-
-    /**
-     * Set level.
-     *
-     * @param integer $level
-     */
-    public function setLevel($level);
-
-    /**
-     * Get level.
-     *
-     * @return integer
-     */
-    public function getLevel();
-
-    /**
-     * Set root.
-     *
-     * @param integer $root
-     */
-    public function setRoot($root);
-
-    /**
-     * Get root.
-     *
-     * @var integer
-     */
-    public function getRoot();
-
-    /**
      * Set name.
      *
      * @param string $name
@@ -150,9 +82,23 @@ interface CategoryInterface
     public function getUpdatedAt();
 
     /**
-     * To string.
+     * Add post.
      *
-     * @return string
+     * @param PostInterface $post
      */
-    public function __toString();
+    public function addPost(PostInterface $post);
+
+    /**
+     * Remove post.
+     *
+     * @param PostInterface $post
+     */
+    public function removePost(PostInterface $post);
+
+    /**
+     * Get posts.
+     *
+     * @return \Traversable
+     */
+    public function getPosts();
 }

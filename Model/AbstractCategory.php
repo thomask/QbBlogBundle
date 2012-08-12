@@ -24,31 +24,6 @@ abstract class AbstractCategory implements CategoryInterface
     protected $id;
 
     /**
-     * @var CategoryInterface
-     */
-    protected $parent;
-
-    /**
-     * @var integer
-     */
-    protected $left;
-
-    /**
-     * @var integer
-     */
-    protected $right;
-
-    /**
-     * @var integer
-     */
-    protected $level;
-
-    /**
-     * @var integer
-     */
-    protected $root;
-
-    /**
      * @var string
      */
     protected $name;
@@ -69,91 +44,16 @@ abstract class AbstractCategory implements CategoryInterface
     protected $updatedAt;
 
     /**
+     * @var \Traversable
+     */
+    protected $posts;
+
+    /**
      * {@inheritdoc}
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setParent(CategoryInterface $parent = null)
-    {
-        $this->parent = $parent;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setLeft($left)
-    {
-        $this->left = $left;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getLeft()
-    {
-        return $this->left;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setRight($right)
-    {
-        $this->right = $right;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getRight()
-    {
-        return $this->right;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setLevel($level)
-    {
-        $this->level = $level;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getLevel()
-    {
-        return $this->level;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setRoot($root)
-    {
-        $this->root = $root;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getRoot()
-    {
-        return $this->root;
     }
 
     /**
@@ -223,8 +123,8 @@ abstract class AbstractCategory implements CategoryInterface
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function getPosts()
     {
-        return $this->name;
+        return $this->posts;
     }
 }

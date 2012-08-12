@@ -24,6 +24,11 @@ abstract class AbstractPost implements PostInterface
     protected $id;
 
     /**
+     * @var CategoryInterface
+     */
+    protected $category;
+
+    /**
      * @var string
      */
     protected $author;
@@ -54,11 +59,37 @@ abstract class AbstractPost implements PostInterface
     protected $updatedAt;
 
     /**
+     * @var \Traversable
+     */
+    protected $comments;
+
+    /**
+     * @var \Traversable
+     */
+    protected $tags;
+
+    /**
      * {@inheritdoc}
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCategory(CategoryInterface $category = null)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**
@@ -160,8 +191,16 @@ abstract class AbstractPost implements PostInterface
     /**
      * {@inheritdoc}
      */
-     public function __toString()
-     {
-        return $this->title;
-     }
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
 }

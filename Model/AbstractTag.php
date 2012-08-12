@@ -44,6 +44,11 @@ abstract class AbstractTag implements TagInterface
     protected $updatedAt;
 
     /**
+     * @var \Traversable
+     */
+    protected $posts;
+
+    /**
      * {@inheritdoc}
      */
     public function getId()
@@ -118,8 +123,8 @@ abstract class AbstractTag implements TagInterface
     /**
      * {@inheritdoc}
      */
-     public function __toString()
-     {
-        return $this->name;
-     }
+    public function getPosts()
+    {
+        return $this->posts;
+    }
 }

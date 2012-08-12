@@ -24,6 +24,11 @@ abstract class AbstractComment implements CommentInterface
     protected $id;
 
     /**
+     * @var PostInterface
+     */
+    protected $post;
+
+    /**
      * @var string
      */
     protected $author;
@@ -59,6 +64,22 @@ abstract class AbstractComment implements CommentInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPost(PostInterface $post)
+    {
+        $this->post = $post;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPost()
+    {
+        return $this->post;
     }
 
     /**
@@ -156,12 +177,4 @@ abstract class AbstractComment implements CommentInterface
     {
         return $this->updatedAt;
     }
-
-    /**
-     * {@inheritdoc}
-     */
-     public function __toString()
-     {
-        return $this->body;
-     }
 }
