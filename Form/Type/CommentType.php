@@ -48,7 +48,7 @@ class CommentType extends AbstractType
             ->add('url', null, array(
                 'required' => false
             ))
-            ->add('comment')
+            ->add('body')
         ;
     }
 
