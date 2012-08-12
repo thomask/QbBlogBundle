@@ -12,14 +12,14 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Abstract Comment Manager.
+ * Abstract Tag Manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class AbtsractCommentManager implements CommentManagerInterface
+abstract class AbstractTagManager implements TagManagerInterface
 {
     /**
-     * Comment class.
+     * Tag class.
      *
      * @var string $class
      */
@@ -38,7 +38,7 @@ abstract class AbtsractCommentManager implements CommentManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function createComment()
+    public function createTag()
     {
         $class = $this->class;
 

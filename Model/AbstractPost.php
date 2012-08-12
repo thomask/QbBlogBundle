@@ -19,7 +19,7 @@ use Doctrine\Common\Collections\Collection;
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class AbtsractPost implements PostInterface
+abstract class AbstractPost implements PostInterface
 {
     /**
      * @var integer

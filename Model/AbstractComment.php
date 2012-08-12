@@ -16,7 +16,7 @@ namespace Qb\Bundle\BlogBundle\Model;
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class AbtsractComment implements CommentInterface
+abstract class AbstractComment implements CommentInterface
 {
     /**
      * @var integer

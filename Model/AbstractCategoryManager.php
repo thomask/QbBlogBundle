@@ -16,7 +16,7 @@ namespace Qb\Bundle\BlogBundle\Model;
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class AbtsractCategoryManager implements CategoryManagerInterface
+abstract class AbstractCategoryManager implements CategoryManagerInterface
 {
     /**
      * Category class.

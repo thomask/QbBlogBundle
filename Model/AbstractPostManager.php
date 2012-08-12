@@ -12,14 +12,14 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Abstract Tag Manager.
+ * Abstract Post Manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class AbtsractTagManager implements TagManagerInterface
+abstract class AbstractPostManager implements PostManagerInterface
 {
     /**
-     * Tag class.
+     * Post class.
      *
      * @var string $class
      */
@@ -38,7 +38,7 @@ abstract class AbtsractTagManager implements TagManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function createTag()
+    public function createPost()
     {
         $class = $this->class;
 
