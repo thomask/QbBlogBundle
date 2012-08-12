@@ -12,21 +12,21 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Abstract Post Manager implementation.
+ * Abstract Comment Manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class PostManager implements PostManagerInterface
+abstract class AbtsractCommentManager implements CommentManagerInterface
 {
     /**
-     * Post class.
+     * Comment class.
      *
      * @var string $class
      */
     protected $class;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $class
      */
@@ -38,7 +38,7 @@ abstract class PostManager implements PostManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function createPost()
+    public function createComment()
     {
         $class = $this->class;
 

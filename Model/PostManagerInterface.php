@@ -12,12 +12,19 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Post Manager.
+ * Post Manager interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 interface PostManagerInterface
 {
+    /**
+     * Creates a new post.
+     *
+     * @return PostInterface
+     */
+    public function createPost();
+
     /**
      * Finds all posts.
      *
@@ -26,14 +33,14 @@ interface PostManagerInterface
     public function findPosts();
 
     /**
-     * Finds post by id.
+     * Finds a post by id.
      *
      * @param integer $id
      */
     public function findPost($id);
 
     /**
-     * Finds post by criteria.
+     * Finds a post by criteria.
      *
      * @param  array         $criteria
      * @return PostInterface
@@ -41,21 +48,14 @@ interface PostManagerInterface
     public function findPostBy(array $criteria);
 
     /**
-     * Creates new post object.
-     *
-     * @return PostInterface
-     */
-    public function createPost();
-
-    /**
-     * Saves post.
+     * Saves a post.
      *
      * @param PostInterface $post
      */
     public function savePost(PostInterface $post);
 
     /**
-     * Deletes post.
+     * Deletes a post.
      *
      * @param PostInterface $post
      */

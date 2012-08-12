@@ -12,12 +12,19 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Comment Manager.
+ * Comment Manager interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 interface CommentManagerInterface
 {
+    /**
+     * Creates a new comment.
+     *
+     * @return CommentInterface
+     */
+    public function createComment();
+
     /**
      * Finds all comments.
      *
@@ -26,14 +33,14 @@ interface CommentManagerInterface
     public function findComments();
 
     /**
-     * Finds comment by id.
+     * Finds a comment by id.
      *
      * @param integer $id
      */
     public function findComment($id);
 
     /**
-     * Finds comment by criteria.
+     * Finds a comment by criteria.
      *
      * @param  array            $criteria
      * @return CommentInterface
@@ -41,21 +48,14 @@ interface CommentManagerInterface
     public function findCommentBy(array $criteria);
 
     /**
-     * Creates new comment object.
-     *
-     * @return CommentInterface
-     */
-    public function createComment();
-
-    /**
-     * Saves comment.
+     * Saves a comment.
      *
      * @param CommentInterface $comment
      */
     public function saveComment(CommentInterface $comment);
 
     /**
-     * Deletes comment.
+     * Deletes a comment.
      *
      * @param CommentInterface $comment
      */

@@ -14,14 +14,14 @@ namespace Qb\Bundle\BlogBundle\Doctrine;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Qb\Bundle\BlogBundle\Model\CommentInterface;
-use Qb\Bundle\BlogBundle\Model\CommentManager as BaseCommentManager;
+use Qb\Bundle\BlogBundle\Model\AbstractCommentManager;
 
 /**
  * Comment manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-class CommentManager extends BaseCommentManager
+class CommentManager extends AbstractCommentManager
 {
     /**
      * @var ObjectManager $objectManager

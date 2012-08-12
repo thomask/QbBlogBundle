@@ -11,11 +11,10 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * Tag model.
+ * Tag interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -57,32 +56,32 @@ interface TagInterface
     public function getSlug();
 
     /**
-     * Set created.
+     * Set createdAt.
      *
-     * @param \Datetime $created
+     * @param \Datetime $createdAt
      */
-    public function setCreated(\DateTime $created);
+    public function setCreatedAt(\DateTime $createdAt);
 
     /**
-     * Get created.
+     * Get createdAt.
      *
      * @return \Datetime
      */
-    public function getCreated();
+    public function getCreatedAt();
 
     /**
-     * Set updated.
+     * Set updatedAt.
      *
-     * @param \Datetime $updated
+     * @param \Datetime $updatedAt
      */
-    public function setUpdated(\DateTime $updated);
+    public function setUpdatedAt(\DateTime $updatedAt);
 
     /**
-     * Get updated.
+     * Get updatedAt.
      *
      * @return \Datetime
      */
-    public function getUpdated();
+    public function getUpdatedAt();
 
     /**
      * Add post.

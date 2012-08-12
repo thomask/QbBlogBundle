@@ -15,59 +15,59 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * Abstract Post model implementation.
+ * Abstract Post.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class Post implements PostInterface
+abstract class AbtsractPost implements PostInterface
 {
     /**
-     * @var integer $id
+     * @var integer
      */
     protected $id;
 
     /**
-     * @var CategoryInterface $category
+     * @var CategoryInterface
      */
     protected $category;
 
     /**
-     * @var string $author
+     * @var string
      */
     protected $author;
 
     /**
-     * @var string $title
+     * @var string
      */
     protected $title;
 
     /**
-     * @var string $slug
+     * @var string
      */
     protected $slug;
 
     /**
-     * @var text $body
+     * @var text
      */
     protected $body;
 
     /**
-     * @var \Datetime $created
+     * @var \Datetime
      */
-    protected $created;
+    protected $createdAt;
 
     /**
-     * @var \Datetime $updated
+     * @var \Datetime
      */
-    protected $updated;
+    protected $updatedAt;
 
     /**
-     * @var Collection $tags
+     * @var Collection
      */
     protected $tags;
 
     /**
-     * @var Collection $comments
+     * @var Collection
      */
     protected $comments;
 
@@ -76,7 +76,7 @@ abstract class Post implements PostInterface
      */
     public function __construct()
     {
-        $this->tags = new ArrayCollection();
+        $this->tags     = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
@@ -171,33 +171,33 @@ abstract class Post implements PostInterface
     /**
      * {@inheritdoc}
      */
-    public function setCreated(\DateTime $created)
+    public function setCreatedAt(\DateTime $createdAt)
     {
-        $this->created = $created;
+        $this->createdAt = $createdAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getCreated()
+    public function getCreatedAt()
     {
-        return $this->created;
+        return $this->createdAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setUpdated(\DateTime $updated)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
-        $this->updated = $updated;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getUpdated()
+    public function getUpdatedAt()
     {
-        return $this->updated;
+        return $this->updatedAt;
     }
 
     /**

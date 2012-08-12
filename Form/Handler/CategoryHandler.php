@@ -17,24 +17,24 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Category form handler.
+ * Category Handler.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class CategoryHandler
 {
     /**
-     * @var FormInterface $form
+     * @var FormInterface
      */
     private $form;
 
     /**
-     * @var Request $request
+     * @var Request
      */
     private $request;
 
     /**
-     * @var CategoryManagerInterface $categoryManager
+     * @var CategoryManagerInterface
      */
     private $categoryManager;
 

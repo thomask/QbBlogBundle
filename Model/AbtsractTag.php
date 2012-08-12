@@ -15,39 +15,39 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * Abstract Tag model implementation.
+ * Abstract Tag.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class Tag implements TagInterface
+abstract class AbtsractTag implements TagInterface
 {
     /**
-     * @var integer $id
+     * @var integer
      */
     protected $id;
 
     /**
-     * @var string $name
+     * @var string
      */
     protected $name;
 
     /**
-     * @var string $slug
+     * @var string
      */
     protected $slug;
 
     /**
-     * @var \Datetime $created
+     * @var \Datetime
      */
-    protected $created;
+    protected $createdAt;
 
     /**
-     * @var \Datetime $updated
+     * @var \Datetime
      */
-    protected $updated;
+    protected $updatedAt;
 
     /**
-     * @var Collection $posts
+     * @var Collection
      */
     protected $posts;
 
@@ -102,33 +102,33 @@ abstract class Tag implements TagInterface
     /**
      * {@inheritdoc}
      */
-    public function setCreated(\DateTime $created)
+    public function setCreatedAt(\DateTime $createdAt)
     {
-        $this->created = $created;
+        $this->createdAt = $createdAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getCreated()
+    public function getCreatedAt()
     {
-        return $this->created;
+        return $this->createdAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setUpdated(\DateTime $updated)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
-        $this->updated = $updated;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getUpdated()
+    public function getUpdatedAt()
     {
-        return $this->updated;
+        return $this->updatedAt;
     }
 
     /**

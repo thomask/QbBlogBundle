@@ -18,24 +18,24 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Comment form handler.
+ * Comment Handler.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class CommentHandler
 {
     /**
-     * @var FormInterface $form
+     * @var FormInterface
      */
     private $form;
 
     /**
-     * @var Request $request
+     * @var Request
      */
     private $request;
 
     /**
-     * @var CommentManagerInterface $categoryManager
+     * @var CommentManagerInterface
      */
     private $commentManager;
 

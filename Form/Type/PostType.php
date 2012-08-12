@@ -16,14 +16,14 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Post form type.
+ * Post Type.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class PostType extends AbstractType
 {
     /**
-     * @var string $class
+     * @var string
      */
     private $class;
 

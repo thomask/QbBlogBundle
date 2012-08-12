@@ -16,14 +16,14 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Category form type.
+ * Category Type.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class CategoryType extends AbstractType
 {
     /**
-     * @var string $class
+     * @var string
      */
     private $class;
 
@@ -46,6 +46,7 @@ class CategoryType extends AbstractType
             ->add('name')
             ->add('parent', null, array(
                 'empty_value' => 'Select a parent category',
+                'property'    => 'indentedName',
                 'required'    => false
             ))
         ;

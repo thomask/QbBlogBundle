@@ -17,24 +17,24 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Post form handler.
+ * Post Handler.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class PostHandler
 {
     /**
-     * @var FormInterface $form
+     * @var FormInterface
      */
     private $form;
 
     /**
-     * @var Request $request
+     * @var Request
      */
     private $request;
 
     /**
-     * @var PostManagerInterface $postManager
+     * @var PostManagerInterface
      */
     private $postManager;
 

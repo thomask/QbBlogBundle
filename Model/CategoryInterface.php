@@ -11,11 +11,10 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * Category model.
+ * Category interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -41,46 +40,46 @@ interface CategoryInterface
     public function getParent();
 
     /**
-     * Set lft.
+     * Set left.
      *
-     * @param integer $lft
+     * @param integer $left
      */
-    public function setLft($lft);
+    public function setLeft($left);
 
     /**
-     * Get lft.
+     * Get left.
      *
      * @return integer
      */
-    public function getLft();
+    public function getLeft();
 
     /**
-     * Set rgt.
+     * Set right.
      *
-     * @param integer $rgt
+     * @param integer $right
      */
-    public function setRgt($rgt);
+    public function setRight($right);
 
     /**
-     * Get rgt.
-     *
-     * @return integer
-     */
-    public function getRgt();
-
-    /**
-     * Set lvl.
-     *
-     * @param integer $lvl
-     */
-    public function setLvl($lvl);
-
-    /**
-     * Get lvl.
+     * Get right.
      *
      * @return integer
      */
-    public function getLvl();
+    public function getRight();
+
+    /**
+     * Set level.
+     *
+     * @param integer $level
+     */
+    public function setLevel($level);
+
+    /**
+     * Get level.
+     *
+     * @return integer
+     */
+    public function getLevel();
 
     /**
      * Set root.
@@ -132,32 +131,32 @@ interface CategoryInterface
     public function getSlug();
 
     /**
-     * Set created.
+     * Set createdAt.
      *
-     * @param \Datetime $created
+     * @param \Datetime $createdAt
      */
-    public function setCreated(\DateTime $created);
+    public function setCreatedAt(\DateTime $createdAt);
 
     /**
-     * Get created.
+     * Get createdAt.
      *
      * @return \Datetime
      */
-    public function getCreated();
+    public function getCreatedAt();
 
     /**
-     * Set updated.
+     * Set updatedAt.
      *
-     * @param \Datetime $updated
+     * @param \Datetime $updatedAt
      */
-    public function setUpdated(\DateTime $updated);
+    public function setUpdatedAt(\DateTime $updatedAt);
 
     /**
-     * Get updated.
+     * Get updatedAt.
      *
      * @return \Datetime
      */
-    public function getUpdated();
+    public function getUpdatedAt();
 
     /**
      * Add child category.

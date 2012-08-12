@@ -16,14 +16,14 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Comment form type.
+ * Comment Type.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class CommentType extends AbstractType
 {
     /**
-     * @var string $class
+     * @var string
      */
     private $class;
 

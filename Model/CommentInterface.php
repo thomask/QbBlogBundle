@@ -12,7 +12,7 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Comment model.
+ * Comment interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -96,32 +96,32 @@ interface CommentInterface
     public function getComment();
 
     /**
-     * Set created.
+     * Set createdAt.
      *
-     * @param \Datetime $created
+     * @param \Datetime $createdAt
      */
-    public function setCreated(\DateTime $created);
+    public function setCreatedAt(\DateTime $createdAt);
 
     /**
-     * Get created.
+     * Get createdAt.
      *
      * @return \Datetime
      */
-    public function getCreated();
+    public function getCreatedAt();
 
     /**
-     * Set updated.
+     * Set updatedAt.
      *
-     * @param \Datetime $updated
+     * @param \Datetime $updatedAt
      */
-    public function setUpdated(\DateTime $updated);
+    public function setUpdatedAt(\DateTime $updatedAt);
 
     /**
-     * Get updated.
+     * Get updatedAt.
      *
      * @return \Datetime
      */
-    public function getUpdated();
+    public function getUpdatedAt();
 
     /**
      * To string.

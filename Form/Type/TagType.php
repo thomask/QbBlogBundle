@@ -16,14 +16,14 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Tag form type.
+ * Tag Type.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class TagType extends AbstractType
 {
     /**
-     * @var string $class
+     * @var string
      */
     private $class;
 

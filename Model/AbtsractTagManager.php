@@ -12,21 +12,21 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Abstract Category Manager implementation.
+ * Abstract Tag Manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class CategoryManager implements CategoryManagerInterface
+abstract class AbtsractTagManager implements TagManagerInterface
 {
     /**
-     * Category class.
+     * Tag class.
      *
      * @var string $class
      */
     protected $class;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $class
      */
@@ -38,7 +38,7 @@ abstract class CategoryManager implements CategoryManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function createCategory()
+    public function createTag()
     {
         $class = $this->class;
 

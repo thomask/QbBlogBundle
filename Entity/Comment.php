@@ -11,13 +11,13 @@
 
 namespace Qb\Bundle\BlogBundle\Entity;
 
-use Qb\Bundle\BlogBundle\Model\Comment as BaseComment;
+use Qb\Bundle\BlogBundle\Model\AbstractComment;
 
 /**
  * Comment entity.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-class Comment extends BaseComment
+class Comment extends AbstractComment
 {
 }

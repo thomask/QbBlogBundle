@@ -12,51 +12,51 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Abstract Comment model implementation.
+ * Abstract Comment.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class Comment implements CommentInterface
+abstract class AbtsractComment implements CommentInterface
 {
     /**
-     * @var integer $id
+     * @var integer
      */
     protected $id;
 
     /**
-     * @var PostInterface $post
+     * @var PostInterface
      */
     protected $post;
 
     /**
-     * @var string $author
+     * @var string
      */
     protected $author;
 
     /**
-     * @var string $email
+     * @var string
      */
     protected $email;
 
     /**
-     * @var string $url
+     * @var string
      */
     protected $url;
 
     /**
-     * @var text $comment
+     * @var text
      */
     protected $comment;
 
     /**
-     * @var \Datetime $created
+     * @var \Datetime
      */
-    protected $created;
+    protected $createdAt;
 
     /**
-     * @var \Datetime $updated
+     * @var \Datetime
      */
-    protected $updated;
+    protected $updatedAt;
 
     /**
      * {@inheritdoc}
@@ -149,33 +149,33 @@ abstract class Comment implements CommentInterface
     /**
      * {@inheritdoc}
      */
-    public function setCreated(\DateTime $created)
+    public function setCreatedAt(\DateTime $createdAt)
     {
-        $this->created = $created;
+        $this->createdAt = $createdAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getCreated()
+    public function getCreatedAt()
     {
-        return $this->created;
+        return $this->createdAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setUpdated(\DateTime $updated)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
-        $this->updated = $updated;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getUpdated()
+    public function getUpdatedAt()
     {
-        return $this->updated;
+        return $this->updatedAt;
     }
 
     /**

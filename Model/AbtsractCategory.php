@@ -15,69 +15,69 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * Abstract Category model implementation.
+ * Abstract Category.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class Category implements CategoryInterface
+abstract class AbtsractCategory implements CategoryInterface
 {
     /**
-     * @var integer $id
+     * @var integer
      */
     protected $id;
 
     /**
-     * @var CategoryInterface $parent
+     * @var CategoryInterface
      */
     protected $parent;
 
     /**
-     * @var integer $lft
+     * @var integer
      */
-    protected $lft;
+    protected $left;
 
     /**
-     * @var integer $rgt
+     * @var integer
      */
-    protected $rgt;
+    protected $right;
 
     /**
-     * @var integer $lvl
+     * @var integer
      */
-    protected $lvl;
+    protected $level;
 
     /**
-     * @var integer $root
+     * @var integer
      */
     protected $root;
 
     /**
-     * @var string $name
+     * @var string
      */
     protected $name;
 
     /**
-     * @var string $slug
+     * @var string
      */
     protected $slug;
 
     /**
-     * @var \Datetime $created
+     * @var \Datetime
      */
-    protected $created;
+    protected $createdAt;
 
     /**
-     * @var \Datetime $updated
+     * @var \Datetime
      */
-    protected $updated;
+    protected $updatedAt;
 
     /**
-     * @var Collection $children
+     * @var Collection
      */
     protected $children;
 
     /**
-     * @var Collection $posts
+     * @var Collection
      */
     protected $posts;
 
@@ -117,49 +117,49 @@ abstract class Category implements CategoryInterface
     /**
      * {@inheritdoc}
      */
-    public function setLft($lft)
+    public function setLeft($left)
     {
-        $this->lft = $lft;
+        $this->left = $left;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getLft()
+    public function getLeft()
     {
-        return $this->lft;
+        return $this->left;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setRgt($rgt)
+    public function setRight($right)
     {
-        $this->rgt = $rgt;
+        $this->right = $right;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getRgt()
+    public function getRight()
     {
-        return $this->rgt;
+        return $this->right;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setLvl($lvl)
+    public function setLevel($level)
     {
-        $this->lvl = $lvl;
+        $this->level = $level;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getLvl()
+    public function getLevel()
     {
-        return $this->lvl;
+        return $this->level;
     }
 
     /**
@@ -199,7 +199,7 @@ abstract class Category implements CategoryInterface
      */
     public function getIndentedName()
     {
-        return str_repeat('--', $this->lvl).' '.$this->name;
+        return str_repeat('--', $this->level).' '.$this->name;
     }
 
     /**
@@ -221,33 +221,33 @@ abstract class Category implements CategoryInterface
     /**
      * {@inheritdoc}
      */
-    public function setCreated(\DateTime $created)
+    public function setCreatedAt(\DateTime $createdAt)
     {
-        $this->created = $created;
+        $this->createdAt = $createdAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getCreated()
+    public function getCreatedAt()
     {
-        return $this->created;
+        return $this->createdAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setUpdated(\DateTime $updated)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
-        $this->updated = $updated;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getUpdated()
+    public function getUpdatedAt()
     {
-        return $this->updated;
+        return $this->updatedAt;
     }
 
     /**

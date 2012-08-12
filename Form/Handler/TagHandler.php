@@ -17,24 +17,24 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Tag form handler.
+ * Tag Handler.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class TagHandler
 {
     /**
-     * @var FormInterface $form
+     * @var FormInterface
      */
     private $form;
 
     /**
-     * @var Request $request
+     * @var Request
      */
     private $request;
 
     /**
-     * @var TagManagerInterface $tagManager
+     * @var TagManagerInterface
      */
     private $tagManager;
 

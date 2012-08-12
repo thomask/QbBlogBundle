@@ -12,7 +12,7 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Tag Manager.
+ * Tag Manager interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -26,14 +26,14 @@ interface TagManagerInterface
     public function findTags();
 
     /**
-     * Find tag by id.
+     * Find a tag by id.
      *
      * @param integer $id
      */
     public function findTag($id);
 
     /**
-     * Finds tag criteria.
+     * Finds a tag criteria.
      *
      * @param  array        $criteria
      * @return TagInterface
@@ -41,21 +41,21 @@ interface TagManagerInterface
     public function findTagBy(array $criteria);
 
     /**
-     * Creates new tag object.
+     * Creates a new tag.
      *
      * @return TagInterface
      */
     public function createTag();
 
     /**
-     * Saves tag.
+     * Saves a tag.
      *
      * @param TagInterface $tag
      */
     public function saveTag(TagInterface $tag);
 
     /**
-     * Deletes tag.
+     * Deletes a tag.
      *
      * @param TagInterface $tag
      */

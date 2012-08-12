@@ -14,14 +14,14 @@ namespace Qb\Bundle\BlogBundle\Doctrine;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Qb\Bundle\BlogBundle\Model\TagInterface;
-use Qb\Bundle\BlogBundle\Model\TagManager as BaseTagManager;
+use Qb\Bundle\BlogBundle\Model\AbstractTagManager;
 
 /**
  * Tag manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-class TagManager extends BaseTagManager
+class TagManager extends AbstractTagManager
 {
     /**
      * @var ObjectManager $objectManager

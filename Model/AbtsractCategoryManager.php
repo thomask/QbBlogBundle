@@ -12,21 +12,21 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Abstract Comment Manager implementation.
+ * Abstract Category Manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class CommentManager implements CommentManagerInterface
+abstract class AbtsractCategoryManager implements CategoryManagerInterface
 {
     /**
-     * Comment class.
+     * Category class.
      *
-     * @var string $class
+     * @var string
      */
     protected $class;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $class
      */
@@ -38,7 +38,7 @@ abstract class CommentManager implements CommentManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function createComment()
+    public function createCategory()
     {
         $class = $this->class;
 

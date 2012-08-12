@@ -14,14 +14,14 @@ namespace Qb\Bundle\BlogBundle\Doctrine;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Qb\Bundle\BlogBundle\Model\CategoryInterface;
-use Qb\Bundle\BlogBundle\Model\CategoryManager as BaseCategoryManager;
+use Qb\Bundle\BlogBundle\Model\AbstractCategoryManager;
 
 /**
  * Category manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-class CategoryManager extends BaseCategoryManager
+class CategoryManager extends AbstractCategoryManager
 {
     /**
      * @var ObjectManager $objectManager

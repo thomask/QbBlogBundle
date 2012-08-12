@@ -12,12 +12,19 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Category Manager.
+ * Category Manager interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 interface CategoryManagerInterface
 {
+    /**
+     * Creates a new category.
+     *
+     * @return CategoryInterface
+     */
+    public function createCategory();
+
     /**
      * Finds all categories.
      *
@@ -26,14 +33,14 @@ interface CategoryManagerInterface
     public function findCategories();
 
     /**
-     * Finds category by id.
+     * Finds a category by id.
      *
      * @param integer $id
      */
     public function findCategory($id);
 
     /**
-     * Finds category by criteria.
+     * Finds a category by criteria.
      *
      * @param  array             $criteria
      * @return CategoryInterface
@@ -41,21 +48,14 @@ interface CategoryManagerInterface
     public function findCategoryBy(array $criteria);
 
     /**
-     * Creates new category object.
-     *
-     * @return CategoryInterface
-     */
-    public function createCategory();
-
-    /**
-     * Saves category.
+     * Saves a category.
      *
      * @param CategoryInterface $category
      */
     public function saveCategory(CategoryInterface $category);
 
     /**
-     * Deletes category.
+     * Deletes a category.
      *
      * @param CategoryInterface $category
      */

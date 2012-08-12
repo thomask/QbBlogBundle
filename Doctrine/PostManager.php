@@ -14,14 +14,14 @@ namespace Qb\Bundle\BlogBundle\Doctrine;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Qb\Bundle\BlogBundle\Model\PostInterface;
-use Qb\Bundle\BlogBundle\Model\PostManager as BasePostManager;
+use Qb\Bundle\BlogBundle\Model\AbstractPostManager;
 
 /**
  * Post manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-class PostManager extends BasePostManager
+class PostManager extends AbstractPostManager
 {
     /**
      * @var ObjectManager $objectManager
