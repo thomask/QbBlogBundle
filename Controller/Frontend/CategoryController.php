@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Frontend category controller.
+ * Category controller.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -38,7 +38,7 @@ class CategoryController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Category:show.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend/Category:show.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'category' => $category,
             )

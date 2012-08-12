@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Frontend post controller.
+ * Post controller.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -40,7 +40,7 @@ class PostController extends ContainerAware
         $form = $this->container->get('qb_blog.comment.form');
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Post:show.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend/Post:show.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'post' => $post,
                 'form' => $form->createView(),

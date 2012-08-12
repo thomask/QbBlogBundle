@@ -53,7 +53,7 @@ class PostHandler
     }
 
     /**
-     * Handles the form submission.
+     * Processes the form submission.
      *
      * @param PostInterface $post
      */
@@ -79,7 +79,8 @@ class PostHandler
     }
 
     /**
-     * Manipulates data from validated form submission.
+     * Defines a method handler for the success event, which executes when the
+     * form submission completes successfully.
      *
      * @param PostInterface $post
      */

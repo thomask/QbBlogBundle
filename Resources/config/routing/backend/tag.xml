@@ -5,22 +5,22 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="qb_blog_backend_tag" pattern="/">
-        <default key="_controller">QbBlogBundle:Backend\Tag:index</default>
+        <default key="_controller">QbBlogBundle:Backend/Tag:index</default>
         <requirement key="_method">GET</requirement>
     </route>
 
     <route id="qb_blog_backend_tag_new" pattern="/new">
-        <default key="_controller">QbBlogBundle:Backend\Tag:new</default>
+        <default key="_controller">QbBlogBundle:Backend/Tag:new</default>
         <requirement key="_method">GET|POST</requirement>
     </route>
 
     <route id="qb_blog_backend_tag_edit" pattern="/{id}/edit">
-        <default key="_controller">QbBlogBundle:Backend\Tag:edit</default>
+        <default key="_controller">QbBlogBundle:Backend/Tag:edit</default>
         <requirement key="_method">GET|POST</requirement>
     </route>
 
     <route id="qb_blog_backend_tag_delete" pattern="/{id}/delete/{token}">
-        <default key="_controller">QbBlogBundle:Backend\Tag:delete</default>
+        <default key="_controller">QbBlogBundle:Backend/Tag:delete</default>
         <requirement key="_method">GET</requirement>
     </route>
 </routes>

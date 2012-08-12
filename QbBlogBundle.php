@@ -16,15 +16,12 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
+ * QbBlogBundle.
+ *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
 class QbBlogBundle extends Bundle
 {
-    /**
-     * @const DRIVER_DOCTRINE_ORM
-     */
-    const DRIVER_DOCTRINE_ORM = 'orm';
-
     /**
      * {@inheritDoc}
      */
@@ -33,17 +30,5 @@ class QbBlogBundle extends Bundle
         parent::build($container);
 
         $container->addCompilerPass(new ValidationPass());
-    }
-
-    /**
-     * Get supported storage.
-     *
-     * @return array
-     */
-    public static function getSupportedStorage()
-    {
-        return array(
-            self::DRIVER_DOCTRINE_ORM
-        );
     }
 }

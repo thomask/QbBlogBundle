@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Backend category controller.
+ * Category controller.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -31,7 +31,7 @@ class CategoryController extends ContainerAware
         $categories = $this->container->get('qb_blog.category_manager')->findCategories();
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend\Category:index.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend/Category:index.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'categories' => $categories,
             )
@@ -51,7 +51,7 @@ class CategoryController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend\Category:new.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend/Category:new.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'form' => $form->createView(),
             )
@@ -80,7 +80,7 @@ class CategoryController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend\Category:edit.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend/Category:edit.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'category' => $category,
                 'form'     => $form->createView(),

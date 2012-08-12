@@ -11,7 +11,6 @@
 
 namespace Qb\Bundle\BlogBundle\DependencyInjection;
 
-use Qb\Bundle\BlogBundle\QbBlogBundle;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -24,6 +23,23 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     /**
+     * @const DRIVER_DOCTRINE_ORM
+     */
+    const DRIVER_DOCTRINE_ORM = 'orm';
+
+    /**
+     * Get supported storage.
+     *
+     * @return array
+     */
+    public static function getSupportedStorage()
+    {
+        return array(
+            self::DRIVER_DOCTRINE_ORM
+        );
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function getConfigTreeBuilder()
@@ -35,8 +51,8 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('storage')
                     ->validate()
-                        ->ifNotInArray(QbBlogBundle::getSupportedStorage())
-                        ->thenInvalid('The storage %s is not supported. Please choose one of '.json_encode(QbBlogBundle::getSupportedStorage()))
+                        ->ifNotInArray(static::getSupportedStorage())
+                        ->thenInvalid('The storage %s is not supported. Please choose one of '.json_encode(static::getSupportedStorage()))
                     ->end()
                     ->cannotBeOverwritten()
                     ->isRequired()

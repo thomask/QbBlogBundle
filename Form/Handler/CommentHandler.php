@@ -54,7 +54,7 @@ class CommentHandler
     }
 
     /**
-     * Handles the form submission.
+     * Processes the form submission.
      *
      * @param CommentInterface $comment
      * @param PostInterface    $post
@@ -85,7 +85,8 @@ class CommentHandler
     }
 
     /**
-     * Manipulates data from validated form submission.
+     * Defines a method handler for the success event, which executes when the
+     * form submission completes successfully.
      *
      * @param CommentInterface $comment
      */

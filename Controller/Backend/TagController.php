@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Backend tag controller.
+ * Tag controller.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -31,7 +31,7 @@ class TagController extends ContainerAware
         $tags = $this->container->get('qb_blog.tag_manager')->findTags();
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend\Tag:index.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend/Tag:index.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'tags' => $tags,
             )
@@ -51,7 +51,7 @@ class TagController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend\Tag:new.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend/Tag:new.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'form' => $form->createView(),
             )
@@ -80,7 +80,7 @@ class TagController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend\Tag:edit.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend/Tag:edit.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'tag'  => $tag,
                 'form' => $form->createView(),

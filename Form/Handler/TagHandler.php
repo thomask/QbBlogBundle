@@ -53,7 +53,7 @@ class TagHandler
     }
 
     /**
-     * Handles the form submission.
+     * Processes the form submission.
      *
      * @param TagInterface $tag
      */
@@ -79,7 +79,8 @@ class TagHandler
     }
 
     /**
-     * Manipulates data from validated form submission.
+     * Defines a method handler for the success event, which executes when the
+     * form submission completes successfully.
      *
      * @param TagInterface $tag
      */

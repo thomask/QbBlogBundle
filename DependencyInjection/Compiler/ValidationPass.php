@@ -34,7 +34,7 @@ class ValidationPass implements CompilerPassInterface
         }
 
         $files = $container->getParameter('validator.mapping.loader.xml_files_loader.mapping_files');
-        $validationFile = sprintf(__DIR__.'/../../Resources/config/validation/%s.xml', $container->getParameter('qb_blog.storage'));
+        $validationFile = __DIR__.'/../../Resources/config/validation/'.$container->getParameter('qb_blog.storage').'.xml';
 
         if (is_file($validationFile)) {
             $files[] = realpath($validationFile);

@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Frontend comment controller.
+ * Comment controller.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -46,7 +46,7 @@ class CommentController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend\Comment:new.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend/Comment:new.html.'.$this->container->getParameter('qb_blog.template_engine'),
             array(
                 'post' => $post,
                 'form' => $form->createView(),

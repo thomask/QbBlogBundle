@@ -53,7 +53,7 @@ class CategoryHandler
     }
 
     /**
-     * Handles the form submission.
+     * Processes the form submission.
      *
      * @param CategoryManagerInterface $categoryManager
      */
@@ -79,7 +79,8 @@ class CategoryHandler
     }
 
     /**
-     * Manipulates data from validated form submission.
+     * Defines a method handler for the success event, which executes when the
+     * form submission completes successfully.
      *
      * @param CategoryManagerInterface $categoryManager
      */
