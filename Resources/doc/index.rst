@@ -258,5 +258,7 @@ Next Steps
 The following documents are available:
 
 - `Configuration Reference`_
+- `Integration with an user model`_
 
 .. _Configuration Reference: configuration_reference.rst
+.. _Integration with an user model: integration_with_user_model.rst
