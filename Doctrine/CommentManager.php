@@ -18,7 +18,7 @@ use Qb\Bundle\BlogBundle\Model\AbstractCommentManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * Comment manager.
+ * Comment Manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

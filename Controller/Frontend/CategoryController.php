@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Category controller.
+ * Category Controller.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

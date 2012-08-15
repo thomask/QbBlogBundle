@@ -11,6 +11,7 @@
 
 namespace Qb\Bundle\BlogBundle\Form\Handler;
 
+use InvalidArgumentException;
 use Qb\Bundle\BlogBundle\Model\CommentInterface;
 use Qb\Bundle\BlogBundle\Model\CommentManagerInterface;
 use Qb\Bundle\BlogBundle\Model\PostInterface;
@@ -63,9 +64,11 @@ class CommentHandler
     {
         if (null === $comment) {
             $comment = $this->commentManager->createComment();
-        }
 
-        if (null !== $post) {
+            if (null === $post) {
+                throw new InvalidArgumentException('The comment must belong to a post');
+            }
+
             $comment->setPost($post);
         }
 

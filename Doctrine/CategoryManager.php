@@ -18,7 +18,7 @@ use Qb\Bundle\BlogBundle\Model\AbstractCategoryManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * Category manager.
+ * Category Manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

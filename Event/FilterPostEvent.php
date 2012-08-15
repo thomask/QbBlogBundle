@@ -15,7 +15,7 @@ use Qb\Bundle\BlogBundle\Model\PostInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Filter post event.
+ * Filter Post Event.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

@@ -66,7 +66,7 @@ abstract class AbstractCommentManager implements CommentManagerInterface
     }
 
     /**
-     * Saves a comment.
+     * Performs the saving of a comment.
      *
      * @param CommentInterface $comment
      * @param bool             $andFlush
@@ -88,7 +88,7 @@ abstract class AbstractCommentManager implements CommentManagerInterface
     }
 
     /**
-     * Deletes a comment.
+     * Performs the deleting of a comment.
      *
      * @param CommentInterface $comment
      */

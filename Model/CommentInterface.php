@@ -11,8 +11,10 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
+use \DateTime;
+
 /**
- * Comment interface.
+ * Comment Interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -100,7 +102,7 @@ interface CommentInterface
      *
      * @param \Datetime $createdAt
      */
-    public function setCreatedAt(\DateTime $createdAt);
+    public function setCreatedAt(DateTime $createdAt);
 
     /**
      * Get createdAt.
@@ -114,7 +116,7 @@ interface CommentInterface
      *
      * @param \Datetime $updatedAt
      */
-    public function setUpdatedAt(\DateTime $updatedAt);
+    public function setUpdatedAt(DateTime $updatedAt);
 
     /**
      * Get updatedAt.

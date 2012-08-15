@@ -12,7 +12,7 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Tag Manager interface.
+ * Tag Manager Interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -62,7 +62,7 @@ interface TagManagerInterface
     public function deleteTag(TagInterface $tag);
 
     /**
-     * Get the fully-qualified class name of tag.
+     * Get the fully-qualified class name of tag model.
      *
      * @return string
      */

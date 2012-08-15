@@ -18,7 +18,7 @@ use Qb\Bundle\BlogBundle\Model\AbstractPostManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * Post manager.
+ * Post Manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

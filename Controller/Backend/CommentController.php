@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Comment controller.
+ * Comment Controller.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

@@ -66,7 +66,7 @@ abstract class AbstractCategoryManager implements CategoryManagerInterface
     }
 
     /**
-     * Saves a category.
+     * Performs the saving of a category.
      *
      * @param CategoryInterface $category
      * @param bool              $andFlush
@@ -88,7 +88,7 @@ abstract class AbstractCategoryManager implements CategoryManagerInterface
     }
 
     /**
-     * Deletes a category.
+     * Performs the deleting of a category.
      *
      * @param CategoryInterface $category
      */

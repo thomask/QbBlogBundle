@@ -12,7 +12,7 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Comment Manager interface.
+ * Comment Manager Interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -62,7 +62,7 @@ interface CommentManagerInterface
     public function deleteComment(CommentInterface $comment);
 
     /**
-     * Get the fully-qualified class name of comment.
+     * Get the fully-qualified class name of comment model.
      *
      * @return string
      */

@@ -15,7 +15,7 @@ use Qb\Bundle\BlogBundle\Model\CommentInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Filter comment event.
+ * Filter Comment Event.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

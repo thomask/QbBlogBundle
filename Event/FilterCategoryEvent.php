@@ -15,7 +15,7 @@ use Qb\Bundle\BlogBundle\Model\CategoryInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Filter category event.
+ * Filter Category Event.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

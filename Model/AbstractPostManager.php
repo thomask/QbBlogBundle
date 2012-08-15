@@ -42,8 +42,8 @@ abstract class AbstractPostManager implements PostManagerInterface
      */
     public function createPost()
     {
-        $class   = $this->getClass();
-        $post = new $class;
+        $class = $this->getClass();
+        $post  = new $class;
 
         $event = new FilterPostEvent($post);
         $this->eventDispatcher->dispatch(QbBlogEvents::POST_CREATE, $event);
@@ -66,7 +66,7 @@ abstract class AbstractPostManager implements PostManagerInterface
     }
 
     /**
-     * Saves a post.
+     * Performs the saving of a post.
      *
      * @param PostInterface $post
      * @param bool          $andFlush
@@ -88,7 +88,7 @@ abstract class AbstractPostManager implements PostManagerInterface
     }
 
     /**
-     * Deletes a post.
+     * Performs the deleting of a post.
      *
      * @param PostInterface $post
      */

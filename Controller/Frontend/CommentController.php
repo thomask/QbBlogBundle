@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Comment controller.
+ * Comment Controller.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

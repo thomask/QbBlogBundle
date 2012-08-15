@@ -15,7 +15,7 @@ use Qb\Bundle\BlogBundle\Model\TagInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Filter tag event.
+ * Filter Tag Event.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

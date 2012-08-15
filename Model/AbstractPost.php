@@ -11,6 +11,8 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
+use \DateTime;
+
 /**
  * Abstract Post.
  *
@@ -159,7 +161,7 @@ abstract class AbstractPost implements PostInterface
     /**
      * {@inheritdoc}
      */
-    public function setCreatedAt(\DateTime $createdAt)
+    public function setCreatedAt(DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     }
@@ -175,7 +177,7 @@ abstract class AbstractPost implements PostInterface
     /**
      * {@inheritdoc}
      */
-    public function setUpdatedAt(\DateTime $updatedAt)
+    public function setUpdatedAt(DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }

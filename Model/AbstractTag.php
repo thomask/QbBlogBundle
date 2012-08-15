@@ -11,6 +11,8 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
+use \DateTime;
+
 /**
  * Abstract Tag.
  *
@@ -91,7 +93,7 @@ abstract class AbstractTag implements TagInterface
     /**
      * {@inheritdoc}
      */
-    public function setCreatedAt(\DateTime $createdAt)
+    public function setCreatedAt(DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     }
@@ -107,7 +109,7 @@ abstract class AbstractTag implements TagInterface
     /**
      * {@inheritdoc}
      */
-    public function setUpdatedAt(\DateTime $updatedAt)
+    public function setUpdatedAt(DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }

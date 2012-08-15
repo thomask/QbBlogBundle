@@ -11,8 +11,10 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
+use \DateTime;
+
 /**
- * Tag interface.
+ * Tag Interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -58,7 +60,7 @@ interface TagInterface
      *
      * @param \Datetime $createdAt
      */
-    public function setCreatedAt(\DateTime $createdAt);
+    public function setCreatedAt(DateTime $createdAt);
 
     /**
      * Get createdAt.
@@ -72,7 +74,7 @@ interface TagInterface
      *
      * @param \Datetime $updatedAt
      */
-    public function setUpdatedAt(\DateTime $updatedAt);
+    public function setUpdatedAt(DateTime $updatedAt);
 
     /**
      * Get updatedAt.

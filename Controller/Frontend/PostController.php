@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Post controller.
+ * Post Controller.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */

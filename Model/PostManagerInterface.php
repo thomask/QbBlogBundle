@@ -12,7 +12,7 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Post Manager interface.
+ * Post Manager Interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -62,7 +62,7 @@ interface PostManagerInterface
     public function deletePost(PostInterface $post);
 
     /**
-     * Get the fully-qualified class name of post.
+     * Get the fully-qualified class name of post model.
      *
      * @return string
      */

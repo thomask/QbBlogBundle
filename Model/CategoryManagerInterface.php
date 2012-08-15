@@ -12,7 +12,7 @@
 namespace Qb\Bundle\BlogBundle\Model;
 
 /**
- * Category Manager interface.
+ * Category Manager Interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -62,7 +62,7 @@ interface CategoryManagerInterface
     public function deleteCategory(CategoryInterface $category);
 
     /**
-     * Get the fully-qualified class name of category.
+     * Get the fully-qualified class name of category model.
      *
      * @return string
      */

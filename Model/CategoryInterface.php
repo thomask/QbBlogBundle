@@ -11,8 +11,10 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
+use \DateTime;
+
 /**
- * Category interface.
+ * Category Interface.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -58,7 +60,7 @@ interface CategoryInterface
      *
      * @param \Datetime $createdAt
      */
-    public function setCreatedAt(\DateTime $createdAt);
+    public function setCreatedAt(DateTime $createdAt);
 
     /**
      * Get createdAt.
@@ -72,7 +74,7 @@ interface CategoryInterface
      *
      * @param \Datetime $updatedAt
      */
-    public function setUpdatedAt(\DateTime $updatedAt);
+    public function setUpdatedAt(DateTime $updatedAt);
 
     /**
      * Get updatedAt.

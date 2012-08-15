@@ -4,9 +4,45 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <parameters>
+        <parameter key="qb_blog.category_manager.default.class">Qb\Bundle\BlogBundle\Doctrine\CategoryManager</parameter>
+        <parameter key="qb_blog.comment_manager.default.class">Qb\Bundle\BlogBundle\Doctrine\CommentManager</parameter>
+        <parameter key="qb_blog.post_manager.default.class">Qb\Bundle\BlogBundle\Doctrine\PostManager</parameter>
+        <parameter key="qb_blog.tag_manager.default.class">Qb\Bundle\BlogBundle\Doctrine\TagManager</parameter>
+    </parameters>
+
     <services>
+        <!-- Entity Manager -->
         <service id="qb_blog.entity_manager" factory-service="doctrine" factory-method="getManager" class="Doctrine\ORM\EntityManager" public="false">
             <argument>%qb_blog.model_manager_name%</argument>
+        </service>
+
+        <!-- Category Manager -->
+        <service id="qb_blog.category_manager.default" class="%qb_blog.category_manager.default.class%" public="false">
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="qb_blog.entity_manager" />
+            <argument>%qb_blog.category.model.class%</argument>
+        </service>
+
+        <!-- Comment Manager -->
+        <service id="qb_blog.comment_manager.default" class="%qb_blog.comment_manager.default.class%" public="false">
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="qb_blog.entity_manager" />
+            <argument>%qb_blog.comment.model.class%</argument>
+        </service>
+
+        <!-- Post Manager -->
+        <service id="qb_blog.post_manager.default" class="%qb_blog.post_manager.default.class%" public="false">
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="qb_blog.entity_manager" />
+            <argument>%qb_blog.post.model.class%</argument>
+        </service>
+
+        <!-- Tag Manager -->
+        <service id="qb_blog.tag_manager.default" class="%qb_blog.tag_manager.default.class%" public="false">
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="qb_blog.entity_manager" />
+            <argument>%qb_blog.tag.model.class%</argument>
         </service>
     </services>
 </container>

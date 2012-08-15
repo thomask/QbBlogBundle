@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <!-- Backend -->
+    <import resource="@QbBlogBundle/Resources/config/routing/backend/category.xml" prefix="/admin/category" />
+    <import resource="@QbBlogBundle/Resources/config/routing/backend/comment.xml" prefix="/admin/comment" />
+    <import resource="@QbBlogBundle/Resources/config/routing/backend/post.xml" prefix="/admin/post" />
+    <import resource="@QbBlogBundle/Resources/config/routing/backend/tag.xml" prefix="/admin/tag" />
+
+    <!-- Frontend -->
+    <import resource="@QbBlogBundle/Resources/config/routing/frontend/category.xml" prefix="/category" />
+    <import resource="@QbBlogBundle/Resources/config/routing/frontend/comment.xml" prefix="/comment" />
+    <import resource="@QbBlogBundle/Resources/config/routing/frontend/post.xml" prefix="/post" />
+    <import resource="@QbBlogBundle/Resources/config/routing/frontend/tag.xml" prefix="/tag" />
+</routes>

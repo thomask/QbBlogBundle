@@ -66,7 +66,7 @@ abstract class AbstractTagManager implements TagManagerInterface
     }
 
     /**
-     * Saves a tag.
+     * Performs the saving of a tag.
      *
      * @param TagInterface $tag
      * @param bool         $andFlush
@@ -88,7 +88,7 @@ abstract class AbstractTagManager implements TagManagerInterface
     }
 
     /**
-     * Deletes a tag.
+     * Performs the deleting of a tag.
      *
      * @param TagInterface $tag
      */

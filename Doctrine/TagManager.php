@@ -18,7 +18,7 @@ use Qb\Bundle\BlogBundle\Model\AbstractTagManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * Tag manager.
+ * Tag Manager.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
