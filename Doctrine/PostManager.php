@@ -15,6 +15,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Qb\Bundle\BlogBundle\Model\PostInterface;
 use Qb\Bundle\BlogBundle\Model\AbstractPostManager;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Post manager.
@@ -24,27 +25,36 @@ use Qb\Bundle\BlogBundle\Model\AbstractPostManager;
 class PostManager extends AbstractPostManager
 {
     /**
-     * @var ObjectManager $objectManager
+     * @var ObjectManager
      */
     protected $objectManager;
 
     /**
-     * @var ObjectRepository $repository
+     * @var ObjectRepository
      */
     protected $objectRepository;
 
     /**
+     * @var string
+     */
+    protected $class;
+
+    /**
      * Constructor.
      *
-     * @param ObjectManager $objectManager
-     * @param string        $class
+     * @param EventDispatcherInterface $eventDispatcher
+     * @param ObjectManager            $objectManager
+     * @param string                   $class
      */
-    public function __construct(ObjectManager $objectManager, $class)
+    public function __construct(EventDispatcherInterface $eventDispatcher, ObjectManager $objectManager, $class)
     {
-        parent::__construct($class);
+        parent::__construct($eventDispatcher);
 
         $this->objectManager    = $objectManager;
         $this->objectRepository = $objectManager->getRepository($class);
+
+        $metadata    = $objectManager->getClassMetadata($class);
+        $this->class = $metadata->getName();
     }
 
     /**
@@ -74,7 +84,7 @@ class PostManager extends AbstractPostManager
     /**
      * {@inheritDoc}
      */
-    public function savePost(PostInterface $post, $andFlush = true)
+    public function doSavePost(PostInterface $post, $andFlush = true)
     {
         $this->objectManager->persist($post);
 
@@ -86,9 +96,17 @@ class PostManager extends AbstractPostManager
     /**
      * {@inheritDoc}
      */
-    public function deletePost(PostInterface $post)
+    public function doDeletePost(PostInterface $post)
     {
         $this->objectManager->remove($post);
         $this->objectManager->flush();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getClass()
+    {
+        return $this->class;
     }
 }

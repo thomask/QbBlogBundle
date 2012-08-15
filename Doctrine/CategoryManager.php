@@ -15,6 +15,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Qb\Bundle\BlogBundle\Model\CategoryInterface;
 use Qb\Bundle\BlogBundle\Model\AbstractCategoryManager;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Category manager.
@@ -24,27 +25,36 @@ use Qb\Bundle\BlogBundle\Model\AbstractCategoryManager;
 class CategoryManager extends AbstractCategoryManager
 {
     /**
-     * @var ObjectManager $objectManager
+     * @var ObjectManager
      */
     protected $objectManager;
 
     /**
-     * @var ObjectRepository $repository
+     * @var ObjectRepository
      */
     protected $objectRepository;
 
     /**
+     * @var string
+     */
+    protected $class;
+
+    /**
      * Constructor.
      *
-     * @param ObjectManager $objectManager
-     * @param string        $class
+     * @param EventDispatcherInterface $eventDispatcher
+     * @param ObjectManager            $objectManager
+     * @param string                   $class
      */
-    public function __construct(ObjectManager $objectManager, $class)
+    public function __construct(EventDispatcherInterface $eventDispatcher, ObjectManager $objectManager, $class)
     {
-        parent::__construct($class);
+        parent::__construct($eventDispatcher);
 
         $this->objectManager    = $objectManager;
         $this->objectRepository = $objectManager->getRepository($class);
+
+        $metadata    = $objectManager->getClassMetadata($class);
+        $this->class = $metadata->getName();
     }
 
     /**
@@ -74,7 +84,7 @@ class CategoryManager extends AbstractCategoryManager
     /**
      * {@inheritDoc}
      */
-    public function saveCategory(CategoryInterface $category, $andFlush = true)
+    public function doSaveCategory(CategoryInterface $category, $andFlush = true)
     {
         $this->objectManager->persist($category);
 
@@ -86,9 +96,17 @@ class CategoryManager extends AbstractCategoryManager
     /**
      * {@inheritDoc}
      */
-    public function deleteCategory(CategoryInterface $category)
+    public function doDeleteCategory(CategoryInterface $category)
     {
         $this->objectManager->remove($category);
         $this->objectManager->flush();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getClass()
+    {
+        return $this->class;
     }
 }

@@ -60,4 +60,11 @@ interface CommentManagerInterface
      * @param CommentInterface $comment
      */
     public function deleteComment(CommentInterface $comment);
+
+    /**
+     * Get the fully-qualified class name of comment.
+     *
+     * @return string
+     */
+    public function getClass();
 }

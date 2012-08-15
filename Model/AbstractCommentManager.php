@@ -11,6 +11,10 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
+use Qb\Bundle\BlogBundle\Event\FilterCommentEvent;
+use Qb\Bundle\BlogBundle\QbBlogEvents;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
 /**
  * Abstract Comment Manager.
  *
@@ -19,20 +23,18 @@ namespace Qb\Bundle\BlogBundle\Model;
 abstract class AbstractCommentManager implements CommentManagerInterface
 {
     /**
-     * Comment class.
-     *
-     * @var string $class
+     * @var EventDispatcherInterface
      */
-    protected $class;
+    protected $eventDispatcher;
 
     /**
      * Constructor.
      *
-     * @param string $class
+     * @param EventDispatcherInterface $eventDispatcher
      */
-    public function __construct($class)
+    public function __construct(EventDispatcherInterface $eventDispatcher)
     {
-        $this->class = $class;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -40,8 +42,55 @@ abstract class AbstractCommentManager implements CommentManagerInterface
      */
     public function createComment()
     {
-        $class = $this->class;
+        $class   = $this->getClass();
+        $comment = new $class;
 
-        return new $class;
+        $event = new FilterCommentEvent($comment);
+        $this->eventDispatcher->dispatch(QbBlogEvents::COMMENT_CREATE, $event);
+
+        return $comment;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function saveComment(CommentInterface $comment, $andFlush = true)
+    {
+        $event = new FilterCommentEvent($comment);
+        $this->eventDispatcher->dispatch(QbBlogEvents::COMMENT_PRE_SAVE, $event);
+
+        $this->doSaveComment($comment, $andFlush);
+
+        $event = new FilterCommentEvent($comment);
+        $this->eventDispatcher->dispatch(QbBlogEvents::COMMENT_POST_SAVE, $event);
+    }
+
+    /**
+     * Saves a comment.
+     *
+     * @param CommentInterface $comment
+     * @param bool             $andFlush
+     */
+    abstract protected function doSaveComment(CommentInterface $comment, $andFlush = true);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function deleteComment(CommentInterface $comment)
+    {
+        $event = new FilterCommentEvent($comment);
+        $this->eventDispatcher->dispatch(QbBlogEvents::COMMENT_PRE_DELETE, $event);
+
+        $this->doDeleteComment($comment);
+
+        $event = new FilterCommentEvent($comment);
+        $this->eventDispatcher->dispatch(QbBlogEvents::COMMENT_POST_DELETE, $event);
+    }
+
+    /**
+     * Deletes a comment.
+     *
+     * @param CommentInterface $comment
+     */
+    abstract protected function doDeleteComment(CommentInterface $comment);
 }

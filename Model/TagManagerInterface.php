@@ -60,4 +60,11 @@ interface TagManagerInterface
      * @param TagInterface $tag
      */
     public function deleteTag(TagInterface $tag);
+
+    /**
+     * Get the fully-qualified class name of tag.
+     *
+     * @return string
+     */
+    public function getClass();
 }

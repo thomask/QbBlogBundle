@@ -11,6 +11,10 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
+use Qb\Bundle\BlogBundle\Event\FilterTagEvent;
+use Qb\Bundle\BlogBundle\QbBlogEvents;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
 /**
  * Abstract Tag Manager.
  *
@@ -19,20 +23,18 @@ namespace Qb\Bundle\BlogBundle\Model;
 abstract class AbstractTagManager implements TagManagerInterface
 {
     /**
-     * Tag class.
-     *
-     * @var string $class
+     * @var EventDispatcherInterface
      */
-    protected $class;
+    protected $eventDispatcher;
 
     /**
      * Constructor.
      *
-     * @param string $class
+     * @param EventDispatcherInterface $eventDispatcher
      */
-    public function __construct($class)
+    public function __construct(EventDispatcherInterface $eventDispatcher)
     {
-        $this->class = $class;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -40,8 +42,55 @@ abstract class AbstractTagManager implements TagManagerInterface
      */
     public function createTag()
     {
-        $class = $this->class;
+        $class = $this->getClass();
+        $tag   = new $class;
 
-        return new $class;
+        $event = new FilterTagEvent($tag);
+        $this->eventDispatcher->dispatch(QbBlogEvents::TAG_CREATE, $event);
+
+        return $tag;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function saveTag(TagInterface $tag, $andFlush = true)
+    {
+        $event = new FilterTagEvent($tag);
+        $this->eventDispatcher->dispatch(QbBlogEvents::TAG_PRE_SAVE, $event);
+
+        $this->doSaveTag($tag, $andFlush);
+
+        $event = new FilterTagEvent($tag);
+        $this->eventDispatcher->dispatch(QbBlogEvents::TAG_POST_SAVE, $event);
+    }
+
+    /**
+     * Saves a tag.
+     *
+     * @param TagInterface $tag
+     * @param bool         $andFlush
+     */
+    abstract protected function doSaveTag(TagInterface $tag, $andFlush = true);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function deleteTag(TagInterface $tag)
+    {
+        $event = new FilterTagEvent($tag);
+        $this->eventDispatcher->dispatch(QbBlogEvents::TAG_PRE_DELETE, $event);
+
+        $this->doDeleteTag($tag);
+
+        $event = new FilterTagEvent($tag);
+        $this->eventDispatcher->dispatch(QbBlogEvents::TAG_POST_DELETE, $event);
+    }
+
+    /**
+     * Deletes a tag.
+     *
+     * @param TagInterface $tag
+     */
+    abstract protected function doDeleteTag(TagInterface $tag);
 }

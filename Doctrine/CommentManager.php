@@ -15,6 +15,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Qb\Bundle\BlogBundle\Model\CommentInterface;
 use Qb\Bundle\BlogBundle\Model\AbstractCommentManager;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Comment manager.
@@ -24,27 +25,36 @@ use Qb\Bundle\BlogBundle\Model\AbstractCommentManager;
 class CommentManager extends AbstractCommentManager
 {
     /**
-     * @var ObjectManager $objectManager
+     * @var ObjectManager
      */
     protected $objectManager;
 
     /**
-     * @var ObjectRepository $repository
+     * @var ObjectRepository
      */
     protected $objectRepository;
 
     /**
+     * @var string
+     */
+    protected $class;
+
+    /**
      * Constructor.
      *
-     * @param ObjectManager $objectManager
-     * @param string        $class
+     * @param EventDispatcherInterface $eventDispatcher
+     * @param ObjectManager            $objectManager
+     * @param string                   $class
      */
-    public function __construct(ObjectManager $objectManager, $class)
+    public function __construct(EventDispatcherInterface $eventDispatcher, ObjectManager $objectManager, $class)
     {
-        parent::__construct($class);
+        parent::__construct($eventDispatcher);
 
         $this->objectManager    = $objectManager;
         $this->objectRepository = $objectManager->getRepository($class);
+
+        $metadata    = $objectManager->getClassMetadata($class);
+        $this->class = $metadata->getName();
     }
 
     /**
@@ -74,7 +84,7 @@ class CommentManager extends AbstractCommentManager
     /**
      * {@inheritDoc}
      */
-    public function saveComment(CommentInterface $comment, $andFlush = true)
+    public function doSaveComment(CommentInterface $comment, $andFlush = true)
     {
         $this->objectManager->persist($comment);
 
@@ -86,9 +96,17 @@ class CommentManager extends AbstractCommentManager
     /**
      * {@inheritDoc}
      */
-    public function deleteComment(CommentInterface $comment)
+    public function doDeleteComment(CommentInterface $comment)
     {
         $this->objectManager->remove($comment);
         $this->objectManager->flush();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getClass()
+    {
+        return $this->class;
     }
 }

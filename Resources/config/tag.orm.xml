@@ -10,6 +10,7 @@
 
     <services>
         <service id="qb_blog.tag_manager.default" class="%qb_blog.tag_manager.default.class%" public="false">
+            <argument type="service" id="event_dispatcher" />
             <argument type="service" id="qb_blog.entity_manager" />
             <argument>%qb_blog.tag.model.class%</argument>
         </service>

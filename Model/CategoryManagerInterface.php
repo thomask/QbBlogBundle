@@ -60,4 +60,11 @@ interface CategoryManagerInterface
      * @param CategoryInterface $category
      */
     public function deleteCategory(CategoryInterface $category);
+
+    /**
+     * Get the fully-qualified class name of category.
+     *
+     * @return string
+     */
+    public function getClass();
 }

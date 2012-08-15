@@ -11,6 +11,10 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
+use Qb\Bundle\BlogBundle\Event\FilterPostEvent;
+use Qb\Bundle\BlogBundle\QbBlogEvents;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
 /**
  * Abstract Post Manager.
  *
@@ -19,20 +23,18 @@ namespace Qb\Bundle\BlogBundle\Model;
 abstract class AbstractPostManager implements PostManagerInterface
 {
     /**
-     * Post class.
-     *
-     * @var string $class
+     * @var EventDispatcherInterface
      */
-    protected $class;
+    protected $eventDispatcher;
 
     /**
      * Constructor.
      *
-     * @param string $class
+     * @param EventDispatcherInterface $eventDispatcher
      */
-    public function __construct($class)
+    public function __construct(EventDispatcherInterface $eventDispatcher)
     {
-        $this->class = $class;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -40,8 +42,55 @@ abstract class AbstractPostManager implements PostManagerInterface
      */
     public function createPost()
     {
-        $class = $this->class;
+        $class   = $this->getClass();
+        $post = new $class;
 
-        return new $class;
+        $event = new FilterPostEvent($post);
+        $this->eventDispatcher->dispatch(QbBlogEvents::POST_CREATE, $event);
+
+        return $post;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function savePost(PostInterface $post, $andFlush = true)
+    {
+        $event = new FilterPostEvent($post);
+        $this->eventDispatcher->dispatch(QbBlogEvents::POST_PRE_SAVE, $event);
+
+        $this->doSavePost($post, $andFlush);
+
+        $event = new FilterPostEvent($post);
+        $this->eventDispatcher->dispatch(QbBlogEvents::POST_POST_SAVE, $event);
+    }
+
+    /**
+     * Saves a post.
+     *
+     * @param PostInterface $post
+     * @param bool          $andFlush
+     */
+    abstract protected function doSavePost(PostInterface $post, $andFlush = true);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function deletePost(PostInterface $post)
+    {
+        $event = new FilterPostEvent($post);
+        $this->eventDispatcher->dispatch(QbBlogEvents::POST_PRE_DELETE, $event);
+
+        $this->doDeletePost($post);
+
+        $event = new FilterPostEvent($post);
+        $this->eventDispatcher->dispatch(QbBlogEvents::POST_POST_DELETE, $event);
+    }
+
+    /**
+     * Deletes a post.
+     *
+     * @param PostInterface $post
+     */
+    abstract protected function doDeletePost(PostInterface $post);
 }

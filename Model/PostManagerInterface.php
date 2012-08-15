@@ -60,4 +60,11 @@ interface PostManagerInterface
      * @param PostInterface $post
      */
     public function deletePost(PostInterface $post);
+
+    /**
+     * Get the fully-qualified class name of post.
+     *
+     * @return string
+     */
+    public function getClass();
 }

@@ -11,6 +11,10 @@
 
 namespace Qb\Bundle\BlogBundle\Model;
 
+use Qb\Bundle\BlogBundle\Event\FilterCategoryEvent;
+use Qb\Bundle\BlogBundle\QbBlogEvents;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
 /**
  * Abstract Category Manager.
  *
@@ -19,20 +23,18 @@ namespace Qb\Bundle\BlogBundle\Model;
 abstract class AbstractCategoryManager implements CategoryManagerInterface
 {
     /**
-     * Category class.
-     *
-     * @var string
+     * @var EventDispatcherInterface
      */
-    protected $class;
+    protected $eventDispatcher;
 
     /**
      * Constructor.
      *
-     * @param string $class
+     * @param EventDispatcherInterface $eventDispatcher
      */
-    public function __construct($class)
+    public function __construct(EventDispatcherInterface $eventDispatcher)
     {
-        $this->class = $class;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -40,8 +42,55 @@ abstract class AbstractCategoryManager implements CategoryManagerInterface
      */
     public function createCategory()
     {
-        $class = $this->class;
+        $class    = $this->getClass();
+        $category = new $class;
 
-        return new $class;
+        $event = new FilterCategoryEvent($category);
+        $this->eventDispatcher->dispatch(QbBlogEvents::CATEGORY_CREATE, $event);
+
+        return $category;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function saveCategory(CategoryInterface $category, $andFlush = true)
+    {
+        $event = new FilterCategoryEvent($category);
+        $this->eventDispatcher->dispatch(QbBlogEvents::CATEGORY_PRE_SAVE, $event);
+
+        $this->doSaveCategory($category, $andFlush);
+
+        $event = new FilterCategoryEvent($category);
+        $this->eventDispatcher->dispatch(QbBlogEvents::CATEGORY_POST_SAVE, $event);
+    }
+
+    /**
+     * Saves a category.
+     *
+     * @param CategoryInterface $category
+     * @param bool              $andFlush
+     */
+    abstract protected function doSaveCategory(CategoryInterface $category, $andFlush = true);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function deleteCategory(CategoryInterface $category)
+    {
+        $event = new FilterCategoryEvent($category);
+        $this->eventDispatcher->dispatch(QbBlogEvents::CATEGORY_PRE_DELETE, $event);
+
+        $this->doDeleteCategory($category);
+
+        $event = new FilterCategoryEvent($category);
+        $this->eventDispatcher->dispatch(QbBlogEvents::CATEGORY_POST_DELETE, $event);
+    }
+
+    /**
+     * Deletes a category.
+     *
+     * @param CategoryInterface $category
+     */
+    abstract protected function doDeleteCategory(CategoryInterface $category);
 }

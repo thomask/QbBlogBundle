@@ -15,6 +15,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Qb\Bundle\BlogBundle\Model\TagInterface;
 use Qb\Bundle\BlogBundle\Model\AbstractTagManager;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * Tag manager.
@@ -24,27 +25,36 @@ use Qb\Bundle\BlogBundle\Model\AbstractTagManager;
 class TagManager extends AbstractTagManager
 {
     /**
-     * @var ObjectManager $objectManager
+     * @var ObjectManager
      */
     protected $objectManager;
 
     /**
-     * @var ObjectRepository $repository
+     * @var ObjectRepository
      */
     protected $objectRepository;
 
     /**
+     * @var string
+     */
+    protected $class;
+
+    /**
      * Constructor.
      *
-     * @param ObjectManager $objectManager
-     * @param string        $class
+     * @param EventDispatcherInterface $eventDispatcher
+     * @param ObjectManager            $objectManager
+     * @param string                   $class
      */
-    public function __construct(ObjectManager $objectManager, $class)
+    public function __construct(EventDispatcherInterface $eventDispatcher, ObjectManager $objectManager, $class)
     {
-        parent::__construct($class);
+        parent::__construct($eventDispatcher);
 
         $this->objectManager    = $objectManager;
         $this->objectRepository = $objectManager->getRepository($class);
+
+        $metadata    = $objectManager->getClassMetadata($class);
+        $this->class = $metadata->getName();
     }
 
     /**
@@ -74,7 +84,7 @@ class TagManager extends AbstractTagManager
     /**
      * {@inheritDoc}
      */
-    public function saveTag(TagInterface $tag, $andFlush = true)
+    protected function doSaveTag(TagInterface $tag, $andFlush = true)
     {
         $this->objectManager->persist($tag);
 
@@ -86,9 +96,17 @@ class TagManager extends AbstractTagManager
     /**
      * {@inheritDoc}
      */
-    public function deleteTag(TagInterface $tag)
+    protected function doDeleteTag(TagInterface $tag)
     {
         $this->objectManager->remove($tag);
         $this->objectManager->flush();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getClass()
+    {
+        return $this->class;
     }
 }
