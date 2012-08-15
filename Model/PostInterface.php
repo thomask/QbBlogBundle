@@ -42,20 +42,6 @@ interface PostInterface
     public function getCategory();
 
     /**
-     * Set author.
-     *
-     * @param string $author
-     */
-    public function setAuthor($author);
-
-    /**
-     * Get author.
-     *
-     * @return string
-     */
-    public function getAuthor();
-
-    /**
      * Set title.
      *
      * @param string $title

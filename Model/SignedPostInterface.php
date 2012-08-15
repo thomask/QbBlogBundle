@@ -21,14 +21,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
 interface SignedPostInterface extends PostInterface
 {
     /**
-     * Set user.
+     * Set author.
      *
      * @param UserInterface $user
      */
-    public function setUser(UserInterface $user);
+    public function setAuthor(UserInterface $user);
 
     /**
-     * Get user.
+     * Get author.
      */
-    public function getUser();
+    public function getAuthor();
 }

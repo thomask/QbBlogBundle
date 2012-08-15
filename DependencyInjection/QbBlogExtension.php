@@ -32,7 +32,10 @@ class QbBlogExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load(sprintf('%s.xml', $config['storage']));
-        $loader->load('form.xml');
+
+        foreach (array('events', 'form') as $basename) {
+            $loader->load(sprintf('%s.xml', $basename));
+        }
 
         $this->remapParametersNamespaces($config, $container, array(
             '' => array(

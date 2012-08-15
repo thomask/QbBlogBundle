@@ -47,7 +47,6 @@ class PostType extends AbstractType
                 'property' => 'name',
                 'required' => false
             ))
-            ->add('author')
             ->add('title')
             ->add('body')
             ->add('tags', null, array(

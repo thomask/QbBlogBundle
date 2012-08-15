@@ -11,49 +11,64 @@
 
 namespace Qb\Bundle\BlogBundle\Entity;
 
-use Qb\Bundle\BlogBundle\Model\SignedPostInterface
+use Doctrine\Common\Collections\ArrayCollection;
+use Qb\Bundle\BlogBundle\Model\AbstractSignedPost;
+use Qb\Bundle\BlogBundle\Model\CommentInterface;
+use Qb\Bundle\BlogBundle\Model\TagInterface;
 
 /**
  * Signed Post entity.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-class SignedPost extends Post implements SignedPostInterface
+class SignedPost extends AbstractSignedPost
 {
     /**
-     * @var UserInterface
+     * Constructor.
      */
-    protected $user;
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setUser(UserInterface $user)
+    public function __construct()
     {
-        $this->user = $user;
+        $this->comments = new ArrayCollection();
+        $this->tags     = new ArrayCollection();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getUser()
+    public function addComment(CommentInterface $comment)
     {
-        return $this->user;
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+        }
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setAuthor($author)
+    public function removeComment(CommentInterface $comment)
     {
-        throw new BadMethodCall('You are not allowed to set an author when using signed post.');
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+        }
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getAuthor()
+    public function addTag(TagInterface $tag)
     {
-        return $this->user->getUsername();
+        if (!$this->tags->contains($tag)) {
+            $this->tags->add($tag);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeTag(TagInterface $tag)
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+        }
     }
 }
