@@ -58,7 +58,7 @@ class PostBlamerListener implements EventSubscriberInterface
 
         if (null === $this->securityContext) {
             if ($this->logger) {
-                $this->logger->debug('The security.context service is NULL.')
+                $this->logger->debug('The security.context service is NULL.');
             }
 
             return;
@@ -66,7 +66,7 @@ class PostBlamerListener implements EventSubscriberInterface
 
         if (!$post instanceof SignedPostInterface) {
             if ($this->logger) {
-                $this->logger->debug('Post does not implement SignedPostInterface.')
+                $this->logger->debug('Post does not implement SignedPostInterface.');
             }
 
             return;
@@ -74,7 +74,7 @@ class PostBlamerListener implements EventSubscriberInterface
 
         if (null === $this->securityContext->getToken()) {
             if ($this->logger) {
-                $this->logger->debug('No authentication information is available, please configure a firewall for this route.')
+                $this->logger->debug('No authentication information is available, please configure a firewall for this route.');
             }
 
             return;
