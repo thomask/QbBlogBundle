@@ -12,13 +12,14 @@
 namespace Qb\Bundle\BlogBundle\Event;
 
 use Qb\Bundle\BlogBundle\Model\TagInterface;
+use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Filter tag event.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-class FilterTagEvent
+class FilterTagEvent extends Event
 {
     /**
      * @var TagInterface

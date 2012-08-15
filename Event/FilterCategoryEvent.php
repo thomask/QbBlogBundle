@@ -12,13 +12,14 @@
 namespace Qb\Bundle\BlogBundle\Event;
 
 use Qb\Bundle\BlogBundle\Model\CategoryInterface;
+use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Filter category event.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-class FilterCategoryEvent
+class FilterCategoryEvent extends Event
 {
     /**
      * @var CategoryInterface

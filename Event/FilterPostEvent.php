@@ -12,13 +12,14 @@
 namespace Qb\Bundle\BlogBundle\Event;
 
 use Qb\Bundle\BlogBundle\Model\PostInterface;
+use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Filter post event.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-class FilterPostEvent
+class FilterPostEvent extends Event
 {
     /**
      * @var PostInterface

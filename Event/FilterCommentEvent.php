@@ -12,13 +12,14 @@
 namespace Qb\Bundle\BlogBundle\Event;
 
 use Qb\Bundle\BlogBundle\Model\CommentInterface;
+use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Filter comment event.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-class FilterCommentEvent
+class FilterCommentEvent extends Event
 {
     /**
      * @var CommentInterface
