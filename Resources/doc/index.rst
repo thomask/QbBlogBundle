@@ -217,9 +217,38 @@ Step 5: Import QbBlogBundle routing files
 
     # app/config/routing.yml
 
-    # QbBlog Routing
-    qb_blog:
-        resource: @QbBlogBundle/Resources/config/routing.xml
+    # QbBlogBundle Routing
+    qb_blog_backend_category:
+        resource: @QbBlogBundle/Resources/config/routing/backend/category.xml
+        prefix:   /admin/category
+
+    qb_blog_backend_comment:
+        resource: @QbBlogBundle/Resources/config/routing/backend/comment.xml
+        prefix:   /admin/comment
+
+    qb_blog_backend_post:
+        resource: @QbBlogBundle/Resources/config/routing/backend/post.xml
+        prefix:   /admin/post
+
+    qb_blog_backend_tag:
+        resource: @QbBlogBundle/Resources/config/routing/backend/tag.xml
+        prefix:   /admin/tag
+
+    qb_blog_frontend_category:
+        resource: @QbBlogBundle/Resources/config/routing/frontend/category.xml
+        prefix:   /category
+
+    qb_blog_frontend_comment:
+        resource: @QbBlogBundle/Resources/config/routing/frontend/comment.xml
+        prefix:   /comment
+
+    qb_blog_frontend_post:
+        resource: @QbBlogBundle/Resources/config/routing/frontend/post.xml
+        prefix:   /post
+
+    qb_blog_frontend_tag:
+        resource: @QbBlogBundle/Resources/config/routing/frontend/tag.xml
+        prefix:   /tag
 
 Step 6: Update your database schema
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -258,7 +287,7 @@ Next Steps
 The following documents are available:
 
 - `Configuration Reference`_
-- `Integration with an user model`_
+- `Integrate your user model`_
 
 .. _Configuration Reference: configuration_reference.rst
-.. _Integration with an user model: integration_with_user_model.rst
+.. _Integrate your user model: integrate_your_user_model.rst

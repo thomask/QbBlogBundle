@@ -10,7 +10,8 @@
 
     <services>
         <service id="qb_blog.listener.post_blamer" class="%qb_blog.listener.post_blamer.class%">
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.context" on-invalid="null" />
+            <argument type="service" id="logger" on-invalid="null" />
             <tag name="kernel.event_subscriber" />
         </service>
     </services>

@@ -1,5 +1,5 @@
-Integration with an user model
-==============================
+Integrate your user model
+=========================
 
 In order to add an author to a post, the Post class should implement the SignedPostInterface and add a field to your mapping.
 

@@ -15,6 +15,7 @@ use Qb\Bundle\BlogBundle\Event\FilterPostEvent;
 use Qb\Bundle\BlogBundle\Model\SignedPostInterface;
 use Qb\Bundle\BlogBundle\QbBlogEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
@@ -30,13 +31,20 @@ class PostBlamerListener implements EventSubscriberInterface
     protected $securityContext;
 
     /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    /**
      * Constructor.
      *
      * @param SecurityContextInterface $securityContext
+     * @param LoggerInterface          $logger
      */
-    public function __construct(SecurityContextInterface $securityContext)
+    public function __construct(SecurityContextInterface $securityContext = null, LoggerInterface $logger = null)
     {
         $this->securityContext = $securityContext;
+        $this->logger          = $logger;
     }
 
     /**
@@ -48,11 +56,27 @@ class PostBlamerListener implements EventSubscriberInterface
     {
         $post = $event->getPost();
 
+        if (null === $this->securityContext) {
+            if ($this->logger) {
+                $this->logger->debug('The security.context service is NULL.')
+            }
+
+            return;
+        }
+
         if (!$post instanceof SignedPostInterface) {
+            if ($this->logger) {
+                $this->logger->debug('Post does not implement SignedPostInterface.')
+            }
+
             return;
         }
 
         if (null === $this->securityContext->getToken()) {
+            if ($this->logger) {
+                $this->logger->debug('No authentication information is available, please configure a firewall for this route.')
+            }
+
             return;
         }
 
