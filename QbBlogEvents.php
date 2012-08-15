@@ -12,7 +12,7 @@
 namespace Qb\Bundle\BlogBundle;
 
 /**
- * QbBlogEvents.
+ * Qb Blog Events.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -74,8 +74,8 @@ final class QbBlogEvents
     const CATEGORY_POST_DELETE = 'qb_blog.category.post_delete';
 
     /**
-     * The `COMMENT_CREATE` event is thrown each time a comment is created
-     * in the system.
+     * The `COMMENT_CREATE` event is thrown each time a comment is created in
+     * the system.
      *
      * The event listener receives an Qb\BlogBundle\Event\FilterCommentEvent
      * instance.
@@ -140,8 +140,8 @@ final class QbBlogEvents
     const POST_CREATE = 'qb_blog.post.create';
 
     /**
-     * The `POST_PRE_SAVE` event is thrown before each time a post is saved
-     * in the system.
+     * The `POST_PRE_SAVE` event is thrown before each time a post is saved in
+     * the system.
      *
      * The event listener receives an Qb\BlogBundle\Event\FilterPostEvent
      * instance.
@@ -151,8 +151,8 @@ final class QbBlogEvents
     const POST_PRE_SAVE = 'qb_blog.post.pre_save';
 
     /**
-     * The `POST_POST_SAVE` event is thrown after each time a post is saved
-     * in the system.
+     * The `POST_POST_SAVE` event is thrown after each time a post is saved in
+     * the system.
      *
      * The event listener receives an Qb\BlogBundle\Event\FilterPostEvent
      * instance.

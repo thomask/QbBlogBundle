@@ -66,7 +66,7 @@ class CommentHandler
             $comment = $this->commentManager->createComment();
 
             if (null === $post) {
-                throw new InvalidArgumentException('The comment must belong to a post');
+                throw new InvalidArgumentException('The comment must belong to a post.');
             }
 
             $comment->setPost($post);
