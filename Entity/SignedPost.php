@@ -9,17 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Qb\Bundle\BlogBundle\Model;
+namespace Qb\Bundle\BlogBundle\Entity;
 
-use BadMethodCall;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Qb\Bundle\BlogBundle\Model\SignedPostInterface
 
 /**
- * Abstract Signed Post.
+ * Signed Post entity.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
-abstract class AbstractSignedPost extends AbstractPost
+class SignedPost extends Post implements SignedPostInterface
 {
     /**
      * @var UserInterface
