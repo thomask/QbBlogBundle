@@ -32,10 +32,6 @@
 
     <!-- Post -->
     <class name="Qb\Bundle\BlogBundle\Model\AbstractPost">
-        <property name="author">
-            <constraint name="NotBlank" />
-        </property>
-
         <property name="title">
             <constraint name="NotBlank" />
         </property>

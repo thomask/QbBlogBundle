@@ -14,7 +14,6 @@ namespace Qb\Bundle\BlogBundle\EventListener;
 use Qb\Bundle\BlogBundle\Event\FilterPostEvent;
 use Qb\Bundle\BlogBundle\Model\SignedPostInterface;
 use Qb\Bundle\BlogBundle\QbBlogEvents;
-use RuntimeException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
@@ -54,7 +53,7 @@ class PostBlamerListener implements EventSubscriberInterface
         }
 
         if (null === $this->securityContext->getToken()) {
-            throw new RuntimeException('You must configure a firewall for this route.');
+            return;
         }
 
         if (null === $post->getAuthor() && $this->securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
