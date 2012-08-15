@@ -33,11 +33,6 @@ abstract class AbstractPost implements PostInterface
     /**
      * @var string
      */
-    protected $author;
-
-    /**
-     * @var string
-     */
     protected $title;
 
     /**
@@ -92,22 +87,6 @@ abstract class AbstractPost implements PostInterface
     public function getCategory()
     {
         return $this->category;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getAuthor()
-    {
-        return $this->author;
     }
 
     /**

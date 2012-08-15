@@ -16,6 +16,7 @@ use Qb\Bundle\BlogBundle\Model\SignedPostInterface;
 use Qb\Bundle\BlogBundle\QbBlogEvents;
 use RuntimeException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
  * Blames a post using Symfony2 security component.
