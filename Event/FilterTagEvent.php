@@ -43,6 +43,6 @@ class FilterTagEvent extends Event
      */
     public function getTag()
     {
-        $this->tag;
+        return $this->tag;
     }
 }

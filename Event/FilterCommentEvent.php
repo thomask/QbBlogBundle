@@ -43,6 +43,6 @@ class FilterCommentEvent extends Event
      */
     public function getComment()
     {
-        $this->comment;
+        return $this->comment;
     }
 }

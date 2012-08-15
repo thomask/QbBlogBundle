@@ -43,6 +43,6 @@ class FilterPostEvent extends Event
      */
     public function getPost()
     {
-        $this->post;
+        return $this->post;
     }
 }

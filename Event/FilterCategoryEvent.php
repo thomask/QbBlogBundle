@@ -43,6 +43,6 @@ class FilterCategoryEvent extends Event
      */
     public function getCategory()
     {
-        $this->category;
+        return $this->category;
     }
 }
