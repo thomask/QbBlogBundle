@@ -26,17 +26,17 @@ class CategoryHandler
     /**
      * @var FormInterface
      */
-    private $form;
+    protected $form;
 
     /**
      * @var Request
      */
-    private $request;
+    protected $request;
 
     /**
      * @var CategoryManagerInterface
      */
-    private $categoryManager;
+    protected $categoryManager;
 
     /**
      * Constructor.

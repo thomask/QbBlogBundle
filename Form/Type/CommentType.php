@@ -25,7 +25,7 @@ class CommentType extends AbstractType
     /**
      * @var string
      */
-    private $class;
+    protected $class;
 
     /**
      * Constructor.

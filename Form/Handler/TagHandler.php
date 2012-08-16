@@ -26,17 +26,17 @@ class TagHandler
     /**
      * @var FormInterface
      */
-    private $form;
+    protected $form;
 
     /**
      * @var Request
      */
-    private $request;
+    protected $request;
 
     /**
      * @var TagManagerInterface
      */
-    private $tagManager;
+    protected $tagManager;
 
     /**
      * Constructor.

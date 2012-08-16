@@ -28,17 +28,17 @@ class CommentHandler
     /**
      * @var FormInterface
      */
-    private $form;
+    protected $form;
 
     /**
      * @var Request
      */
-    private $request;
+    protected $request;
 
     /**
      * @var CommentManagerInterface
      */
-    private $commentManager;
+    protected $commentManager;
 
     /**
      * Constructor.

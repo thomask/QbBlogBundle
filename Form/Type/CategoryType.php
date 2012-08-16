@@ -25,7 +25,7 @@ class CategoryType extends AbstractType
     /**
      * @var string
      */
-    private $class;
+    protected $class;
 
     /**
      * Constructor.

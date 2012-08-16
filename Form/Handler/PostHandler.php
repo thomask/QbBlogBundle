@@ -26,17 +26,17 @@ class PostHandler
     /**
      * @var FormInterface
      */
-    private $form;
+    protected $form;
 
     /**
      * @var Request
      */
-    private $request;
+    protected $request;
 
     /**
      * @var PostManagerInterface
      */
-    private $postManager;
+    protected $postManager;
 
     /**
      * Constructor.
