@@ -31,7 +31,7 @@ class PostController extends ContainerAware
         $posts = $this->container->get('qb_blog.post_manager')->findPosts();
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend/Post:index.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend/Post:index.html.'.$this->container->getParameter('qb_blog.template.engine'),
             array(
                 'posts' => $posts,
             )
@@ -51,7 +51,7 @@ class PostController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend/Post:new.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend/Post:new.html.'.$this->container->getParameter('qb_blog.template.engine'),
             array(
                 'form' => $form->createView(),
             )
@@ -80,7 +80,7 @@ class PostController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Backend/Post:edit.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Backend/Post:edit.html.'.$this->container->getParameter('qb_blog.template.engine'),
             array(
                 'post' => $post,
                 'form' => $form->createView(),

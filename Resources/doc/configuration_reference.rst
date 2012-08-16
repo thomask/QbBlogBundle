@@ -16,9 +16,10 @@ All available configuration options are listed below with their default values.
 
     # QbBlog Configuration
     qb_blog:
-        storage:            ~ # Required
-        template_engine:    twig
-        model_manager_name: null # change it to the name of your entity/document manager if you don't want to use the default one.
+        db_driver:          ~ # Required
+        template:
+            engine: twig
+        model_manager_name: null # The entity/object manager name (null for the default one)
         category:
             category_class:   ~ # Required
             category_manager: qb_blog.category_manager.default

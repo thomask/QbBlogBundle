@@ -40,7 +40,7 @@ class PostController extends ContainerAware
         $form = $this->container->get('qb_blog.comment.form');
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend/Post:show.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend/Post:show.html.'.$this->container->getParameter('qb_blog.template.engine'),
             array(
                 'post' => $post,
                 'form' => $form->createView(),

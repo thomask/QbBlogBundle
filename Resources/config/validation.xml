@@ -4,14 +4,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-    <!-- Category -->
     <class name="Qb\Bundle\BlogBundle\Model\AbstractCategory">
         <property name="name">
             <constraint name="NotBlank" />
         </property>
     </class>
 
-    <!-- Comment -->
     <class name="Qb\Bundle\BlogBundle\Model\AbstractComment">
         <property name="author">
             <constraint name="NotBlank" />
@@ -30,7 +28,6 @@
         </property>
     </class>
 
-    <!-- Post -->
     <class name="Qb\Bundle\BlogBundle\Model\AbstractPost">
         <property name="title">
             <constraint name="NotBlank" />
@@ -41,7 +38,6 @@
         </property>
     </class>
 
-    <!-- Tag -->
     <class name="Qb\Bundle\BlogBundle\Model\AbstractTag">
         <property name="name">
             <constraint name="NotBlank" />

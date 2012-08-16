@@ -38,7 +38,7 @@ class TagController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend/Tag:show.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend/Tag:show.html.'.$this->container->getParameter('qb_blog.template.engine'),
             array(
                 'tag' => $tag,
             )

@@ -4,21 +4,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
-    <!-- Category -->
     <class name="Qb\Bundle\BlogBundle\Model\AbstractCategory">
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">name</option>
         </constraint>
     </class>
 
-    <!-- Post -->
     <class name="Qb\Bundle\BlogBundle\Model\AbstractPost">
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">title</option>
         </constraint>
     </class>
 
-    <!-- Tag -->
     <class name="Qb\Bundle\BlogBundle\Model\AbstractTag">
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">name</option>

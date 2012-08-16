@@ -46,7 +46,7 @@ class CommentController extends ContainerAware
         }
 
         return $this->container->get('templating')->renderResponse(
-            'QbBlogBundle:Frontend/Comment:new.html.'.$this->container->getParameter('qb_blog.template_engine'),
+            'QbBlogBundle:Frontend/Comment:new.html.'.$this->container->getParameter('qb_blog.template.engine'),
             array(
                 'post' => $post,
                 'form' => $form->createView(),

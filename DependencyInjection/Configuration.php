@@ -28,11 +28,11 @@ class Configuration implements ConfigurationInterface
     const DRIVER_DOCTRINE_ORM = 'orm';
 
     /**
-     * Get supported storage.
+     * Returns an array of currently supported db drivers.
      *
      * @return array
      */
-    public static function getSupportedStorage()
+    public static function getSupportedDbDrivers()
     {
         return array(
             self::DRIVER_DOCTRINE_ORM
@@ -49,23 +49,23 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('storage')
+                ->scalarNode('db_driver')
                     ->validate()
-                        ->ifNotInArray(static::getSupportedStorage())
-                        ->thenInvalid('The storage %s is not supported. Please choose one of '.json_encode(static::getSupportedStorage()))
+                        ->ifNotInArray(static::getSupportedDbDrivers())
+                        ->thenInvalid('The db driver `%s` is not supported. Please choose one of '.json_encode(static::getSupportedDbDrivers()))
                     ->end()
                     ->cannotBeOverwritten()
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
                 ->scalarNode('model_manager_name')->defaultNull()->end()
-                ->scalarNode('template_engine')->defaultValue('twig')->end()
             ->end();
 
         $this->addCategorySection($rootNode);
         $this->addCommentSection($rootNode);
         $this->addPostSection($rootNode);
         $this->addTagSection($rootNode);
+        $this->addTemplateSection($rootNode);
 
         return $treeBuilder;
     }
@@ -172,5 +172,22 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end();
+    }
+
+    /**
+     * Adds `Template` section.
+     *
+     * @param ArrayNodeDefinition $node
+     */
+    private function addTemplateSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->arrayNode('template')->addDefaultsIfNotSet()
+                ->children()
+                    ->scalarNode('engine')->defaultValue('twig')->end()
+                ->end()
+            ->end()
+        ->end();
     }
 }

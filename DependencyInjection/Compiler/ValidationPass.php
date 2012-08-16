@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Registers the additional validators according to the storage.
+ * Registers the additional validators according to the db driver.
  *
  * @author Quentin Berlemont <quentinberlemont@gmail.com>
  */
@@ -27,14 +27,14 @@ class ValidationPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasParameter('qb_blog.storage')
+        if (!$container->hasParameter('qb_blog.db_driver')
             || !$container->hasParameter('validator.mapping.loader.xml_files_loader.mapping_files')
         ) {
             return;
         }
 
         $files = $container->getParameter('validator.mapping.loader.xml_files_loader.mapping_files');
-        $validationFile = __DIR__.'/../../Resources/config/validation/'.$container->getParameter('qb_blog.storage').'.xml';
+        $validationFile = __DIR__.'/../../Resources/config/validation/'.$container->getParameter('qb_blog.db_driver').'.xml';
 
         if (is_file($validationFile)) {
             $files[] = realpath($validationFile);
