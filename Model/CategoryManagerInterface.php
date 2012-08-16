@@ -38,7 +38,7 @@ interface CategoryManagerInterface
      * @param  array        $criteria
      * @return \Traversable
      */
-    public function findCategories(array $criteria);
+    public function findCategoriesBy(array $criteria);
 
     /**
      * Finds a category by id.

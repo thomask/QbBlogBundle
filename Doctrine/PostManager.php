@@ -70,7 +70,7 @@ class PostManager extends AbstractPostManager
      */
     public function findPostsBy(array $criteria)
     {
-        return $this->objectRepositoryndBy($criteria);
+        return $this->objectRepository->findBy($criteria);
     }
 
     /**

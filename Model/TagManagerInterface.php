@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-//namespace Qb\Bundle\BlogBundle\Model;
+namespace Qb\Bundle\BlogBundle\Model;
 
 /**
  * Tag Manager Interface.
