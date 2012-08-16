@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Qb\Bundle\BlogBundle\Model;
+//namespace Qb\Bundle\BlogBundle\Model;
 
 /**
  * Tag Manager Interface.
@@ -31,6 +31,14 @@ interface TagManagerInterface
      * @return \Traversable
      */
     public function findTags();
+
+    /**
+     * Finds tags by criteria.
+     *
+     * @param  array        $criteria
+     * @return \Traversable
+     */
+    public function findTagsBy(array $criteria);
 
     /**
      * Find a tag by id.

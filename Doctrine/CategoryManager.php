@@ -68,6 +68,14 @@ class CategoryManager extends AbstractCategoryManager
     /**
      * {@inheritDoc}
      */
+    public function findCategoriesBy(array $criteria)
+    {
+        return $this->objectRepository->findBy($criteria);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function findCategory($id)
     {
         return $this->objectRepository->find($id);

@@ -68,6 +68,14 @@ class PostManager extends AbstractPostManager
     /**
      * {@inheritDoc}
      */
+    public function findPostsBy(array $criteria)
+    {
+        return $this->objectRepositoryndBy($criteria);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function findPost($id)
     {
         return $this->objectRepository->find($id);

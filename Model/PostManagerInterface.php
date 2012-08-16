@@ -33,6 +33,14 @@ interface PostManagerInterface
     public function findPosts();
 
     /**
+     * Finds posts by criteria.
+     *
+     * @param  array        $criteria
+     * @return \Traversable
+     */
+    public function findPostsBy(array $criteria);
+
+    /**
      * Finds a post by id.
      *
      * @param integer $id

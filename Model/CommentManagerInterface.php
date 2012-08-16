@@ -33,6 +33,14 @@ interface CommentManagerInterface
     public function findComments();
 
     /**
+     * Finds comments by criteria.
+     *
+     * @param  array        $criteria
+     * @return \Traversable
+     */
+    public function findComments(array $criteria);
+
+    /**
      * Finds a comment by id.
      *
      * @param integer $id

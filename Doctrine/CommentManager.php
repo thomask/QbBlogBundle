@@ -68,6 +68,14 @@ class CommentManager extends AbstractCommentManager
     /**
      * {@inheritDoc}
      */
+    public function findCommentsBy(array $criteria)
+    {
+        return $this->objectRepository->findBy($criteria);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function findComment($id)
     {
         return $this->objectRepository->find($id);

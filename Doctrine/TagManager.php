@@ -68,6 +68,14 @@ class TagManager extends AbstractTagManager
     /**
      * {@inheritDoc}
      */
+    public function findTagsBy(array $criteria)
+    {
+        return $this->objectRepository->findBy($criteria);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function findTag($id)
     {
         return $this->objectRepository->find($id);
