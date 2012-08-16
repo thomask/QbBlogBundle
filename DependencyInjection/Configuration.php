@@ -49,14 +49,11 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('db_driver')
+                ->scalarNode('db_driver')->cannotBeOverwritten()->isRequired()->cannotBeEmpty()->end()
                     ->validate()
                         ->ifNotInArray(static::getSupportedDbDrivers())
                         ->thenInvalid('The db driver `%s` is not supported. Please choose one of '.json_encode(static::getSupportedDbDrivers()))
                     ->end()
-                    ->cannotBeOverwritten()
-                    ->isRequired()
-                    ->cannotBeEmpty()
                 ->end()
                 ->scalarNode('model_manager_name')->defaultNull()->end()
             ->end();

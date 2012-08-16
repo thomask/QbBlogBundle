@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="qb_blog.comment.form.type.class">Qb\Bundle\BlogBundle\Form\Type\CommentType</parameter>
+        <parameter key="qb_blog.comment.form.type.default.class">Qb\Bundle\BlogBundle\Form\Type\CommentType</parameter>
         <parameter key="qb_blog.comment.form.handler.default.class">Qb\Bundle\BlogBundle\Form\Handler\CommentHandler</parameter>
     </parameters>
 
@@ -15,7 +15,7 @@
             <argument>%qb_blog.comment.form.type%</argument>
         </service>
 
-        <service id="qb_blog.comment.form.type" class="%qb_blog.comment.form.type.class%">
+        <service id="qb_blog.comment.form.type.default" class="%qb_blog.comment.form.type.default.class%">
             <tag name="form.type" alias="qb_blog_comment" />
             <argument>%qb_blog.comment.model.class%</argument>
         </service>

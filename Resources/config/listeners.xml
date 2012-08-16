@@ -5,11 +5,11 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="qb_blog.listener.post_blamer.class">Qb\Bundle\BlogBundle\EventListener\PostBlamerListener</parameter>
+        <parameter key="qb_blog.listener.post_blamer.default.class">Qb\Bundle\BlogBundle\EventListener\PostBlamerListener</parameter>
     </parameters>
 
     <services>
-        <service id="qb_blog.listener.post_blamer" class="%qb_blog.listener.post_blamer.class%">
+        <service id="qb_blog.listener.post_blamer.default" class="%qb_blog.listener.post_blamer.default.class%">
             <tag name="kernel.event_subscriber" />
             <argument type="service" id="security.context" on-invalid="null" />
             <argument type="service" id="logger" on-invalid="null" />

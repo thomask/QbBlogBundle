@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="qb_blog.post.form.type.class">Qb\Bundle\BlogBundle\Form\Type\PostType</parameter>
+        <parameter key="qb_blog.post.form.type.default.class">Qb\Bundle\BlogBundle\Form\Type\PostType</parameter>
         <parameter key="qb_blog.post.form.handler.default.class">Qb\Bundle\BlogBundle\Form\Handler\PostHandler</parameter>
     </parameters>
 
@@ -15,7 +15,7 @@
             <argument>%qb_blog.post.form.type%</argument>
         </service>
 
-        <service id="qb_blog.post.form.type" class="%qb_blog.post.form.type.class%">
+        <service id="qb_blog.post.form.type.default" class="%qb_blog.post.form.type.default.class%">
             <tag name="form.type" alias="qb_blog_post" />
             <argument>%qb_blog.post.model.class%</argument>
         </service>
