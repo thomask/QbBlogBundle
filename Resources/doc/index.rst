@@ -200,7 +200,7 @@ Step 4: Configure the QbBlogBundle
 
     # QbBlog Configuration
     qb_blog:
-        storage: orm
+        db_driver: orm
         category:
             category_class: Acme\BlogBundle\Entity\Category
         comment:
