@@ -6,41 +6,73 @@
 
     <class name="Qb\Bundle\BlogBundle\Model\AbstractCategory">
         <property name="name">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>category</value>
+                </option>
+            </constraint>
         </property>
     </class>
 
     <class name="Qb\Bundle\BlogBundle\Model\AbstractComment">
         <property name="author">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>comment</value>
+                </option>
+            </constraint>
         </property>
 
         <property name="email">
-            <constraint name="Email" />
+            <constraint name="Email">
+                <option name="groups">
+                    <value>comment</value>
+                </option>
+            </constraint>
         </property>
 
         <property name="url">
-            <constraint name="Url" />
+            <constraint name="Url">
+                <option name="groups">
+                    <value>comment</value>
+                </option>
+            </constraint>
         </property>
 
         <property name="body">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>comment</value>
+                </option>
+            </constraint>
         </property>
     </class>
 
     <class name="Qb\Bundle\BlogBundle\Model\AbstractPost">
         <property name="title">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>post</value>
+                </option>
+            </constraint>
         </property>
 
         <property name="body">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>post</value>
+                </option>
+            </constraint>
         </property>
     </class>
 
     <class name="Qb\Bundle\BlogBundle\Model\AbstractTag">
         <property name="name">
-            <constraint name="NotBlank" />
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>tag</value>
+                </option>
+            </constraint>
         </property>
     </class>
 </constraint-mapping>
