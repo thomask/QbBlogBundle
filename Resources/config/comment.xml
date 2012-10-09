@@ -13,6 +13,10 @@
         <service id="qb_blog.comment.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
             <argument>%qb_blog.comment.form.name%</argument>
             <argument>%qb_blog.comment.form.type%</argument>
+            <argument>null</argument>
+            <argument type="collection">
+                <argument key="validation_groups">%qb_blog.comment.form.validation_groups%</argument>
+            </argument>
         </service>
 
         <service id="qb_blog.comment.form.type.default" class="%qb_blog.comment.form.type.default.class%">

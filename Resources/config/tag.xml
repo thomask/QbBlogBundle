@@ -13,6 +13,10 @@
         <service id="qb_blog.tag.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
             <argument>%qb_blog.tag.form.name%</argument>
             <argument>%qb_blog.tag.form.type%</argument>
+            <argument>null</argument>
+            <argument type="collection">
+                <argument key="validation_groups">%qb_blog.tag.form.validation_groups%</argument>
+            </argument>
         </service>
 
         <service id="qb_blog.tag.form.type.default" class="%qb_blog.tag.form.type.default.class%">
