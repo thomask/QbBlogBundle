@@ -8,7 +8,7 @@
         <property name="name">
             <constraint name="NotBlank">
                 <option name="groups">
-                    <value>category</value>
+                    <value>Category</value>
                 </option>
             </constraint>
         </property>
@@ -18,7 +18,7 @@
         <property name="author">
             <constraint name="NotBlank">
                 <option name="groups">
-                    <value>comment</value>
+                    <value>Comment</value>
                 </option>
             </constraint>
         </property>
@@ -26,7 +26,7 @@
         <property name="email">
             <constraint name="Email">
                 <option name="groups">
-                    <value>comment</value>
+                    <value>Comment</value>
                 </option>
             </constraint>
         </property>
@@ -34,7 +34,7 @@
         <property name="url">
             <constraint name="Url">
                 <option name="groups">
-                    <value>comment</value>
+                    <value>Comment</value>
                 </option>
             </constraint>
         </property>
@@ -42,7 +42,7 @@
         <property name="body">
             <constraint name="NotBlank">
                 <option name="groups">
-                    <value>comment</value>
+                    <value>Comment</value>
                 </option>
             </constraint>
         </property>
@@ -52,7 +52,7 @@
         <property name="title">
             <constraint name="NotBlank">
                 <option name="groups">
-                    <value>post</value>
+                    <value>Post</value>
                 </option>
             </constraint>
         </property>
@@ -60,7 +60,7 @@
         <property name="body">
             <constraint name="NotBlank">
                 <option name="groups">
-                    <value>post</value>
+                    <value>Post</value>
                 </option>
             </constraint>
         </property>
@@ -70,7 +70,7 @@
         <property name="name">
             <constraint name="NotBlank">
                 <option name="groups">
-                    <value>tag</value>
+                    <value>Tag</value>
                 </option>
             </constraint>
         </property>

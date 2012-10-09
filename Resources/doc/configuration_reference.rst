@@ -27,7 +27,7 @@ All available configuration options are listed below with their default values.
                 type:              qb_blog_category
                 handler:           qb_blog.category.form.handler.default
                 name:              qb_blog_category_form
-                validation_groups: [category]
+                validation_groups: [Category]
         comment:
             comment_class:    ~ # Required
             category_manager: qb_blog.comment_manager.default
@@ -35,7 +35,7 @@ All available configuration options are listed below with their default values.
                 type:              qb_blog_comment
                 handler:           qb_blog.comment.form.handler.default
                 name:              qb_blog_comment_form
-                validation_groups: [comment]
+                validation_groups: [Comment]
         post:
             post_class:       ~ # Required
             category_manager: qb_blog.post_manager.default
@@ -43,7 +43,7 @@ All available configuration options are listed below with their default values.
                 type:              qb_blog_post
                 handler:           qb_blog.post.form.handler.default
                 name:              qb_blog_post_form
-                validation_groups: [post]
+                validation_groups: [Post]
         tag:
             tag_class:        ~ # Required
             category_manager: qb_blog.tag_manager.default
@@ -51,4 +51,4 @@ All available configuration options are listed below with their default values.
                 type:              qb_blog_tag
                 handler:           qb_blog.tag.form.handler.default
                 name:              qb_blog_tag_form
-                validation_groups: [tag]
+                validation_groups: [Tag]
