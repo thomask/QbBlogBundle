@@ -13,15 +13,6 @@
         </constraint>
     </class>
 
-    <class name="Qb\Bundle\BlogBundle\Model\AbstractPost">
-        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
-            <option name="fields">title</option>
-            <option name="groups">
-                <value>Post</value>
-            </option>
-        </constraint>
-    </class>
-
     <class name="Qb\Bundle\BlogBundle\Model\AbstractTag">
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">name</option>
